@@ -191,6 +191,16 @@ code { background: var(--panel); padding: 0.15em 0.4em; border-radius: 6px; font
   border-radius: 8px 8px 0 0;
 }
 
+/* Language toggle */
+.lang-link a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem !important;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+}
+.lang-link a:hover { border-color: var(--accent); color: var(--accent); }
+
 /* ---------- Site search ---------- */
 .site-search { position: relative; }
 

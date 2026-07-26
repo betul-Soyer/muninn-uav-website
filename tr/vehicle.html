@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Araç: GöğeBakan HSVTOL — Muninn UAV</title>
+  <meta name="description" content="Muninn UAV'ın SUAS 2026 için geliştirdiği yüksek hızlı VTOL tailsitter GöğeBakan'ın tam tasarım dokümantasyonu: birleşik itki, PX4 + ROS 2 mimarisi, özel YOLOv8s tespiti, SLAM haritalama, görsel servo ile yük bırakma ve arkalarındaki tasarım kararları.">
+  <link rel="icon" type="image/jpeg" href="../assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg">
+  <link rel="alternate" hreflang="en" href="../vehicle.html">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe atla</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img src="../assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg" alt="" width="36" height="36">
+      <span>Muninn UAV</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span> Menü
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Ana gezinme">
+      <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="team.html">Takım</a></li>
+        <li><a href="vehicle.html" aria-current="page">Araç</a></li>
+        <li><a href="journey.html">Gelişim Günlüğü</a></li>
+        <li><a href="media.html">Medya</a></li>
+        <li><a href="sponsors.html">Sponsorlar</a></li>
+        <li class="lang-link"><a href="../vehicle.html" lang="en" hreflang="en" title="English version">EN</a></li>
+      </ul>
+      <div class="site-search" role="search">
+        <label class="visually-hidden" for="site-search-input">Sitede ara</label>
+        <input id="site-search-input" type="search" placeholder="Ara…" autocomplete="off" aria-describedby="search-help">
+        <span id="search-help" class="visually-hidden">Yazdıkça sonuçlar alanın altında listelenir. Ok tuşlarıyla gezinebilirsiniz.</span>
+        <ul id="search-results" class="search-results" hidden></ul>
+        <p id="search-status" class="visually-hidden" role="status"></p>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="kicker">Uçak</p>
+      <h1>GöğeBakan — SUAS 2026 için bir tailsitter</h1>
+      <p class="lede">GöğeBakan, yeni nesil bir <strong>Yüksek Hızlı VTOL (HSVTOL)
+      tailsitter</strong>: bir döner kanat gibi burnu yukarı kalkar, öne yatar ve bir uçak gibi
+      kanat üstünde seyreder — iki işi de tek bir birleşik itki sistemi yapar. Bu sayfa onun
+      yaşayan tasarım dokümantasyonudur.</p>
+    </div>
+  </section>
+
+  <section class="section" id="overview" aria-labelledby="overview-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Genel bakış</p>
+        <h2 id="overview-h">Parça montajı değil, sistem mühendisliği</h2>
+      </div>
+      <div class="grid cols-2" style="margin-bottom:2rem">
+        <p>Birden fazla itki sistemini ve mekanik olarak karmaşık geçiş mekanizmalarını üst
+        üste ekleyen geleneksel hibrit VTOL platformlarının aksine, GöğeBakan <strong>birleşik
+        itki mimarisini</strong> benimser: aynı motor takımı dikey uçuşu, öne yatış geçişini
+        ve seyri birlikte sağlar. Bu tek karar yapısal ağırlığı azaltır, koca bir mekanik
+        arıza sınıfını ortadan kaldırır, bakımı düşürür — üstelik sabit kanadın aerodinamik
+        verimliliği ile dikey kalkış-inişin operasyonel esnekliğini korur.</p>
+        <p>Mimari; PX4 uçuş kontrol sistemini, yapay zekâ destekli yardımcı bilgisayarı,
+        araç üstü bilgisayarlı görüyü, otonom görev yönetimi yazılımını, üç bağlantılı sağlam
+        haberleşme altyapısını ve özel elektronik alt sistemleri tek bir modüler ve
+        ölçeklenebilir çatıda birleştirir. Alçak seviyeli stabilizasyon, üst seviye algı ve
+        karar süreçlerinden bilinçli olarak ayrılmıştır — hesaplama verimliliği, hata toleransı
+        ve görev güvenilirliği için.</p>
+      </div>
+      <figure class="hero-art" style="margin-bottom:2rem">
+        <img src="../assets/img/vehicle-hero.svg" width="920" height="540"
+             alt="GöğeBakan'ın üstten teknik çizimi: hücum kenarında iki birleşik itki motoru, firar kenarında elevonlar, iniş takımı görevi de gören kanat ucu finleri ve burun kamerası ile yapay zekâ bilgisayarını taşıyan merkez kapsüle sahip uçan kanat tailsitter.">
+        <figcaption class="small muted">GöğeBakan HSVTOL — üstten görünüş. Kanat ucu finleri
+        iniş takımı görevi görür; kapsül, burun kamerası ile yapay zekâ bilgisayarını taşır.</figcaption>
+      </figure>
+      <div class="grid cols-4">
+        <div class="card stat-card"><span class="stat-value">HSVTOL</span><span class="stat-label">tailsitter konfigürasyonu</span></div>
+        <div class="card stat-card"><span class="stat-value">1</span><span class="stat-label">birleşik itki sistemi</span></div>
+        <div class="card stat-card"><span class="stat-value">PX4</span><span class="stat-label">+ ROS 2 yardımcı bilgisayar</span></div>
+        <div class="card stat-card"><span class="stat-value">YOLOv8s</span><span class="stat-label">özel veri seti + SLAM</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="specs" aria-labelledby="specs-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Sayılar</p>
+        <h2 id="specs-h">Görev tasarım noktaları ve mimari</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>Görev değerleri SUAS 2026 görev tasarımımızdan alınmıştır ve uçtan uca
+          simülasyonda doğrulanmıştır. Nihai fiziksel boyutlar gövde veri sayfasıyla birlikte
+          yayınlanacaktır.</caption>
+          <thead>
+            <tr><th scope="col">Parametre</th><th scope="col">Değer</th><th scope="col">Notlar</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Konfigürasyon</th><td>HSVTOL tailsitter</td><td>uçan kanat; kanat ucu finleri iniş takımı görevi görür</td></tr>
+            <tr><th scope="row">İtki</th><td>Birleşik motor takımı</td><td>havada asılı kalma, geçiş ve seyir için aynı motorlar</td></tr>
+            <tr><th scope="row">Seyir bacağı</th><td>3.2 km, sabit kanat modu</td><td>enerji verimliliği için waypoint rotası</td></tr>
+            <tr><th scope="row">Tarama irtifası</th><td>45 m AGL</td><td>multikopter modunda ızgara ("çim biçme") deseni</td></tr>
+            <tr><th scope="row">Görev penceresi</th><td>45 dk</td><td>tam görev simülasyonda limitin içinde doğrulandı</td></tr>
+            <tr><th scope="row">Tespit sınıfları</th><td>İnsan, çadır</td><td>özel veri seti — hazır modeller 45 m'de yetersiz kaldı</td></tr>
+            <tr><th scope="row">Otopilot</th><td>PX4</td><td>duruş, uçuş modları, otonom geçişler</td></tr>
+            <tr><th scope="row">Yardımcı bilgisayar</th><td>Yapay zekâ destekli, ROS 2</td><td>YOLOv8s çıkarımı, SLAM, görev yönetimi</td></tr>
+            <tr><th scope="row">Haritalama</th><td>SLAM ortomozaik</td><td>stabil multikopter modu görüntülerinden üretilir</td></tr>
+            <tr><th scope="row">Yük bırakma</th><td>Görsel servo</td><td>bırakmadan önce kamera kılavuzlu hizalama</td></tr>
+            <tr><th scope="row">Yer istasyonu</th><td>Özel PyQt5 YKİ</td><td>görev kontrolü + tespit konsolu</td></tr>
+            <tr><th scope="row">Veri bağlantıları</th><td>2.4 GHz RC · 915 MHz telemetri · 5 GHz IP</td><td>kumanda, telemetri ve görüntü birbirinden bağımsız</td></tr>
+            <tr><th scope="row">Boyutlar ve kütleler</th><td>Gövde veri sayfası — hazırlanıyor</td><td>nihai gövde dondurulunca yayınlanacak</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="airframe" aria-labelledby="airframe-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Konfigürasyon</p>
+        <h2 id="airframe-h">Gövde ve uçuş rejimleri</h2>
+      </div>
+      <div class="grid cols-2" style="align-items:center">
+        <div>
+          <p>GöğeBakan bir <strong>uçan kanat tailsitter</strong>dır. Yerde, kanat ucu finleri
+          üzerinde burnu yukarı bakarak durur. Birleşik motorlar onu bir multikopter gibi dikey
+          kaldırır; öne yatış (pitch-over) geçişi burnu, kanat yükü taşıyana dek öne devirir ve
+          aynı motorlar seyir itkisine dönüşür. İniş bunun ayna görüntüsüdür: burnu kaldır,
+          havada dur, dikey alçal.</p>
+          <p>Ayrı bir kaldırma sistemi ve eğim mekanizması olmadığı için yapı hafif, arıza modu
+          listesi kısa kalır. Elevonlar her iki rejimde de kontrol yetkisi sağlar; merkez
+          kapsül faydalı yükü tek noktada toplar: burun kamerası, yapay zekâ bilgisayarı, yük
+          bırakma düzeneği ve batarya — daha hiçbir şey yer kapamadan önce buraya
+          yerleştirildi.</p>
+          <p class="muted small">Neden quadplane veya multikopter değil de tailsitter?
+          <a href="#design-decisions">1 numaralı tasarım kararına</a> bakın.</p>
+        </div>
+        <figure>
+          <img src="../assets/img/vehicle-three-view.svg" width="920" height="400"
+               alt="GöğeBakan'ın üç uçuş rejiminin şeması: kanat ucu finleri üzerinde kuyruk üstü dururken havada asılı kalma, kavisli bir yol boyunca öne yatış geçişi ve kanat üstünde seyir.">
+          <figcaption>Bir tailsitter'ın üç rejimi — havada asılı kalma, öne yatış geçişi ve
+          kanat üstünde seyir — hepsi tek itki sistemiyle.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="profile" aria-labelledby="profile-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Görev profili</p>
+        <h2 id="profile-h">Dinamik uçuş profili — Plan A</h2>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <p class="card-kicker">Faz 1 · Gidiş seyri</p>
+          <h3>Arama alanına sabit kanatla</h3>
+          <p class="small">3.2 km'lik waypoint rotası enerji verimliliğini en üst düzeye
+          çıkarmak için kanat üstünde uçulur — havada asılı kalma dakikaları yalnızca göreve
+          değer kattığı yerde harcanır.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Faz 2 · Tarama ve haritalama</p>
+          <h3>Multikopter modunda ızgara</h3>
+          <p class="small">Arama bölgelerinde GöğeBakan multikopter moduna geçer ve çim biçme
+          deseni uçar. Stabilize uçuş dinamiği kamera verisini keskinleştirir — daha net
+          tespitler ve SLAM'in ortomozaik haritası için temiz girdi.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Faz 3 · Dönüş ve iniş</p>
+          <h3>Sabit kanatla eve, dikey iniş</h3>
+          <p class="small">Arama bölgeleri arasındaki intikaller ve dönüş bacağı, süreyi
+          kısaltmak için tekrar sabit kanat modunda uçulur. Kalkış noktasında uçak bir kez
+          daha geçiş yapar ve otonom dikey inişle görevi güvenle bitirir.</p>
+        </div>
+      </div>
+      <p class="muted small" style="margin-top:1.2rem">Değişen saha koşulları için önceden
+      brifinglenmiş bir <strong>Plan B</strong> profili görev-hazır bekletilir; profil kalkıştan
+      önce seçilir, geçiş mantığı iki planda da aynıdır.</p>
+    </div>
+  </section>
+
+  <section class="section" id="avionics" aria-labelledby="avionics-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Aviyonik</p>
+        <h2 id="avionics-h">Aviyonik ve veri bağlantıları</h2>
+      </div>
+      <figure style="margin-bottom:1.6rem">
+        <img src="../assets/img/avionics-diagram.svg" width="920" height="620"
+             alt="Aviyonik blok şeması: GNSS ve RC alıcısı PX4 uçuş kontrolcüsünü besler; PX4, birleşik itki ESC'lerini ve yük bırakma servolarını sürer. ROS 2, YOLOv8s ve SLAM koşan yapay zekâ bilgisayarı burun kamerasını okur, PX4 ile veri alışverişi yapar ve tespitleri 5 GHz IP bağlantısı üzerinden aktarır. 915 MHz telemetri telsizi PX4'ü özel PyQt5 yer kontrol istasyonuna bağlar.">
+        <figcaption>GöğeBakan'ın aviyonik mimarisi. Üç bağımsız telsiz bağlantısı kumandayı,
+        telemetriyi ve görüntüyü birbirinden ayırır.</figcaption>
+      </figure>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Uçuş kontrolü</h3>
+          <p class="small">PX4; duruş stabilizasyonunu, uçuş modlarını ve bir tailsitter'ı
+          tanımlayan o rejim değişimlerini — havada asılı kalma ile seyir arasındaki otonom
+          geçişleri — yönetir.</p>
+        </div>
+        <div class="card">
+          <h3>Yardımcı bilgisayar</h3>
+          <p class="small">Yapay zekâ bilgisayarı ROS 2 yığınını koşar: YOLOv8s çıkarımı, SLAM,
+          görev yönetimi ve görsel servo — üst seviye kararlar alçak seviye kontrolden temiz
+          biçimde ayrı tutulur.</p>
+        </div>
+        <div class="card">
+          <h3>Üç telsiz, üç görev</h3>
+          <p class="small">Emniyet pilotu için 2.4 GHz, YKİ için 915 MHz MAVLink telemetri,
+          görüntü ve tespitler için 5 GHz IP. Bir bağlantının kopması diğer ikisini asla
+          düşürmez.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="autonomy" aria-labelledby="autonomy-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Yazılım</p>
+        <h2 id="autonomy-h">Otonomi: tespit, haritalama, bırakma</h2>
+      </div>
+      <div class="grid cols-2">
+        <div>
+          <h3>Tespit — inşa etmek zorunda kaldığımız veri seti</h3>
+          <p>Görevin 45 m tarama irtifasında, standart hazır modeller (COCO sınıfı) insan ve
+          çadırları güvenilir biçimde bulmakta düpedüz başarısız oldu. Bunun üzerine takım
+          <strong>özel bir hava görüntüsü veri seti</strong> oluşturdu ve üzerinde bir
+          <strong>YOLOv8s</strong> modeli eğitti. Bileşen testleri hedef irtifada yüksek
+          doğruluklu tespiti doğruladı — model, uçaktaki yerini diğer her parça gibi kazandı:
+          testle.</p>
+          <h3>Haritalama — SLAM ortomozaik</h3>
+          <p>Multikopter modundaki tarama sırasında SLAM algoritmaları toplanan görüntüler
+          üzerinde koşar ve alanın yüksek çözünürlüklü ortomozaik haritasını üretir — stabil
+          ızgara uçuşu hem tespitleri hem haritayı keskinleştirir.</p>
+        </div>
+        <div>
+          <h3>Bırakma — görsel servo</h3>
+          <p>Hedef doğrulandığında <strong>görsel servo</strong> devreye girer: kontrol
+          döngüsü kamera karelerini sürekli analiz eder ve uçağın konumunu, hedefle istenen
+          uzamsal ilişkiyi kurana dek gerçek zamanlı ayarlar — sonra yükü bırakır. Simülasyon
+          testleri, uçağın bu teknikle hedef üzerine başarıyla hizalandığını hiçbir donanımı
+          riske atmadan doğruladı.</p>
+          <h3>Görev yönetimi — özel YKİ</h3>
+          <p>Özel <strong>PyQt5 yer kontrol istasyonu</strong>, ekibe görev kontrolünü ve
+          tespit konsolunu tek ekranda verir — planla, izle, tespitleri doğrula ve görevi
+          yönet; araç değiştirmeden. PX4 ile MAVLink konuşur, tespitleri IP bağlantısından
+          alır.</p>
+        </div>
+      </div>
+      <p class="muted small" style="margin-top:1rem">Bunların tümünün nasıl kanıtlandığı —
+      Gazebo dijital ikizinden 45 dakikalık tam görev koşusuna —
+      <a href="journey.html#testing">test sayfasında</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" id="safety" aria-labelledby="safety-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Emniyet</p>
+        <h2 id="safety-h">Emniyet sistemleri ve failsafe'ler</h2>
+        <p class="lede">Otonom bir uçak güveni, işler ters gittiğinde yaptıklarıyla kazanır.</p>
+      </div>
+      <div class="grid cols-2">
+        <ul>
+          <li><strong>Geofence:</strong> PX4 içinde katı bir hava sahası sınırı — aşılması,
+          insan müdahalesi gerektirmeyen anında otomatik tepki tetikler.</li>
+          <li><strong>RC bağlantı kaybı:</strong> belirlenen noktaya dikey inişle biten
+          otomatik eve dönüş (RTL) profili.</li>
+          <li><strong>YKİ bağlantı kaybı:</strong> görev kısa süre devam eder; telemetri
+          düzelmezse eve dönüşe geçilir.</li>
+          <li><strong>Batarya failsafe'i:</strong> iki eşikte kademeli tepki — önce uyar ve
+          yeniden planla, sonra indir.</li>
+        </ul>
+        <ul>
+          <li><strong>Bağımsız kill:</strong> emniyet pilotunun 2.4 GHz bağlantısı, yardımcı
+          bilgisayardan bağımsız olarak görevi her an kesebilir.</li>
+          <li><strong>Checklist, her zaman:</strong>
+          <a href="journey.html#procedures">uçuş öncesi checklist ve yazılı test kartı</a>
+          olmadan uçuş yok — sıradan uçuşlar dahil. Özellikle sıradan uçuşlar.</li>
+          <li><strong>Görevli ekip:</strong> her uçuşta ismi belli bir sorumlu pilot, YKİ
+          operatörü ve gözcü vardır. Kimse emniyeti yanında başka işle yürütmez.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="design-decisions" aria-labelledby="dd-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Tasarım kararları</p>
+        <h2 id="dd-h">GöğeBakan'ın arkasındaki trade-off çalışmaları</h2>
+        <p class="lede">Her büyük tercih; reddettiğimiz seçenekler ve nedenleriyle birlikte.
+        Bu günlük sezon ilerledikçe büyür.</p>
+      </div>
+      <div class="grid cols-2">
+        <article class="card">
+          <p class="card-kicker">Karar 01 · Platform</p>
+          <h3>Multikopter veya quadplane değil, tailsitter</h3>
+          <p class="small"><strong>Seçenekler:</strong> multikopter · geleneksel sabit kanat ·
+          quadplane hibrit · tailsitter VTOL.</p>
+          <p class="small"><strong>Tercih ve gerekçe:</strong> tailsitter. Görev hem hassas
+          konumlanma (tarama, bırakma, VTOL) hem de hızlı ve verimli seyir (3.2 km bacaklar,
+          bölgeler arası intikal) istiyor. Tailsitter, multikopterin hassasiyetiyle sabit
+          kanadın hızını ve aerodinamik verimliliğini tek gövdede birleştirerek tüm görev
+          kısıtlarına aynı anda yanıt veriyor.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">Karar 02 · İtki</p>
+          <h3>Tek birleşik itki sistemi</h3>
+          <p class="small"><strong>Seçenekler:</strong> ayrı kaldırma + seyir motor takımları
+          (quadplane usulü) · eğim mekanizmaları · birleşik motor takımı.</p>
+          <p class="small"><strong>Tercih ve gerekçe:</strong> birleşik. Ayrı kaldırma
+          motorları seyirde ölü ağırlıktır; eğim mekanizmaları kütle ve mekanik arıza noktası
+          ekler. Havada asılı kalmaya, geçişe ve seyre aynı motor takımının hizmet etmesi;
+          daha az yapısal ağırlık, kırılabilecek daha az parça, daha az bakım demek —
+          çıkararak kazanılan güvenilirlik.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">Karar 03 · Görev profili</p>
+          <h3>Dinamik uçuş profili (Plan A / Plan B)</h3>
+          <p class="small"><strong>Seçenekler:</strong> her şeyi tek rejimde uçmak · rejimleri
+          görev fazına göre dinamik değiştirmek.</p>
+          <p class="small"><strong>Tercih ve gerekçe:</strong> dinamik profil. Seyir bacakları
+          enerji verimliliği için sabit kanat modunda; tarama, stabil uçuş kamera verisini
+          tespit ve SLAM için keskinleştirdiğinden multikopter modunda; dönüşler 45 dakikalık
+          saati yenmek için sabit kanatta; iniş emniyet için dikey. Değişen saha koşulları
+          için önceden brifinglenmiş bir Plan B varyantı hazır bekler.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">Karar 04 · Algı</p>
+          <h3>Hazır modeller değil, özel veri seti + YOLOv8s</h3>
+          <p class="small"><strong>Seçenekler:</strong> COCO sınıfı hazır tespit modelleri ·
+          özel hava veri setinde eğitilmiş model.</p>
+          <p class="small"><strong>Tercih ve gerekçe:</strong> özel. Bileşen testleri hazır
+          modellerin 45 m'de insan ve çadırlarda başarısız olduğunu gösterdi — nesneler çok
+          küçük, bakış açısı fazla alışılmadık. Kendi veri setimizi kurduk, üzerinde YOLOv8s
+          eğittik ve tam çalışma irtifasında yüksek doğruluğu doğruladık.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">Karar 05 · Hesaplama mimarisi</p>
+          <h3>PX4 + ROS 2 yardımcı bilgisayar, kesin ayrım</h3>
+          <p class="small"><strong>Seçenekler:</strong> her şeyi yapan tek bilgisayar · temiz
+          arayüzlü uçuş kontrolcüsü + yapay zekâ bilgisayarı.</p>
+          <p class="small"><strong>Tercih ve gerekçe:</strong> ayrım. Alçak seviyeli
+          stabilizasyon, işlemci için asla bir sinir ağıyla yarışmamalı. Duruş ve geçişler
+          PX4'ün; algı ve kararlar ROS 2 bilgisayarının. Bu ayrım hesaplama verimliliğini ve
+          hata toleransını artırır — algı tarafındaki bir çökme uçağı asla düşüremez.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">Karar 06 · Doğrulama ve araçlar</p>
+          <h3>Önce dijital ikiz, yanında özel PyQt5 YKİ</h3>
+          <p class="small"><strong>Seçenekler:</strong> donanımda erken test · önce her şeyi
+          simülasyonda doğrulamak; hazır YKİ · özel konsol.</p>
+          <p class="small"><strong>Tercih ve gerekçe:</strong> GöğeBakan'ın Gazebo'daki dijital
+          ikizi (insan ve çadır modelleriyle özelleştirilmiş Baylands dünyasında) her
+          algoritmayı donanım riske atılmadan doğrular. Özel PyQt5 YKİ, görev kontrolü ile
+          tespit konsolunu tek ekranda birleştirir — çünkü yarışmada araç değiştirmek, sahip
+          olmadığımız dakikalara mal olur.</p>
+        </article>
+      </div>
+      <p class="muted small" style="margin-top:1.4rem">Her kararın tarihli mühendislik bağlamı,
+      tarihsel kaydımız olan <a href="journey.html#log">gelişim günlüğünde</a>.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand"><img src="../assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg" alt="" width="30" height="30"> Muninn UAV</p>
+      <p class="muted small">Yazgit Topluluğu'nun (Türkiye) havacılık takımı; RoboNation SUAS
+      yarışmasında otonom tailsitter GöğeBakan'ı uçuruyor.</p>
+    </div>
+    <nav aria-label="Alt bilgi">
+      <h4>Keşfet</h4>
+      <ul>
+        <li><a href="team.html">Takım</a></li>
+        <li><a href="vehicle.html">Araç</a></li>
+        <li><a href="journey.html">Gelişim Günlüğü ve Testler</a></li>
+        <li><a href="media.html">Medya</a></li>
+        <li><a href="sponsors.html">Sponsorlar</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h4>İletişim</h4>
+      <ul>
+        <li><a href="mailto:muninnuav@gmail.com">muninnuav@gmail.com</a></li>
+        <li class="muted">Konya Teknik Üniversitesi — Konya, Türkiye</li>
+        <li><a href="https://www.instagram.com/muninnteam" rel="external">Instagram · @muninnteam</a></li>
+        <li><a href="https://www.linkedin.com/company/yazgi%CC%87t-muni%CC%87nn-i%CC%87ha/" rel="external">LinkedIn · Muninn UAV</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-note container">
+    <p>© <span id="footer-year">2026</span> Muninn UAV. Takım tarafından yapıldı — izleyici yok, çerez yok.</p>
+    <p>SUAS 2026 · RoboNation Öğrenci İnsansız Hava Sistemleri yarışması</p>
+  </div>
+</footer>
+
+<script src="../assets/js/search-index-tr.js" defer></script>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

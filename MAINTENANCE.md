@@ -18,6 +18,11 @@ Team: **Muninn UAV** (Yazgit Community, Konya Technical University) · Vehicle: 
 | `media.html` | Photo gallery + video slots | vehicle photos/videos, supporting media |
 | `sponsors.html` | Sponsor logos, tiers, in-kind support, CTA | list of sponsors with logos |
 
+Languages: **English is the primary, judge-facing site** (SUAS 2.4 requires
+English); a full Turkish mirror lives in `tr/` with an EN⇄TR toggle in the
+header. When you edit an English page, mirror the change in `tr/` and, if it
+changes sections, in `assets/js/search-index-tr.js`.
+
 Site-wide: sticky nav, **client-side search** (`assets/js/search-index.js` +
 `assets/js/main.js`), skip-link, semantic landmarks, ARIA labels, alt text
 everywhere, WCAG-AA contrast, keyboard operability, `prefers-reduced-motion`
@@ -30,6 +35,7 @@ support, responsive/mobile layout, works in Chrome/Firefox/Safari/Edge.
 | `WhatsApp Video 2026-07-11 at 16.45.33.mp4` | ✅ wired — homepage hero (autoplays), journey & media video embeds |
 | `Screenshot from 2026-07-26 10-34-26.png` | ✅ wired — media gallery (digital twin figure) |
 | Gazebo mission screencast | ⏳ not uploaded yet — a reserved slot waits in journey/media video sections |
+| `unnamed.jpg` (in `assets/img/`) | ✅ official TÜBİTAK logo — sponsor sections (EN + TR) |
 
 Palette: red / black / grey / white (team colors) — tokens at the top of
 `assets/css/style.css`.
@@ -47,7 +53,6 @@ light backgrounds such as apparel or documents). The drawn SVG fallbacks
 | Physical specs | "Airframe data sheet — in preparation" row | `vehicle.html#specs` — fill wingspan/MTOW/speeds when frozen |
 | Plan B details | described only as "pre-briefed contingency profile" | `vehicle.html#profile` + decision #3 |
 | Build-log periods | season-level labels (Winter 2025–26, Spring 2026) | `journey.html#log` — replace with real dates if you want day precision |
-| TÜBİTAK logo | text-based card (`sponsor-tubitak.svg`) | replace with the official TÜBİTAK logo per its brand guidelines |
 | Sponsor logos | 3 "YOUR LOGO HERE" SVGs | `assets/img/sponsor-*.svg` |
 | Photos | 6 SVG image slots (`assets/img/ph-*.svg`) | `media.html` — replace files with real photos |
 
@@ -85,5 +90,3 @@ the contents of `website/`, done.
 - Colors/typography live in CSS variables at the top of `assets/css/style.css`.
 - Keep the accessibility features intact when editing: heading order, alt
   texts, `aria-current` on the active nav link, one `<h1>` per page.
-- The team's design-requirements file ("TASARIM İSTEKLERİM.txt") had not been
-  pushed to the repository when this version was built — apply it on arrival.

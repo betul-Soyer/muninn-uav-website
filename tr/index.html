@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Muninn UAV — Yazgit Topluluğu · SUAS 2026</title>
+  <meta name="description" content="Konya Teknik Üniversitesi Yazgit Topluluğu'nun havacılık takımı Muninn UAV; SUAS 2026 görevinin tamamını otonom uçan GöğeBakan HSVTOL tailsitter'ı tasarlıyor: 3.2 km seyir, alan tarama, SLAM haritalama ve hassas yük bırakma.">
+  <link rel="icon" type="image/jpeg" href="../assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg">
+  <link rel="alternate" hreflang="en" href="../index.html">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe atla</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img src="../assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg" alt="" width="36" height="36">
+      <span>Muninn UAV</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span> Menü
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Ana gezinme">
+      <ul>
+        <li><a href="index.html" aria-current="page">Ana Sayfa</a></li>
+        <li><a href="team.html">Takım</a></li>
+        <li><a href="vehicle.html">Araç</a></li>
+        <li><a href="journey.html">Gelişim Günlüğü</a></li>
+        <li><a href="media.html">Medya</a></li>
+        <li><a href="sponsors.html">Sponsorlar</a></li>
+        <li class="lang-link"><a href="../index.html" lang="en" hreflang="en" title="English version">EN</a></li>
+      </ul>
+      <div class="site-search" role="search">
+        <label class="visually-hidden" for="site-search-input">Sitede ara</label>
+        <input id="site-search-input" type="search" placeholder="Ara…" autocomplete="off" aria-describedby="search-help">
+        <span id="search-help" class="visually-hidden">Yazdıkça sonuçlar alanın altında listelenir. Ok tuşlarıyla gezinebilirsiniz.</span>
+        <ul id="search-results" class="search-results" hidden></ul>
+        <p id="search-status" class="visually-hidden" role="status"></p>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="kicker">SUAS 2026 · RoboNation</p>
+        <h1>Tüm görev için tek gövde.</h1>
+        <p class="lede">Muninn UAV — <strong>Yazgit Topluluğu</strong>'nun havacılık takımı —
+        <strong>GöğeBakan</strong>'ı tasarlıyor ve uçuruyor: burnu yukarı kalkan, kanat üstünde
+        seyreden ve SUAS görevinin tamamını otonom icra eden yüksek hızlı bir VTOL tailsitter.
+        3.2 km'lik waypoint seyri, multikopter modunda alan tarama, SLAM tabanlı haritalama ve
+        hassas yük bırakma — hepsi tek uçuşta.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="vehicle.html">Araç tasarımı</a>
+          <a class="btn btn-ghost" href="journey.html">Uçuş testleri</a>
+          <a class="btn btn-ghost" href="sponsors.html">Sponsor ol</a>
+        </div>
+      </div>
+      <figure class="hero-art">
+        <video controls muted autoplay loop playsinline preload="metadata" width="920" height="540"
+               poster="../assets/img/vehicle-hero.svg"
+               aria-label="GöğeBakan tailsitter'ın uçuş testi görüntüleri.">
+          <source src="../assets/media/WhatsApp%20Video%202026-07-11%20at%2016.45.33.mp4" type="video/mp4">
+          <img src="../assets/img/vehicle-hero.svg" width="920" height="540"
+               alt="GöğeBakan'ın üstten teknik çizimi: hücum kenarında iki birleşik itki motoru, firar kenarında elevonlar, iniş takımı görevi gören kanat ucu finleri ve merkez gövde kapsülü olan bir uçan kanat tailsitter.">
+        </video>
+        <figcaption class="small muted">GöğeBakan uçuş testinde — gerçek görüntü, Temmuz 2026.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="mission" aria-labelledby="mission-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Biz kimiz</p>
+        <h2 id="mission-h">Tek tasarım kuralı olan mühendislik öğrencileri: sadeliği hak et</h2>
+      </div>
+      <div class="grid cols-2">
+        <p>GöğeBakan'daki her mühendislik kararını dört hedef yönlendiriyor: mekanik
+        karmaşıklığı en aza indirmek, enerji tüketimini optimize etmek, sistem güvenilirliğini
+        artırmak ve tam otonom görev icrasını mümkün kılmak. Uçağın <strong>tek birleşik itki
+        sistemli bir tailsitter</strong> olmasının nedeni tam da bu — eğim (tilt) mekanizması
+        yok, seyirde ölü ağırlık olarak taşınan ayrı kaldırma motorları yok, daha az arıza
+        noktası var.</p>
+        <p>Aynı disiplin yazılımda da sürüyor: <strong>PX4</strong> üzerindeki alçak seviyeli
+        uçuş stabilizasyonu, <strong>ROS 2</strong> koşan yardımcı bilgisayardaki üst seviye
+        algı ve karar süreçlerinden net biçimde ayrıldı. Her şey uçmadan önce Gazebo dijital
+        ikizinde doğrulanıyor. <a href="vehicle.html#design-decisions">Tasarım kararlarını</a>
+        okuyun, <a href="journey.html#testing">test programını</a> izleyin veya
+        <a href="team.html">arkasındaki ekiple</a> tanışın.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="competition" aria-labelledby="competition-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Meydan okuma</p>
+        <h2 id="competition-h">SUAS 2026 görevi, madde madde</h2>
+        <p class="lede">Tek uçak, 45 dakikalık görev penceresi ve kalkış, geçişler ve iniş
+        dahil tamamen otonom uçulan görevler.</p>
+      </div>
+      <div class="grid cols-4">
+        <div class="card">
+          <p class="card-kicker">Görev 01</p>
+          <h3>Waypoint seyri</h3>
+          <p class="small">3.2 km'lik waypoint rotası, maksimum enerji verimliliği için sabit
+          kanat modunda ve katı hava sahası sınırları içinde uçulur.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Görev 02</p>
+          <h3>Tara &amp; tespit et</h3>
+          <p class="small">Arama alanında GöğeBakan multikopter moduna geçer ve 45 m irtifada
+          ızgara deseni uçarak insan ve çadırları özel eğitilmiş YOLOv8s modeliyle tespit
+          eder.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Görev 03</p>
+          <h3>SLAM ile haritala</h3>
+          <p class="small">Stabil multikopter modu görüntüleri SLAM algoritmalarını besler ve
+          alanın yüksek çözünürlüklü ortomozaik haritası oluşturulur.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Görev 04</p>
+          <h3>Yükü bırak</h3>
+          <p class="small">Görsel servo kontrolü uçağı hedefin üzerine hizalar ve yükü hassas
+          biçimde bırakır — algı ile uçuş kontrolü gerçek zamanlı el sıkışır.</p>
+        </div>
+      </div>
+      <p class="muted small" style="margin-top:1.2rem">SUAS,
+        <a href="https://robonation.org/" rel="external">RoboNation</a> tarafından düzenlenir;
+        2026 yarışması <strong>14–17 Eylül 2026</strong>'da uçulacak. Puanlama, görev
+        performansı ile tasarım dokümantasyonunu birleştirir — bu websitesi de puanlanan
+        teslimatlardan biridir
+        (<a href="https://robonation.gitbook.io/suas-resources/" rel="external">takım el kitabı</a>).</p>
+    </div>
+  </section>
+
+  <section class="section" id="highlights" aria-labelledby="highlights-h">
+    <div class="container">
+      <h2 id="highlights-h" class="visually-hidden">Bir bakışta görev</h2>
+      <div class="grid cols-4">
+        <div class="card stat-card"><span class="stat-value">3.2&nbsp;km</span><span class="stat-label">sabit kanat seyir bacağı</span></div>
+        <div class="card stat-card"><span class="stat-value">45&nbsp;dk</span><span class="stat-label">görev penceresi — simülasyonda doğrulandı</span></div>
+        <div class="card stat-card"><span class="stat-value">45&nbsp;m</span><span class="stat-label">tarama irtifası, özel YOLOv8s</span></div>
+        <div class="card stat-card"><span class="stat-value">2→1</span><span class="stat-label">iki uçuş rejimi, tek itki sistemi</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="latest" aria-labelledby="latest-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Tarihsel kayıt</p>
+        <h2 id="latest-h">Gelişim günlüğünden son haberler</h2>
+      </div>
+      <div class="grid cols-2">
+        <article class="card">
+          <p class="card-kicker">Temmuz 2026</p>
+          <h3><a href="journey.html#log-website">Kampanya kamuoyuna açıldı</a></h3>
+          <p class="small">Takım websitesi tüm mühendislik hikâyesiyle yayında: mimari, tasarım
+          kararları, test programı ve SUAS 2026'ya giden yol.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">İlkbahar 2026</p>
+          <h3><a href="journey.html#log-mission-sim">Tam görev 45 dakikanın içinde — simülasyonda</a></h3>
+          <p class="small">SUAS görevinin tamamı Gazebo dijital ikizinde baştan sona koşturuldu;
+          arama yörüngelerimizin yarışma saatine sığdığı doğrulandı.</p>
+        </article>
+      </div>
+      <p style="margin-top:1.4rem"><a class="btn btn-ghost" href="journey.html">Günlüğün tamamını oku</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="sponsors-strip" aria-labelledby="sponsors-strip-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Sponsorlar</p>
+        <h2 id="sponsors-strip-h">Zor problemleri sevenlerin desteğiyle</h2>
+        <p class="lede">TÜBİTAK projeyi şimdiden destekliyor — şimdi katılan partnerler, bu
+        Eylül'deki SUAS 2026'ya kadar tüm kampanya boyunca görünürlük kazanır.</p>
+      </div>
+      <div class="logo-row">
+        <img src="../assets/img/unnamed.jpg" width="320" height="140" alt="TÜBİTAK — proje destekçisi">
+        <img src="../assets/img/sponsor-gold.svg" width="320" height="140" alt="Altın sponsor logosu için ayrılmış alan">
+        <img src="../assets/img/sponsor-silver.svg" width="320" height="140" alt="Gümüş sponsor logosu için ayrılmış alan">
+        <img src="../assets/img/sponsor-bronze.svg" width="320" height="140" alt="Bronz sponsor logosu için ayrılmış alan">
+      </div>
+      <p style="margin-top:1.4rem"><a class="btn btn-primary" href="sponsors.html">Sponsor ol</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand"><img src="../assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg" alt="" width="30" height="30"> Muninn UAV</p>
+      <p class="muted small">Yazgit Topluluğu'nun (Türkiye) havacılık takımı; RoboNation SUAS
+      yarışmasında otonom tailsitter GöğeBakan'ı uçuruyor.</p>
+    </div>
+    <nav aria-label="Alt bilgi">
+      <h4>Keşfet</h4>
+      <ul>
+        <li><a href="team.html">Takım</a></li>
+        <li><a href="vehicle.html">Araç</a></li>
+        <li><a href="journey.html">Gelişim Günlüğü ve Testler</a></li>
+        <li><a href="media.html">Medya</a></li>
+        <li><a href="sponsors.html">Sponsorlar</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h4>İletişim</h4>
+      <ul>
+        <li><a href="mailto:muninnuav@gmail.com">muninnuav@gmail.com</a></li>
+        <li class="muted">Konya Teknik Üniversitesi — Konya, Türkiye</li>
+        <li><a href="https://www.instagram.com/muninnteam" rel="external">Instagram · @muninnteam</a></li>
+        <li><a href="https://www.linkedin.com/company/yazgi%CC%87t-muni%CC%87nn-i%CC%87ha/" rel="external">LinkedIn · Muninn UAV</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-note container">
+    <p>© <span id="footer-year">2026</span> Muninn UAV. Takım tarafından yapıldı — izleyici yok, çerez yok.</p>
+    <p>SUAS 2026 · RoboNation Öğrenci İnsansız Hava Sistemleri yarışması</p>
+  </div>
+</footer>
+
+<script src="../assets/js/search-index-tr.js" defer></script>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

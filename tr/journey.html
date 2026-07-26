@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Gelişim Günlüğü ve Testler — Muninn UAV</title>
+  <meta name="description" content="GöğeBakan'ın geliştirme sürecinin tarihsel kaydı: bileşen testlerinden tam görev simülasyonuna uzanan doğrulama merdiveni, tarihli günlük kayıtları, uçuş testi prosedürleri ve test görüntüleri.">
+  <link rel="icon" type="image/jpeg" href="../assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg">
+  <link rel="alternate" hreflang="en" href="../journey.html">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe atla</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img src="../assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg" alt="" width="36" height="36">
+      <span>Muninn UAV</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span> Menü
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Ana gezinme">
+      <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="team.html">Takım</a></li>
+        <li><a href="vehicle.html">Araç</a></li>
+        <li><a href="journey.html" aria-current="page">Gelişim Günlüğü</a></li>
+        <li><a href="media.html">Medya</a></li>
+        <li><a href="sponsors.html">Sponsorlar</a></li>
+        <li class="lang-link"><a href="../journey.html" lang="en" hreflang="en" title="English version">EN</a></li>
+      </ul>
+      <div class="site-search" role="search">
+        <label class="visually-hidden" for="site-search-input">Sitede ara</label>
+        <input id="site-search-input" type="search" placeholder="Ara…" autocomplete="off" aria-describedby="search-help">
+        <span id="search-help" class="visually-hidden">Yazdıkça sonuçlar alanın altında listelenir. Ok tuşlarıyla gezinebilirsiniz.</span>
+        <ul id="search-results" class="search-results" hidden></ul>
+        <p id="search-status" class="visually-hidden" role="status"></p>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="kicker">Tarihsel kayıt</p>
+      <h1>Gelişim Günlüğü ve Testler</h1>
+      <p class="lede">Tarihli, dürüst ve herkese açık: ne planladık, neyi test ettik, ne
+      bozuldu ve neyi değiştirdik. Yeni kayıtlar günlüğün en üstüne eklenir — sonradan hiçbir
+      şey yeniden yazılmaz.</p>
+    </div>
+  </section>
+
+  <section class="section" id="roadmap" aria-labelledby="roadmap-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Kampanya planı</p>
+        <h2 id="roadmap-h">SUAS 2026'ya giden doğrulama merdiveni</h2>
+        <p class="lede">Sistem kademeli olarak kanıtlanır — sayısal analiz, simülasyon, donanım
+        entegrasyonu, yer testleri, kademeli uçuş testleri — tam görev icrasından önce.</p>
+      </div>
+      <ul class="milestones">
+        <li><span class="m-date">Konsept</span><span>Platform trade-off çalışması → birleşik itkili tailsitter HSVTOL seçildi</span></li>
+        <li><span class="m-date">Dijital ikiz</span><span><code>gogebakan</code> modeli Gazebo'da hayat buldu; Baylands dünyası insan ve çadır hedefleriyle özelleştirildi</span></li>
+        <li><span class="m-date">Algı</span><span>Özel hava veri seti oluşturuldu; YOLOv8s eğitildi ve 45 m tarama irtifasında doğrulandı</span></li>
+        <li><span class="m-date">Alt sistemler</span><span>Görsel servo ile yük hizalama simülasyonda doğrulandı</span></li>
+        <li><span class="m-date">Sistem seviyesi</span><span><strong>45 dakikalık tam görev</strong>, el kitabındaki saha düzenine göre dijital ikizde baştan sona uçuldu</span></li>
+        <li><span class="m-date">Donanım</span><span>Gerçek gövdenin entegrasyonu, yer testleri ve kademeli uçuş testleri</span></li>
+        <li><span class="m-date">Eyl 2026</span><span><strong>SUAS 2026</strong> — 14–17 Eylül</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="log" aria-labelledby="log-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Blog</p>
+        <h2 id="log-h">Gelişim günlüğü</h2>
+      </div>
+      <ol class="timeline" reversed>
+        <li id="log-website">
+          <time datetime="2026-07">Temmuz 2026</time>
+          <h3>Kampanya kamuoyuna açıldı</h3>
+          <p>Bu website tüm mühendislik hikâyesiyle yayına girdi: tailsitter mimarisi,
+          <a href="vehicle.html#design-decisions">tasarım kararı günlüğü</a>, test programı ve
+          görev profili. Kendisi de puanlanan bir SUAS teslimatı — ve kampanyanın herkese
+          açık, kalıcı kaydı.</p>
+        </li>
+        <li id="log-mission-sim">
+          <span class="muted small" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase">İlkbahar 2026</span>
+          <h3>Tam görev 45 dakikanın içinde — simülasyonda</h3>
+          <p>SUAS görevinin tamamı — 3.2 km seyir, multikopter modunda tarama ızgaraları, SLAM
+          haritalama, yük bırakma, otonom iniş — el kitabındaki arazi ve saha verilerinden
+          kurulan uçuş planıyla Gazebo dijital ikizinde baştan sona koşturuldu. Sonuç, en
+          büyük açık riskimizi kapattı: arama yörüngeleri 45 dakikalık görev penceresine
+          sığıyor.</p>
+        </li>
+        <li id="log-dataset">
+          <span class="muted small" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Kış 2025–26</span>
+          <h3>Hazır modeller 45 m'de kaldı — biz de kendi veri setimizi kurduk</h3>
+          <p>Bileşen testleri sert bir ders verdi: COCO sınıfı hazır tespit modelleri, görevin
+          45 m tarama irtifasından insan ve çadırları güvenilir biçimde bulamıyordu. Takım
+          özel bir hava veri seti oluşturdu ve üzerinde <strong>YOLOv8s</strong> eğitti. Hedef
+          irtifada yapılan yeniden testler yüksek doğruluklu tespiti gösterdi — algı yığını
+          yeniden doğdu ve <a href="vehicle.html#design-decisions">4 numaralı karar</a>
+          yazıldı.</p>
+        </li>
+        <li id="log-twin">
+          <span class="muted small" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Kış 2025–26</span>
+          <h3>GöğeBakan'ın dijital ikizi hayat buldu</h3>
+          <p><code>gogebakan</code> VTOL modeli Gazebo'da uçmaya başladı; Baylands dünyası,
+          SUAS arama senaryolarını yansıtmak için insan ve çadır modelleriyle özelleştirildi.
+          Bu noktadan sonra her algoritma — tarama desenleri, geçişler, görsel servo ile
+          bırakma — donanıma dokunmadan önce ikizden geçmek zorunda kaldı.</p>
+        </li>
+      </ol>
+      <div class="callout">
+        <p><strong>Takip mi ediyorsunuz?</strong> Her kayıt önce buraya düşer; beraberindeki
+        medya <a href="media.html">galeriye</a> eklenir. Sponsorlar aynı hikâyeyi mühendislik
+        detayıyla dönemsel raporlarda alır — <a href="sponsors.html">aramıza katılın</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="testing" aria-labelledby="testing-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Test programı</p>
+        <h2 id="testing-h">Nasıl test ediyoruz: bileşen → alt sistem → sistem</h2>
+        <p class="lede">Hiçbir şey, daha kolayını geçmeden daha zor bir testle yüzleşmez. Her
+        aşamanın yazılı geçme kriteri vardır; aşamayı geçemeyen tasarım ileri değil geri
+        gider.</p>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <p class="card-kicker">Aşama 1 · Bileşen</p>
+          <h3>İrtifada algı</h3>
+          <p class="small">Tespit modeli görevin gerçek geometrisine karşı test edilir: 45
+          m'de insan ve çadırlar. Bu aşama hazır model açığını ortaya çıkardı ve özel YOLOv8s
+          ikamesini doğruladı.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Aşama 1 · Bileşen</p>
+          <h3>Tezgâh ve güç</h3>
+          <p class="small">Motorlar, ESC'ler, servolar ve güç sistemi sayılarını entegrasyondan
+          önce tezgâhta kanıtlar — itki, akım, sıcaklıklar.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Aşama 2 · Alt sistem</p>
+          <h3>Gazebo'da dijital ikiz</h3>
+          <p class="small"><code>gogebakan</code> modeli, SUAS tipi hedeflerle özelleştirilmiş
+          Baylands dünyasında uçar. Kontrol mantığı, tarama desenleri ve geçişler önce burada
+          koşar.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Aşama 2 · Alt sistem</p>
+          <h3>Görsel servo ile bırakma</h3>
+          <p class="small">Hedef üzerinde kamera kılavuzlu hizalama simülasyonda doğrulanır:
+          uçak hedefin üzerine tekrar tekrar konumlanır ve bırakma geometrisini korur.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Aşama 3 · Sistem</p>
+          <h3>Saate karşı tam görev</h3>
+          <p class="small">El kitabının arazi verisinden kurulan uçuş planı simülasyonda
+          baştan sona koşar — tüm görevler, tek 45 dakikalık pencere, sıfırlama yok.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Aşama 4 · Saha</p>
+          <h3>Donanım ve uçuş testleri</h3>
+          <p class="small">Donanım entegrasyonu, yer testleri, sonra kademeli uçuş testleri:
+          havada asılı kalma, geçiş zarfı ve nihayet gerçek gövdeyle tam görev provaları.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="procedures" aria-labelledby="procedures-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Prosedürler</p>
+        <h2 id="procedures-h">Uçakları bütün tutan evrak işi</h2>
+        <p class="lede">Uçarken uyduğumuz prosedürlerden alıntılar. Bilerek sıkıcı — heyecanın
+        yeri görevdir, operasyon değil.</p>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Uçuş öncesi checklist (alıntı)</h3>
+          <ol class="small">
+            <li>Gövde turu — yapı, elevonlar, pervane bütünlüğü</li>
+            <li>Batarya gerilimi ve sağlam montaj doğrulandı</li>
+            <li>Kontrol yüzeyleri: doğru yön, tam hareket</li>
+            <li>GNSS kilidi ve bilinen yöne karşı pusula kontrolü</li>
+            <li>Failsafe kontrolü: RC kill yerde doğrulandı</li>
+            <li>Geofence yüklü ve YKİ'de görünür</li>
+            <li>Yük bırakma bir kez çevrildi, sonra kuruldu</li>
+            <li>Ekip görevleri teyit: sorumlu pilot, YKİ, gözcü</li>
+            <li>Hava limitler içinde (rüzgâr, görüş)</li>
+            <li>Üç ekip rolünden sözlü git/gitme kararı</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Uçuş test kartı</h3>
+          <p class="small">Her uçuş, laboratuvardan çıkmadan yazılmış tek sayfalık bir karta
+          karşı uçulur:</p>
+          <ul class="small">
+            <li><strong>Amaç</strong> — bu uçuşun yanıtladığı tek soru</li>
+            <li><strong>Konfigürasyon</strong> — gövde, yazılım, parametreler</li>
+            <li><strong>Geçme kriteri</strong> — ölçülebilir, önceden anlaşılmış</li>
+            <li><strong>İptal kriteri</strong> — kim, hangi tetikleyiciyle keser</li>
+            <li><strong>Log incelemesi</strong> — bulgular günlüğe işlenir</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Batarya kuralları (alıntı)</h3>
+          <ul class="small">
+            <li>Şarj yalnızca yanmaz çantada, asla başıboş değil</li>
+            <li>Test gününden sonra 24 saat içinde depolama gerilimi</li>
+            <li>Paket başına çevrim sayısı ve iç direnç kaydı</li>
+            <li>Şişen veya düşen paket emekliye ayrılır — tartışmasız</li>
+            <li>Saha şarj istasyonu uçuş hattından en az 5 m uzakta</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="videos" aria-labelledby="videos-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">İzle</p>
+        <h2 id="videos-h">Test görüntüleri</h2>
+      </div>
+      <div class="grid cols-2">
+        <figure>
+          <video class="video-embed" controls preload="metadata"
+                 aria-label="GöğeBakan uçuş testi görüntüsü, 11 Temmuz 2026">
+            <source src="../assets/media/WhatsApp%20Video%202026-07-11%20at%2016.45.33.mp4" type="video/mp4">
+            Tarayıcınız bu videoyu oynatamıyor.
+          </video>
+          <figcaption>Gerçek gövdenin kademeli uçuş testleri — 11 Temmuz 2026.</figcaption>
+        </figure>
+        <figure>
+          <div class="video-slot">
+            <span class="play-glyph" aria-hidden="true"></span>
+            <strong>Gazebo görev simülasyonu</strong>
+            <span class="small">Ayrıldı — Gazebo görev screencast'i</span>
+          </div>
+          <figcaption>Dijital ikiz tam görevi uçarken — tarama ızgaraları, tespitler ve yük
+          bırakma koşusu.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand"><img src="../assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg" alt="" width="30" height="30"> Muninn UAV</p>
+      <p class="muted small">Yazgit Topluluğu'nun (Türkiye) havacılık takımı; RoboNation SUAS
+      yarışmasında otonom tailsitter GöğeBakan'ı uçuruyor.</p>
+    </div>
+    <nav aria-label="Alt bilgi">
+      <h4>Keşfet</h4>
+      <ul>
+        <li><a href="team.html">Takım</a></li>
+        <li><a href="vehicle.html">Araç</a></li>
+        <li><a href="journey.html">Gelişim Günlüğü ve Testler</a></li>
+        <li><a href="media.html">Medya</a></li>
+        <li><a href="sponsors.html">Sponsorlar</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h4>İletişim</h4>
+      <ul>
+        <li><a href="mailto:muninnuav@gmail.com">muninnuav@gmail.com</a></li>
+        <li class="muted">Konya Teknik Üniversitesi — Konya, Türkiye</li>
+        <li><a href="https://www.instagram.com/muninnteam" rel="external">Instagram · @muninnteam</a></li>
+        <li><a href="https://www.linkedin.com/company/yazgi%CC%87t-muni%CC%87nn-i%CC%87ha/" rel="external">LinkedIn · Muninn UAV</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-note container">
+    <p>© <span id="footer-year">2026</span> Muninn UAV. Takım tarafından yapıldı — izleyici yok, çerez yok.</p>
+    <p>SUAS 2026 · RoboNation Öğrenci İnsansız Hava Sistemleri yarışması</p>
+  </div>
+</footer>
+
+<script src="../assets/js/search-index-tr.js" defer></script>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
