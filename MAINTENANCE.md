@@ -31,32 +31,40 @@ Site-wide: sticky nav, **client-side search** (`assets/js/search-index.js` +
 everywhere, WCAG-AA contrast, keyboard operability, `prefers-reduced-motion`
 support, responsive/mobile layout, works in Chrome/Firefox/Safari/Edge.
 
-## 📦 Media status
+## 📦 Media status — all real, no drawn placeholders
 
-| File (in `assets/media/`) | Status |
+| File | Where it is used |
 |---|---|
-| `WhatsApp Video 2026-07-11 at 16.45.33.mp4` | ✅ wired — homepage hero (autoplays), journey & media video embeds |
-| `Screenshot from 2026-07-26 10-34-26.png` | ✅ wired — media gallery (digital twin figure) |
-| Gazebo mission screencast | ⏳ not uploaded yet — a reserved slot waits in journey/media video sections |
-| `unnamed.jpg` (in `assets/img/`) | ✅ official TÜBİTAK logo — sponsor sections (EN + TR) |
+| `assets/media/WhatsApp Video 2026-07-11 at 16.45.33.mp4` | homepage hero (autoplays) + journey/media video embeds |
+| `assets/media/Screenshot from 2026-07-26 10-34-26.png` | media gallery — Gazebo digital twin |
+| `assets/img/WhatsApp Image 2026-07-26 at 16.55.04.jpeg` | vehicle page main figure — airframe render |
+| `assets/img/WhatsApp Image 2026-07-26 at 16.52.01 (3).jpeg` | homepage hero video poster (dark render) |
+| `assets/img/WhatsApp Image 2026-07-26 at 16.52.01.jpeg` | media gallery — top-down on the apron |
+| `assets/img/WhatsApp Image 2026-07-26 at 16.52.01 (1).jpeg` | media gallery — exhibition photo |
+| `assets/img/gogebakan-flight-principle.jpg` | vehicle page + gallery — flight principle (cropped from `Untitled.jpeg`) |
+| `assets/img/gogebakan-hover-grass.jpg` | media gallery — on the field (cropped from `Untitled.jpeg`) |
+| `assets/img/WhatsApp Image 2026-07-10 at 11.17.12.jpeg` | header/footer logo + favicon |
+| `assets/img/unnamed.jpg` | official TÜBİTAK logo — sponsor sections |
+| `assets/img/Untitled.jpeg`, `image.png`, `…16.52.01 (2).jpeg` | source brochure pages / spare render, kept for reuse |
+
+⏳ Still missing: the Gazebo mission **screencast video** (a reserved slot waits in the
+journey/media video sections).
 
 Palette: red / black / grey / white (team colors) — tokens at the top of
 `assets/css/style.css`.
 
-Team logos: the real Muninn logos are integrated —
-`assets/img/WhatsApp Image 2026-07-10 at 11.17.12.jpeg` (white-on-black; used in
-the header, footer and favicon) and `…11.16.16.jpeg` (black-on-light; kept for
-light backgrounds such as apparel or documents). The drawn SVG fallbacks
-(`logo.svg`, `logo-mark.svg`, `favicon.svg`) remain in the repo but are unused.
+Team logos: `assets/img/WhatsApp Image 2026-07-10 at 11.17.12.jpeg` (white-on-black;
+header, footer, favicon) and `…11.16.16.jpeg` (black-on-light; kept for light
+backgrounds such as apparel or documents).
 
 ## ⚠️ Remaining placeholders to replace
 
 | What | Current placeholder value | Where |
 |---|---|---|
-| Physical specs | "Airframe data sheet — in preparation" row | `vehicle.html#specs` — fill wingspan/MTOW/speeds when frozen |
+| Physical specs | "Airframe data sheet — in preparation" row | `vehicle.html#specs` — fill wingspan/length/MTOW when frozen |
 | Build-log periods | season-level labels (Winter 2025–26, Spring 2026) | `journey.html#log` — replace with real dates if you want day precision |
-| Sponsor logos | 3 "YOUR LOGO HERE" SVGs | `assets/img/sponsor-*.svg` |
-| Photos | 5 SVG image slots (`assets/img/ph-*.svg`) | `media.html` — replace files with real photos |
+| Sponsor logos | 3 "YOUR LOGO HERE" SVGs next to TÜBİTAK | `assets/img/sponsor-*.svg` |
+| Team photo | none on the site yet | add to `media.html` + `tr/media.html` when you have one |
 
 After replacing member names or section titles, update the matching entries in
 `assets/js/search-index.js` so site search stays truthful.

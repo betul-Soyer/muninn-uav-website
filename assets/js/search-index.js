@@ -28,11 +28,11 @@ window.SEARCH_INDEX = [
 
   /* ---- Vehicle ---- */
   { page: "Vehicle", url: "vehicle.html#overview", title: "GöğeBakan — systems overview",
-    text: "GöğeBakan gogebakan HSVTOL tail-sitter tailsitter VTOL flying wing overview unified propulsion architecture systems engineering modular" },
+    text: "GöğeBakan gogebakan HSVTOL quadrotor tail-sitter tailsitter VTOL flying wing carbon fibre patent patented Tesla 1928 unified propulsion architecture four motors 129 min endurance 247 km range 30% efficient systems engineering modular" },
   { page: "Vehicle", url: "vehicle.html#specs", title: "Mission design points & architecture",
-    text: "specifications specs numbers cruise 3.2 km search altitude 45 m mission window 45 minutes detection person tent PX4 companion ROS 2 GCS PyQt5 datalinks table" },
+    text: "specifications specs numbers endurance 129 min range 247 km efficiency 30% four motors patented cruise 3.2 km search altitude 45 m mission window 45 minutes detection person tent PX4 companion ROS 2 GCS PyQt5 datalinks table" },
   { page: "Vehicle", url: "vehicle.html#airframe", title: "Airframe & flight regimes",
-    text: "airframe flying wing tail-sitter elevons wingtip fins landing gear hover transition pitch-over cruise structure configuration" },
+    text: "airframe flying wing carbon fibre tail-sitter quadrotor elevons wingtip fins landing gear hover transition pitch-over Pugachev Cobra manoeuvre cruise flight principle structure configuration" },
   { page: "Vehicle", url: "vehicle.html#profile", title: "Dynamic flight profiling",
     text: "flight profile mission phases fixed-wing cruise multicopter mode lawnmower grid search return vertical landing energy efficiency dynamic profiling" },
   { page: "Vehicle", url: "vehicle.html#avionics", title: "Avionics & datalinks",
@@ -66,7 +66,7 @@ window.SEARCH_INDEX = [
 
   /* ---- Media ---- */
   { page: "Media", url: "media.html#photos", title: "Photo gallery",
-    text: "photos pictures gallery images workshop assembly bench Gazebo Baylands digital twin flight line team photo nadir camera" },
+    text: "photos pictures gallery images render airframe carbon fibre apron top-down quadrotor grass field exhibition flight principle Gazebo Baylands digital twin" },
   { page: "Media", url: "media.html#videos", title: "Videos",
     text: "videos flight test footage Gazebo mission simulation screencast visual servoing alignment embed" },
   { page: "Media", url: "media.html#usage", title: "Using our media",
@@ -74,11 +74,7 @@ window.SEARCH_INDEX = [
 
   /* ---- Sponsors ---- */
   { page: "Sponsors", url: "sponsors.html#current", title: "Our sponsors — SUAS 2026",
-    text: "sponsors current logos TÜBİTAK platinum gold silver bronze founding partners" },
-  { page: "Sponsors", url: "sponsors.html#why", title: "Why sponsor us",
-    text: "why sponsor visibility branding talent recruiting reports transparent budget case" },
-  { page: "Sponsors", url: "sponsors.html#tiers", title: "Sponsorship tiers",
-    text: "tiers packages platinum gold silver bronze benefits logo aircraft apparel deck" },
+    text: "sponsors current logos TÜBİTAK founding partners support" },
   { page: "Sponsors", url: "sponsors.html#inkind", title: "In-kind support",
     text: "in-kind materials carbon composites CNC machining 3D printing electronics batteries flight field travel logistics expertise donation" },
   { page: "Sponsors", url: "sponsors.html#contact-cta", title: "Become a sponsor",

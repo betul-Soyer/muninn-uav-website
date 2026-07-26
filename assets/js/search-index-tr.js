@@ -27,11 +27,11 @@ window.SEARCH_INDEX = [
 
   /* ---- Araç ---- */
   { page: "Araç", url: "vehicle.html#overview", title: "GöğeBakan — sistem genel bakışı",
-    text: "GöğeBakan gogebakan HSVTOL tailsitter VTOL uçan kanat genel bakış birleşik itki mimari sistem mühendisliği modüler" },
+    text: "GöğeBakan gogebakan HSVTOL quadrotor tailsitter VTOL uçan kanat karbon fiber patent patentli Tesla 1928 birleşik itki mimari dört motor 129 dakika uçuş 247 km menzil %30 verimli sistem mühendisliği modüler" },
   { page: "Araç", url: "vehicle.html#specs", title: "Görev tasarım noktaları ve mimari",
-    text: "özellikler spesifikasyon sayılar seyir 3.2 km tarama irtifası 45 m görev penceresi 45 dakika tespit insan çadır PX4 ROS 2 YKİ PyQt5 veri bağlantıları tablo" },
+    text: "özellikler spesifikasyon sayılar uçuş süresi 129 dakika menzil 247 km verimlilik %30 dört motor patentli seyir 3.2 km tarama irtifası 45 m görev penceresi 45 dakika tespit insan çadır PX4 ROS 2 YKİ PyQt5 veri bağlantıları tablo" },
   { page: "Araç", url: "vehicle.html#airframe", title: "Gövde ve uçuş rejimleri",
-    text: "gövde uçan kanat tailsitter elevon kanat ucu fin iniş takımı havada asılı geçiş öne yatış seyir yapı konfigürasyon" },
+    text: "gövde uçan kanat karbon fiber tailsitter quadrotor elevon kanat ucu fin iniş takımı havada asılı geçiş öne yatış Pugaçev Kobra manevrası seyir uçuş prensibi yapı konfigürasyon" },
   { page: "Araç", url: "vehicle.html#profile", title: "Dinamik uçuş profili",
     text: "uçuş profili görev fazları sabit kanat seyir multikopter mod çim biçme ızgara tarama dönüş dikey iniş enerji verimliliği" },
   { page: "Araç", url: "vehicle.html#avionics", title: "Aviyonik ve veri bağlantıları",
@@ -65,7 +65,7 @@ window.SEARCH_INDEX = [
 
   /* ---- Medya ---- */
   { page: "Medya", url: "media.html#photos", title: "Fotoğraf galerisi",
-    text: "fotoğraflar resimler galeri görseller atölye montaj tezgâh Gazebo Baylands dijital ikiz uçuş hattı takım fotoğrafı kamera" },
+    text: "fotoğraflar resimler galeri görseller render gövde karbon fiber apron tepeden quadrotor çim saha sergi uçuş prensibi Gazebo Baylands dijital ikiz" },
   { page: "Medya", url: "media.html#videos", title: "Videolar",
     text: "videolar uçuş testi görüntü Gazebo görev simülasyonu screencast görsel servo hizalama" },
   { page: "Medya", url: "media.html#usage", title: "Medyamızı kullanmak",
@@ -73,11 +73,7 @@ window.SEARCH_INDEX = [
 
   /* ---- Sponsorlar ---- */
   { page: "Sponsorlar", url: "sponsors.html#current", title: "Sponsorlarımız — SUAS 2026",
-    text: "sponsorlar logolar TÜBİTAK platin altın gümüş bronz kurucu partnerler" },
-  { page: "Sponsorlar", url: "sponsors.html#why", title: "Neden bize sponsor olunur",
-    text: "neden sponsor görünürlük marka yetenek işe alım raporlar şeffaf bütçe" },
-  { page: "Sponsorlar", url: "sponsors.html#tiers", title: "Sponsorluk seviyeleri",
-    text: "seviyeler paketler platin altın gümüş bronz faydalar logo uçak kıyafet dosya" },
+    text: "sponsorlar logolar TÜBİTAK kurucu partnerler destek" },
   { page: "Sponsorlar", url: "sponsors.html#inkind", title: "Ayni destek",
     text: "ayni destek malzeme karbon kompozit CNC imalat 3B baskı elektronik batarya uçuş sahası seyahat lojistik uzmanlık bağış" },
   { page: "Sponsorlar", url: "sponsors.html#contact-cta", title: "Sponsor olun",

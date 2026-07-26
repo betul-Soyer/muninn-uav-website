@@ -63,12 +63,18 @@
         <h2 id="overview-h">Systems engineering, not parts assembly</h2>
       </div>
       <div class="grid cols-2" style="margin-bottom:2rem">
+        <p>Tail-sitters were patented by Nikola Tesla back in 1928: on paper they answered
+        every problem in aviation, but the technology of the day and the pilot workload they
+        demanded kept them out of operational service. Our question was whether today's
+        technology finally makes the concept work — and GöğeBakan is our answer, an original
+        design whose architecture we have <strong>patented</strong>.</p>
         <p>Unlike conventional hybrid VTOL platforms that bolt together multiple propulsion
         systems and mechanically complex transition mechanisms, GöğeBakan adopts a
-        <strong>unified propulsion architecture</strong>: the same motor set powers vertical
+        <strong>unified propulsion architecture</strong>: the same four motors power vertical
         flight, the pitch-over transition and cruise. That single decision reduces structural
-        weight, removes whole classes of mechanical failure, cuts maintenance — and preserves
-        both the aerodynamic efficiency of a fixed wing and the operational flexibility of
+        weight, removes whole classes of mechanical failure, cuts maintenance — and makes the
+        aircraft roughly <strong>30% more efficient</strong> than comparable hybrid VTOLs while
+        preserving the aerodynamic efficiency of a fixed wing and the operational flexibility of
         vertical takeoff and landing.</p>
         <p>The architecture integrates the PX4 flight control system, an AI-enabled companion
         computer, onboard computer vision, autonomous mission management, a robust three-link
@@ -78,16 +84,16 @@
         reliability.</p>
       </div>
       <figure class="hero-art" style="margin-bottom:2rem">
-        <img src="assets/img/vehicle-hero.svg" width="920" height="540"
-             alt="Top-view engineering sketch of GöğeBakan: a tail-sitter HSVTOL flying wing with two unified propulsion motors on the leading edge, elevons along the trailing edge, wingtip fins that double as landing gear, and a central pod housing the nadir camera and AI companion computer.">
-        <figcaption class="small muted">GöğeBakan HSVTOL — top view. Wingtip fins double as
-        landing gear; the pod carries the nadir camera and the AI companion computer.</figcaption>
+        <img src="assets/img/WhatsApp%20Image%202026-07-26%20at%2016.55.04.jpeg" width="1600" height="900"
+             alt="GöğeBakan seen from the front: a carbon-fibre flying wing with four propulsion motors mounted on the leading edge, elevons on the trailing edge, wingtip fins that double as landing gear, and a central pod with the camera window.">
+        <figcaption class="small muted">GöğeBakan — carbon-fibre flying wing, four leading-edge
+        motors, wingtip fins that double as landing gear, camera window in the central pod.</figcaption>
       </figure>
       <div class="grid cols-4">
-        <div class="card stat-card"><span class="stat-value">HSVTOL</span><span class="stat-label">tail-sitter configuration</span></div>
-        <div class="card stat-card"><span class="stat-value">1</span><span class="stat-label">unified propulsion system</span></div>
-        <div class="card stat-card"><span class="stat-value">PX4</span><span class="stat-label">+ ROS 2 companion</span></div>
-        <div class="card stat-card"><span class="stat-value">YOLOv8s</span><span class="stat-label">custom dataset + SLAM</span></div>
+        <div class="card stat-card"><span class="stat-value">HSVTOL</span><span class="stat-label">quadrotor tail-sitter</span></div>
+        <div class="card stat-card"><span class="stat-value">129&nbsp;min</span><span class="stat-label">endurance</span></div>
+        <div class="card stat-card"><span class="stat-value">247&nbsp;km</span><span class="stat-label">range</span></div>
+        <div class="card stat-card"><span class="stat-value">Patented</span><span class="stat-label">unified propulsion architecture</span></div>
       </div>
     </div>
   </section>
@@ -107,8 +113,11 @@
             <tr><th scope="col">Parameter</th><th scope="col">Value</th><th scope="col">Notes</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row">Configuration</th><td>HSVTOL tail-sitter</td><td>flying wing; wingtip fins double as landing gear</td></tr>
-            <tr><th scope="row">Propulsion</th><td>Unified motor set</td><td>same motors for hover, transition and cruise</td></tr>
+            <tr><th scope="row">Configuration</th><td>HSVTOL quadrotor tail-sitter</td><td>carbon-fibre flying wing; wingtip fins double as landing gear</td></tr>
+            <tr><th scope="row">Propulsion</th><td>4 motors, unified architecture</td><td>patented — same motors for hover, transition and cruise</td></tr>
+            <tr><th scope="row">Endurance</th><td>129 min</td><td>platform figure; the SUAS mission window is 45 min</td></tr>
+            <tr><th scope="row">Range</th><td>247 km</td><td>fixed-wing cruise</td></tr>
+            <tr><th scope="row">Efficiency</th><td>~30% better</td><td>versus comparable hybrid VTOL platforms</td></tr>
             <tr><th scope="row">Cruise leg</th><td>3.2 km, fixed-wing mode</td><td>waypoint route flown for energy efficiency</td></tr>
             <tr><th scope="row">Search altitude</th><td>45 m AGL</td><td>multicopter-mode grid ("lawnmower") pattern</td></tr>
             <tr><th scope="row">Mission window</th><td>45 min</td><td>full mission validated inside the limit in simulation</td></tr>
@@ -119,7 +128,7 @@
             <tr><th scope="row">Target alignment</th><td>Visual servoing</td><td>camera-guided positioning over a confirmed target</td></tr>
             <tr><th scope="row">Ground station</th><td>Custom PyQt5 GCS</td><td>mission control + detection console</td></tr>
             <tr><th scope="row">Datalinks</th><td>2.4 GHz RC · 915 MHz telemetry · 5 GHz IP</td><td>control, telemetry and imagery kept independent</td></tr>
-            <tr><th scope="row">Dimensions &amp; masses</th><td>Airframe data sheet — in preparation</td><td>published after the final airframe freeze</td></tr>
+            <tr><th scope="row">Dimensions &amp; masses</th><td>Airframe data sheet — in preparation</td><td>wingspan, length and MTOW published with the data sheet</td></tr>
           </tbody>
         </table>
       </div>
@@ -134,24 +143,26 @@
       </div>
       <div class="grid cols-2" style="align-items:center">
         <div>
-          <p>GöğeBakan is a <strong>flying-wing tail-sitter</strong>. On the ground it stands
-          nose-up on its wingtip fins. The unified motors lift it vertically like a multirotor;
-          a pitch-over transition tips the nose forward until the wing takes the load, and the
-          same motors become cruise propulsion. Landing is the mirror image: pitch up, hover,
-          descend vertically.</p>
-          <p>Because there is no separate lift system and no tilt mechanism, the structure stays
-          light and the failure-mode list stays short. Elevons provide control authority in both
-          regimes, and the central pod concentrates the payload: nadir camera, AI companion
-          computer and the battery — placed first, before anything else could claim the
-          space.</p>
+          <p>GöğeBakan is a <strong>carbon-fibre flying-wing tail-sitter</strong>. On the
+          ground it stands nose-up on its wingtip fins. Its four rotors lift it vertically like
+          a quadrotor; a pitch-over transition tips the nose forward until the wing takes the
+          load, and the same four motors become cruise propulsion. Recovery is the mirror
+          image — a <strong>Pugachev's Cobra manoeuvre</strong> bleeds off airspeed and stands
+          the aircraft back on its tail for a vertical landing.</p>
+          <p>Because there is no separate lift system and no tilt mechanism, the structure
+          stays light and the failure-mode list stays short — the reason the architecture earned
+          a patent. Elevons provide control authority in both regimes, and the central pod
+          concentrates the payload: nadir camera, AI companion computer and the battery —
+          placed first, before anything else could claim the space.</p>
           <p class="muted small">Why a tail-sitter and not a quadplane or multirotor? See
           <a href="#design-decisions">design decision #1</a>.</p>
         </div>
         <figure>
-          <img src="assets/img/vehicle-three-view.svg" width="920" height="400"
-               alt="Schematic of GöğeBakan's three flight regimes: hovering tail-sitting on its wingtip fins, the pitch-over transition along a curved path, and wing-borne cruise.">
-          <figcaption>The three regimes of a tail-sitter — hover, pitch-over transition, and
-          wing-borne cruise — all on one propulsion system.</figcaption>
+          <img src="assets/img/gogebakan-flight-principle.jpg" width="815" height="386"
+               alt="GöğeBakan flight principle diagram: take-off mode standing on its tail, post take-off hover mode, transition into fixed-wing mode, Pugachev's Cobra manoeuvre to decelerate, pre-landing hover mode, and landing mode back on its tail.">
+          <figcaption>GöğeBakan's flight principle — take-off and hover on the tail, transition
+          to fixed-wing cruise, then a Pugachev's Cobra manoeuvre back into hover for a vertical
+          landing.</figcaption>
         </figure>
       </div>
     </div>
@@ -319,10 +330,12 @@
           <h3>One unified propulsion system</h3>
           <p class="small"><strong>Options:</strong> separate lift + cruise motor sets
           (quadplane-style) · tilt mechanisms · unified motor set.</p>
-          <p class="small"><strong>Choice &amp; rationale:</strong> unified. Separate lift motors
-          are dead weight in cruise; tilt mechanisms add mass and mechanical failure points. One
-          motor set serving hover, transition and cruise means less structural weight, fewer
-          things that can break, and less maintenance — reliability by subtraction.</p>
+          <p class="small"><strong>Choice &amp; rationale:</strong> unified. Separate lift
+          motors are dead weight in cruise; tilt mechanisms add mass and mechanical failure
+          points. One set of four motors serving hover, transition and cruise means less
+          structural weight, fewer things that can break, less maintenance and about 30% better
+          efficiency than comparable hybrids — reliability by subtraction. The architecture is
+          patented.</p>
         </article>
         <article class="card">
           <p class="card-kicker">Decision 03 · Mission profile</p>

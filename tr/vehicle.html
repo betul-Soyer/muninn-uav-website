@@ -63,11 +63,18 @@
         <h2 id="overview-h">Parça montajı değil, sistem mühendisliği</h2>
       </div>
       <div class="grid cols-2" style="margin-bottom:2rem">
+        <p>Tailsitter araçlar 1928'de Nikola Tesla tarafından patentlendi: kâğıt üzerinde
+        havacılığın bütün sorunlarına çözüm gibi görünüyorlardı, ancak dönemin teknolojisi ve
+        gerektirdikleri yüksek pilot iş yükü yüzünden hiçbir zaman operasyonel alanda
+        kullanılamadılar. Bizim sorumuz, bu sistemin günümüz teknolojisiyle artık mümkün olup
+        olmadığıydı — GöğeBakan bu sorunun cevabı: mimarisini <strong>patentlediğimiz</strong>
+        özgün bir tasarım.</p>
         <p>Birden fazla itki sistemini ve mekanik olarak karmaşık geçiş mekanizmalarını üst
         üste ekleyen geleneksel hibrit VTOL platformlarının aksine, GöğeBakan <strong>birleşik
-        itki mimarisini</strong> benimser: aynı motor takımı dikey uçuşu, öne yatış geçişini
-        ve seyri birlikte sağlar. Bu tek karar yapısal ağırlığı azaltır, koca bir mekanik
-        arıza sınıfını ortadan kaldırır, bakımı düşürür — üstelik sabit kanadın aerodinamik
+        itki mimarisini</strong> benimser: aynı dört motor dikey uçuşu, öne yatış geçişini ve
+        seyri birlikte sağlar. Bu tek karar yapısal ağırlığı azaltır, koca bir mekanik arıza
+        sınıfını ortadan kaldırır, bakımı düşürür ve aracı benzer hibrit VTOL'lere kıyasla
+        yaklaşık <strong>%30 daha verimli</strong> yapar — üstelik sabit kanadın aerodinamik
         verimliliği ile dikey kalkış-inişin operasyonel esnekliğini korur.</p>
         <p>Mimari; PX4 uçuş kontrol sistemini, yapay zekâ destekli yardımcı bilgisayarı,
         araç üstü bilgisayarlı görüyü, otonom görev yönetimi yazılımını, üç bağlantılı sağlam
@@ -77,16 +84,17 @@
         ve görev güvenilirliği için.</p>
       </div>
       <figure class="hero-art" style="margin-bottom:2rem">
-        <img src="../assets/img/vehicle-hero.svg" width="920" height="540"
-             alt="GöğeBakan'ın üstten teknik çizimi: hücum kenarında iki birleşik itki motoru, firar kenarında elevonlar, iniş takımı görevi de gören kanat ucu finleri ve aşağı bakan kamera ile yapay zekâ bilgisayarını taşıyan merkez kapsüle sahip uçan kanat tailsitter.">
-        <figcaption class="small muted">GöğeBakan HSVTOL — üstten görünüş. Kanat ucu finleri
-        iniş takımı görevi görür; kapsül, aşağı bakan kamera ile yapay zekâ bilgisayarını taşır.</figcaption>
+        <img src="../assets/img/WhatsApp%20Image%202026-07-26%20at%2016.55.04.jpeg" width="1600" height="900"
+             alt="GöğeBakan önden görünüş: hücum kenarına yerleştirilmiş dört itki motoru, firar kenarında elevonlar, iniş takımı görevi de gören kanat ucu finleri ve kamera pencereli merkez kapsülü olan karbon fiber uçan kanat.">
+        <figcaption class="small muted">GöğeBakan — karbon fiber uçan kanat, hücum kenarında
+        dört motor, iniş takımı görevi gören kanat ucu finleri, merkez kapsülde kamera
+        penceresi.</figcaption>
       </figure>
       <div class="grid cols-4">
-        <div class="card stat-card"><span class="stat-value">HSVTOL</span><span class="stat-label">tailsitter konfigürasyonu</span></div>
-        <div class="card stat-card"><span class="stat-value">1</span><span class="stat-label">birleşik itki sistemi</span></div>
-        <div class="card stat-card"><span class="stat-value">PX4</span><span class="stat-label">+ ROS 2 yardımcı bilgisayar</span></div>
-        <div class="card stat-card"><span class="stat-value">YOLOv8s</span><span class="stat-label">özel veri seti + SLAM</span></div>
+        <div class="card stat-card"><span class="stat-value">HSVTOL</span><span class="stat-label">quadrotor tailsitter</span></div>
+        <div class="card stat-card"><span class="stat-value">129&nbsp;dk</span><span class="stat-label">uçuş süresi</span></div>
+        <div class="card stat-card"><span class="stat-value">247&nbsp;km</span><span class="stat-label">menzil</span></div>
+        <div class="card stat-card"><span class="stat-value">Patentli</span><span class="stat-label">birleşik itki mimarisi</span></div>
       </div>
     </div>
   </section>
@@ -106,8 +114,11 @@
             <tr><th scope="col">Parametre</th><th scope="col">Değer</th><th scope="col">Notlar</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row">Konfigürasyon</th><td>HSVTOL tailsitter</td><td>uçan kanat; kanat ucu finleri iniş takımı görevi görür</td></tr>
-            <tr><th scope="row">İtki</th><td>Birleşik motor takımı</td><td>havada asılı kalma, geçiş ve seyir için aynı motorlar</td></tr>
+            <tr><th scope="row">Konfigürasyon</th><td>HSVTOL quadrotor tailsitter</td><td>karbon fiber uçan kanat; kanat ucu finleri iniş takımı görevi görür</td></tr>
+            <tr><th scope="row">İtki</th><td>4 motor, birleşik mimari</td><td>patentli — havada asılı kalma, geçiş ve seyir için aynı motorlar</td></tr>
+            <tr><th scope="row">Uçuş süresi</th><td>129 dk</td><td>platform değeri; SUAS görev penceresi 45 dk</td></tr>
+            <tr><th scope="row">Menzil</th><td>247 km</td><td>sabit kanat seyri</td></tr>
+            <tr><th scope="row">Verimlilik</th><td>~%30 daha iyi</td><td>benzer hibrit VTOL platformlarına kıyasla</td></tr>
             <tr><th scope="row">Seyir bacağı</th><td>3.2 km, sabit kanat modu</td><td>enerji verimliliği için waypoint rotası</td></tr>
             <tr><th scope="row">Tarama irtifası</th><td>45 m AGL</td><td>multikopter modunda ızgara ("çim biçme") deseni</td></tr>
             <tr><th scope="row">Görev penceresi</th><td>45 dk</td><td>tam görev simülasyonda limitin içinde doğrulandı</td></tr>
@@ -133,23 +144,26 @@
       </div>
       <div class="grid cols-2" style="align-items:center">
         <div>
-          <p>GöğeBakan bir <strong>uçan kanat tailsitter</strong>dır. Yerde, kanat ucu finleri
-          üzerinde burnu yukarı bakarak durur. Birleşik motorlar onu bir multikopter gibi dikey
-          kaldırır; öne yatış (pitch-over) geçişi burnu, kanat yükü taşıyana dek öne devirir ve
-          aynı motorlar seyir itkisine dönüşür. İniş bunun ayna görüntüsüdür: burnu kaldır,
-          havada dur, dikey alçal.</p>
-          <p>Ayrı bir kaldırma sistemi ve eğim mekanizması olmadığı için yapı hafif, arıza modu
-          listesi kısa kalır. Elevonlar her iki rejimde de kontrol yetkisi sağlar; merkez
-          kapsül faydalı yükü tek noktada toplar: aşağı bakan kamera, yapay zekâ bilgisayarı ve
-          batarya — daha hiçbir şey yer kapamadan önce buraya yerleştirildi.</p>
+          <p>GöğeBakan bir <strong>karbon fiber uçan kanat tailsitter</strong>dır. Yerde,
+          kanat ucu finleri üzerinde burnu yukarı bakarak durur. Dört rotoru onu bir quadrotor
+          gibi dikey kaldırır; öne yatış (pitch-over) geçişi burnu, kanat yükü taşıyana dek öne
+          devirir ve aynı dört motor seyir itkisine dönüşür. Toparlama bunun ayna görüntüsüdür —
+          bir <strong>Pugaçev Kobra manevrası</strong> hızı söndürür ve aracı dikey iniş için
+          tekrar kuyruğu üzerine dikleştirir.</p>
+          <p>Ayrı bir kaldırma sistemi ve eğim mekanizması olmadığı için yapı hafif, arıza
+          modu listesi kısa kalır — mimarinin patent almasının nedeni de bu. Elevonlar her iki
+          rejimde de kontrol yetkisi sağlar; merkez kapsül faydalı yükü tek noktada toplar:
+          aşağı bakan kamera, yapay zekâ bilgisayarı ve batarya — daha hiçbir şey yer kapamadan
+          önce buraya yerleştirildi.</p>
           <p class="muted small">Neden quadplane veya multikopter değil de tailsitter?
           <a href="#design-decisions">1 numaralı tasarım kararına</a> bakın.</p>
         </div>
         <figure>
-          <img src="../assets/img/vehicle-three-view.svg" width="920" height="400"
-               alt="GöğeBakan'ın üç uçuş rejiminin şeması: kanat ucu finleri üzerinde kuyruk üstü dururken havada asılı kalma, kavisli bir yol boyunca öne yatış geçişi ve kanat üstünde seyir.">
-          <figcaption>Bir tailsitter'ın üç rejimi — havada asılı kalma, öne yatış geçişi ve
-          kanat üstünde seyir — hepsi tek itki sistemiyle.</figcaption>
+          <img src="../assets/img/gogebakan-flight-principle.jpg" width="815" height="386"
+               alt="GöğeBakan uçuş prensibi şeması: kuyruğu üzerinde kalkış modu, kalkış sonrası hover modu, sabit kanat moduna geçiş, hız kesmek için Pugaçev Kobra manevrası, iniş öncesi hover modu ve kuyruk üstü iniş modu.">
+          <figcaption>GöğeBakan'ın uçuş prensibi — kuyruk üstünde kalkış ve hover, sabit kanat
+          seyrine geçiş, ardından Pugaçev Kobra manevrasıyla tekrar hover'a dönüp dikey
+          iniş.</figcaption>
         </figure>
       </div>
     </div>
@@ -320,9 +334,10 @@
           (quadplane usulü) · eğim mekanizmaları · birleşik motor takımı.</p>
           <p class="small"><strong>Tercih ve gerekçe:</strong> birleşik. Ayrı kaldırma
           motorları seyirde ölü ağırlıktır; eğim mekanizmaları kütle ve mekanik arıza noktası
-          ekler. Havada asılı kalmaya, geçişe ve seyre aynı motor takımının hizmet etmesi;
-          daha az yapısal ağırlık, kırılabilecek daha az parça, daha az bakım demek —
-          çıkararak kazanılan güvenilirlik.</p>
+          ekler. Havada asılı kalmaya, geçişe ve seyre aynı dört motorun hizmet etmesi; daha az
+          yapısal ağırlık, kırılabilecek daha az parça, daha az bakım ve benzer hibritlere göre
+          yaklaşık %30 daha iyi verim demek — çıkararak kazanılan güvenilirlik. Mimari
+          patentlidir.</p>
         </article>
         <article class="card">
           <p class="card-kicker">Karar 03 · Görev profili</p>
