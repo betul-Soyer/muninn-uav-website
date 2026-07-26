@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Build Log &amp; Testing — Muninn UAV</title>
+  <meta name="description" content="The historical record of GöğeBakan's development: the validation ladder from component tests to full-mission simulation, dated build log entries, flight test procedures and test footage.">
+  <link rel="icon" type="image/jpeg" href="assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg" alt="" width="36" height="36">
+      <span>Muninn UAV</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span> Menu
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="vehicle.html">Vehicle</a></li>
+        <li><a href="journey.html" aria-current="page">Build Log</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+      <div class="site-search" role="search">
+        <label class="visually-hidden" for="site-search-input">Search this site</label>
+        <input id="site-search-input" type="search" placeholder="Search…" autocomplete="off" aria-describedby="search-help">
+        <span id="search-help" class="visually-hidden">Results appear below the field as you type. Use the arrow keys to move through them.</span>
+        <ul id="search-results" class="search-results" hidden></ul>
+        <p id="search-status" class="visually-hidden" role="status"></p>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="kicker">Historical record</p>
+      <h1>Build Log &amp; Testing</h1>
+      <p class="lede">Dated, honest and public: what we planned, what we tested, what failed and
+      what we changed. New entries are added at the top of the log — nothing is rewritten
+      afterwards.</p>
+    </div>
+  </section>
+
+  <section class="section" id="roadmap" aria-labelledby="roadmap-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Campaign plan</p>
+        <h2 id="roadmap-h">The validation ladder to SUAS 2026</h2>
+        <p class="lede">The system is proven progressively — numerical analysis, simulation,
+        hardware integration, ground testing, incremental flight testing — before full mission
+        deployment.</p>
+      </div>
+      <ul class="milestones">
+        <li><span class="m-date">Concept</span><span>Platform trade study → tail-sitter HSVTOL with unified propulsion selected</span></li>
+        <li><span class="m-date">Digital twin</span><span>The <code>gogebakan</code> model comes alive in Gazebo; Baylands world customized with person &amp; tent targets</span></li>
+        <li><span class="m-date">Perception</span><span>Custom aerial dataset built; YOLOv8s trained and validated at 45 m search altitude</span></li>
+        <li><span class="m-date">Sub-systems</span><span>Visual-servoing payload alignment verified in simulation</span></li>
+        <li><span class="m-date">System level</span><span><strong>Full 45-minute mission</strong> flown end-to-end in the digital twin, per the rulebook's field layout</span></li>
+        <li><span class="m-date">Hardware</span><span>Integration, ground testing and incremental flight testing of the real airframe</span></li>
+        <li><span class="m-date">Sep 2026</span><span><strong>SUAS 2026</strong> — 14–17 September</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="log" aria-labelledby="log-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Blog</p>
+        <h2 id="log-h">Build log</h2>
+      </div>
+      <ol class="timeline" reversed>
+        <li id="log-website">
+          <time datetime="2026-07">July 2026</time>
+          <h3>The campaign goes public</h3>
+          <p>This website goes live with the full engineering story: the tail-sitter
+          architecture, the <a href="vehicle.html#design-decisions">design decision log</a>, the
+          test program and the mission profile. It is itself a scored SUAS deliverable — and our
+          public, permanent record of the campaign.</p>
+        </li>
+        <li id="log-mission-sim">
+          <span class="muted small" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Spring 2026</span>
+          <h3>Full mission inside 45 minutes — in simulation</h3>
+          <p>The complete SUAS mission — 3.2 km cruise, multicopter-mode search grids, SLAM
+          mapping, payload delivery, autonomous landing — ran end-to-end in the Gazebo digital
+          twin, using a flight plan built from the rulebook's terrain and field data. The result
+          settled our biggest open risk: the search trajectories fit the 45-minute mission
+          window.</p>
+        </li>
+        <li id="log-dataset">
+          <span class="muted small" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Winter 2025–26</span>
+          <h3>Pre-trained models fail at 45 m — so we build our own dataset</h3>
+          <p>Component testing delivered a hard lesson: COCO-class pre-trained detectors could
+          not reliably find people and tents from the mission's 45 m search altitude. The team
+          built a custom aerial dataset and trained <strong>YOLOv8s</strong> on it. Re-tests at
+          the target altitude showed high-accuracy detection — the perception stack was reborn,
+          and <a href="vehicle.html#design-decisions">decision #4</a> was written.</p>
+        </li>
+        <li id="log-twin">
+          <span class="muted small" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Winter 2025–26</span>
+          <h3>GöğeBakan's digital twin comes alive</h3>
+          <p>The <code>gogebakan</code> VTOL model started flying in Gazebo, and the Baylands
+          world was customized with person and tent models to mirror SUAS search scenarios.
+          From this point on, every algorithm — search patterns, transitions, visual-servoing
+          delivery — had to pass the twin before touching hardware.</p>
+        </li>
+      </ol>
+      <div class="callout">
+        <p><strong>Following along?</strong> Every entry lands here first, and the media that
+        goes with it ends up in the <a href="media.html">gallery</a>. Sponsors get the same
+        story with engineering detail in periodic reports — <a href="sponsors.html">join
+        them</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="testing" aria-labelledby="testing-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Test program</p>
+        <h2 id="testing-h">How we test: component → sub-system → system</h2>
+        <p class="lede">Nothing faces a harder test before it passes an easier one. Each stage
+        has written pass criteria; failing a stage sends the design back, not forward.</p>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <p class="card-kicker">Stage 1 · Component</p>
+          <h3>Perception at altitude</h3>
+          <p class="small">The detection model is tested against the mission's real geometry:
+          people and tents at 45 m. This stage exposed the pre-trained-model gap and validated
+          the custom YOLOv8s replacement.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Stage 1 · Component</p>
+          <h3>Bench &amp; power</h3>
+          <p class="small">Motors, ESCs, servos and the power system prove their numbers on the
+          bench — thrust, current draw, temperatures — before integration.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Stage 2 · Sub-system</p>
+          <h3>Digital twin in Gazebo</h3>
+          <p class="small">The <code>gogebakan</code> model flies in a Baylands world customized
+          with SUAS-style targets. Control logic, search patterns and transitions run here
+          first.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Stage 2 · Sub-system</p>
+          <h3>Visual-servoing delivery</h3>
+          <p class="small">Camera-guided alignment over targets is verified in simulation: the
+          aircraft repeatedly positions itself over the target and holds the release
+          geometry.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Stage 3 · System</p>
+          <h3>Full mission on the clock</h3>
+          <p class="small">A flight plan built from the rulebook's terrain data runs end-to-end
+          in simulation — all tasks, one 45-minute window, no resets.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Stage 4 · Field</p>
+          <h3>Hardware &amp; flight testing</h3>
+          <p class="small">Hardware integration, ground tests, then incremental flight testing:
+          hover, transition envelope, and finally full mission rehearsals on the real
+          airframe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="procedures" aria-labelledby="procedures-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Procedures</p>
+        <h2 id="procedures-h">The paperwork that keeps aircraft whole</h2>
+        <p class="lede">Excerpts from the procedures we fly by. Boring on purpose — excitement
+        belongs in the mission, not in operations.</p>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Preflight checklist (excerpt)</h3>
+          <ol class="small">
+            <li>Airframe walkaround — structure, elevons, prop integrity</li>
+            <li>Battery voltage &amp; secure mounting verified</li>
+            <li>Control surfaces: correct direction, full travel</li>
+            <li>GNSS lock &amp; compass sanity vs. known heading</li>
+            <li>Failsafe check: RC kill verified on the ground</li>
+            <li>Geofence loaded and displayed at the GCS</li>
+            <li>Payload release cycled once, then armed</li>
+            <li>Crew roles confirmed: PIC, GCS, spotter</li>
+            <li>Weather within limits (wind, visibility)</li>
+            <li>Verbal go/no-go from all three crew roles</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Flight test card</h3>
+          <p class="small">Every flight is flown against a one-page card written before we leave
+          the lab:</p>
+          <ul class="small">
+            <li><strong>Objective</strong> — the one question this flight answers</li>
+            <li><strong>Configuration</strong> — airframe, firmware, parameters</li>
+            <li><strong>Pass criteria</strong> — measurable, agreed in advance</li>
+            <li><strong>Abort criteria</strong> — who calls it, on what trigger</li>
+            <li><strong>Log review</strong> — findings recorded in the build log</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Battery handling (excerpt)</h3>
+          <ul class="small">
+            <li>Charge only in fire-safe bags, never unattended</li>
+            <li>Storage voltage within 24 h after a test day</li>
+            <li>Cycle count and internal-resistance log per pack</li>
+            <li>Any puffed or dropped pack is retired — no debate</li>
+            <li>Field charging station at least 5 m from the flight line</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="videos" aria-labelledby="videos-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Watch</p>
+        <h2 id="videos-h">Test footage</h2>
+      </div>
+      <div class="grid cols-2">
+        <figure>
+          <video class="video-embed" controls preload="metadata"
+                 aria-label="GöğeBakan flight test footage, 11 July 2026">
+            <source src="assets/media/WhatsApp%20Video%202026-07-11%20at%2016.45.33.mp4" type="video/mp4">
+            Your browser cannot play this video.
+          </video>
+          <figcaption>Incremental flight testing of the real airframe — 11 July 2026.</figcaption>
+        </figure>
+        <figure>
+          <div class="video-slot">
+            <span class="play-glyph" aria-hidden="true"></span>
+            <strong>Gazebo mission simulation</strong>
+            <span class="small">Reserved — Gazebo mission screencast</span>
+          </div>
+          <!-- When the file is in place, replace the div above with:
+          <video controls preload="metadata" style="width:100%;aspect-ratio:16/9;border-radius:12px"
+                 aria-label="Screen recording of the full SUAS mission running in the Gazebo digital twin">
+            <source src="assets/media/sim-screencast.mp4" type="video/mp4">
+          </video> -->
+          <figcaption>The digital twin flying the full mission — search grids, detections and
+          the payload run.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand"><img src="assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg" alt="" width="30" height="30"> Muninn UAV</p>
+      <p class="muted small">The aerospace team of the Yazgit Community (Türkiye), flying the
+      GöğeBakan autonomous tail-sitter at RoboNation's SUAS competition.</p>
+    </div>
+    <nav aria-label="Footer">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="vehicle.html">Vehicle</a></li>
+        <li><a href="journey.html">Build Log &amp; Testing</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:muninnuav@gmail.com">muninnuav@gmail.com</a></li>
+        <li class="muted">Konya Technical University — Konya, Türkiye</li>
+        <li><a href="https://www.instagram.com/muninnteam" rel="external">Instagram · @muninnteam</a></li>
+        <li><a href="https://www.linkedin.com/company/yazgi%CC%87t-muni%CC%87nn-i%CC%87ha/" rel="external">LinkedIn · Muninn UAV</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-note container">
+    <p>© <span id="footer-year">2026</span> Muninn UAV. Built by the team — no trackers, no cookies.</p>
+    <p>SUAS 2026 · RoboNation Student Unmanned Aerial Systems competition</p>
+  </div>
+</footer>
+
+<script src="assets/js/search-index.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

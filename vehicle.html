@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Vehicle: GöğeBakan HSVTOL — Muninn UAV</title>
+  <meta name="description" content="Full design documentation of GöğeBakan, Muninn UAV's high-speed VTOL tail-sitter for SUAS 2026: unified propulsion, PX4 + ROS 2 architecture, custom YOLOv8s detection, SLAM mapping, visual-servoing payload delivery and the design decisions behind them.">
+  <link rel="icon" type="image/jpeg" href="assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg" alt="" width="36" height="36">
+      <span>Muninn UAV</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span> Menu
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="vehicle.html" aria-current="page">Vehicle</a></li>
+        <li><a href="journey.html">Build Log</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+      <div class="site-search" role="search">
+        <label class="visually-hidden" for="site-search-input">Search this site</label>
+        <input id="site-search-input" type="search" placeholder="Search…" autocomplete="off" aria-describedby="search-help">
+        <span id="search-help" class="visually-hidden">Results appear below the field as you type. Use the arrow keys to move through them.</span>
+        <ul id="search-results" class="search-results" hidden></ul>
+        <p id="search-status" class="visually-hidden" role="status"></p>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="kicker">The aircraft</p>
+      <h1>GöğeBakan — a tail-sitter for SUAS 2026</h1>
+      <p class="lede">GöğeBakan ("the one who gazes at the sky") is a next-generation
+      <strong>High-Speed VTOL (HSVTOL) tail-sitter</strong>: it takes off nose-up like a
+      rotorcraft, pitches over, and cruises wing-borne like an airplane — with a single unified
+      propulsion system doing both jobs. This page is its living design documentation.</p>
+    </div>
+  </section>
+
+  <section class="section" id="overview" aria-labelledby="overview-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Overview</p>
+        <h2 id="overview-h">Systems engineering, not parts assembly</h2>
+      </div>
+      <div class="grid cols-2" style="margin-bottom:2rem">
+        <p>Unlike conventional hybrid VTOL platforms that bolt together multiple propulsion
+        systems and mechanically complex transition mechanisms, GöğeBakan adopts a
+        <strong>unified propulsion architecture</strong>: the same motor set powers vertical
+        flight, the pitch-over transition and cruise. That single decision reduces structural
+        weight, removes whole classes of mechanical failure, cuts maintenance — and preserves
+        both the aerodynamic efficiency of a fixed wing and the operational flexibility of
+        vertical takeoff and landing.</p>
+        <p>The architecture integrates the PX4 flight control system, an AI-enabled companion
+        computer, onboard computer vision, autonomous mission management, a robust three-link
+        communication setup and custom electronic subsystems into one modular, scalable
+        framework. Low-level stabilization is deliberately separated from high-level perception
+        and decision-making — for computational efficiency, fault tolerance and mission
+        reliability.</p>
+      </div>
+      <figure class="hero-art" style="margin-bottom:2rem">
+        <img src="assets/img/vehicle-hero.svg" width="920" height="540"
+             alt="Top-view engineering sketch of GöğeBakan: a tail-sitter HSVTOL flying wing with two unified propulsion motors on the leading edge, elevons along the trailing edge, wingtip fins that double as landing gear, and a central pod housing the nadir camera and AI companion computer.">
+        <figcaption class="small muted">GöğeBakan HSVTOL — top view. Wingtip fins double as
+        landing gear; the pod carries the nadir camera and the AI companion computer.</figcaption>
+      </figure>
+      <div class="grid cols-4">
+        <div class="card stat-card"><span class="stat-value">HSVTOL</span><span class="stat-label">tail-sitter configuration</span></div>
+        <div class="card stat-card"><span class="stat-value">1</span><span class="stat-label">unified propulsion system</span></div>
+        <div class="card stat-card"><span class="stat-value">PX4</span><span class="stat-label">+ ROS 2 companion</span></div>
+        <div class="card stat-card"><span class="stat-value">YOLOv8s</span><span class="stat-label">custom dataset + SLAM</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="specs" aria-labelledby="specs-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Numbers</p>
+        <h2 id="specs-h">Mission design points &amp; architecture</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>Mission values are from our SUAS 2026 mission design and were validated in
+          end-to-end simulation. Final physical dimensions will be published with the airframe
+          data sheet.</caption>
+          <thead>
+            <tr><th scope="col">Parameter</th><th scope="col">Value</th><th scope="col">Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Configuration</th><td>HSVTOL tail-sitter</td><td>flying wing; wingtip fins double as landing gear</td></tr>
+            <tr><th scope="row">Propulsion</th><td>Unified motor set</td><td>same motors for hover, transition and cruise</td></tr>
+            <tr><th scope="row">Cruise leg</th><td>3.2 km, fixed-wing mode</td><td>waypoint route flown for energy efficiency</td></tr>
+            <tr><th scope="row">Search altitude</th><td>45 m AGL</td><td>multicopter-mode grid ("lawnmower") pattern</td></tr>
+            <tr><th scope="row">Mission window</th><td>45 min</td><td>full mission validated inside the limit in simulation</td></tr>
+            <tr><th scope="row">Detection classes</th><td>Person, tent</td><td>custom dataset — pre-trained models failed at 45 m</td></tr>
+            <tr><th scope="row">Autopilot</th><td>PX4</td><td>attitude, flight modes, autonomous transitions</td></tr>
+            <tr><th scope="row">Companion computer</th><td>AI-enabled, ROS 2</td><td>YOLOv8s inference, SLAM, mission management</td></tr>
+            <tr><th scope="row">Mapping</th><td>SLAM orthomosaic</td><td>built from stabilized multicopter-mode imagery</td></tr>
+            <tr><th scope="row">Payload delivery</th><td>Visual servoing</td><td>camera-guided alignment before release</td></tr>
+            <tr><th scope="row">Ground station</th><td>Custom PyQt5 GCS</td><td>mission control + detection console</td></tr>
+            <tr><th scope="row">Datalinks</th><td>2.4 GHz RC · 915 MHz telemetry · 5 GHz IP</td><td>control, telemetry and imagery kept independent</td></tr>
+            <tr><th scope="row">Dimensions &amp; masses</th><td>Airframe data sheet — in preparation</td><td>published after the final airframe freeze</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="airframe" aria-labelledby="airframe-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Configuration</p>
+        <h2 id="airframe-h">Airframe &amp; flight regimes</h2>
+      </div>
+      <div class="grid cols-2" style="align-items:center">
+        <div>
+          <p>GöğeBakan is a <strong>flying-wing tail-sitter</strong>. On the ground it stands
+          nose-up on its wingtip fins. The unified motors lift it vertically like a multirotor;
+          a pitch-over transition tips the nose forward until the wing takes the load, and the
+          same motors become cruise propulsion. Landing is the mirror image: pitch up, hover,
+          descend vertically.</p>
+          <p>Because there is no separate lift system and no tilt mechanism, the structure stays
+          light and the failure-mode list stays short. Elevons provide control authority in both
+          regimes, and the central pod concentrates the payload: nadir camera, AI companion
+          computer, payload release and the battery — placed first, before anything else could
+          claim the space.</p>
+          <p class="muted small">Why a tail-sitter and not a quadplane or multirotor? See
+          <a href="#design-decisions">design decision #1</a>.</p>
+        </div>
+        <figure>
+          <img src="assets/img/vehicle-three-view.svg" width="920" height="400"
+               alt="Schematic of GöğeBakan's three flight regimes: hovering tail-sitting on its wingtip fins, the pitch-over transition along a curved path, and wing-borne cruise.">
+          <figcaption>The three regimes of a tail-sitter — hover, pitch-over transition, and
+          wing-borne cruise — all on one propulsion system.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="profile" aria-labelledby="profile-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Mission profile</p>
+        <h2 id="profile-h">Dynamic flight profiling — Plan A</h2>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <p class="card-kicker">Phase 1 · Cruise out</p>
+          <h3>Fixed-wing to the search area</h3>
+          <p class="small">The 3.2 km waypoint route is flown wing-borne to maximize energy
+          efficiency — hover minutes are spent only where they buy mission value.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Phase 2 · Search &amp; map</p>
+          <h3>Multicopter-mode grid</h3>
+          <p class="small">Over the search zones GöğeBakan transitions to multicopter mode and
+          flies a lawnmower pattern. The stabilized flight dynamics sharpen the camera data —
+          better detections, and clean input for SLAM to build the orthomosaic map.</p>
+        </div>
+        <div class="card">
+          <p class="card-kicker">Phase 3 · Return &amp; land</p>
+          <h3>Fixed-wing home, vertical landing</h3>
+          <p class="small">Transits between search zones and the return leg go back to
+          fixed-wing mode to save time. At the launch point the aircraft transitions once more
+          and lands vertically, autonomously.</p>
+        </div>
+      </div>
+      <p class="muted small" style="margin-top:1.2rem">A pre-briefed <strong>Plan B</strong>
+      profile is kept mission-ready for changed field conditions; the team selects the profile
+      before launch, and the transition logic stays identical in both.</p>
+    </div>
+  </section>
+
+  <section class="section" id="avionics" aria-labelledby="avionics-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Avionics</p>
+        <h2 id="avionics-h">Avionics &amp; datalinks</h2>
+      </div>
+      <figure style="margin-bottom:1.6rem">
+        <img src="assets/img/avionics-diagram.svg" width="920" height="620"
+             alt="Avionics block diagram: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs and the payload release. An AI companion computer running ROS 2, YOLOv8s and SLAM reads the nadir camera, exchanges data with PX4, and streams detections over a 5 GHz IP link. A 915 MHz telemetry radio connects PX4 to the custom PyQt5 ground control station.">
+        <figcaption>GöğeBakan's avionics architecture. Three independent radio links separate
+        control, telemetry and imagery.</figcaption>
+      </figure>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Flight control</h3>
+          <p class="small">PX4 handles attitude stabilization, flight modes and the autonomous
+          transitions between hover and cruise — the regime changes that define a
+          tail-sitter.</p>
+        </div>
+        <div class="card">
+          <h3>Companion compute</h3>
+          <p class="small">The AI companion computer runs the ROS 2 stack: YOLOv8s inference,
+          SLAM, mission management and visual servoing — high-level decisions kept cleanly
+          apart from low-level control.</p>
+        </div>
+        <div class="card">
+          <h3>Three radios, three jobs</h3>
+          <p class="small">2.4 GHz for the safety pilot, 915 MHz MAVLink telemetry for the GCS,
+          5 GHz IP for imagery and detections. Losing any one link never takes down the other
+          two.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="autonomy" aria-labelledby="autonomy-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Software</p>
+        <h2 id="autonomy-h">Autonomy: detection, mapping, delivery</h2>
+      </div>
+      <div class="grid cols-2">
+        <div>
+          <h3>Detection — a dataset we had to build</h3>
+          <p>At the mission's 45 m search altitude, standard pre-trained models (COCO-class)
+          simply failed to find people and tents reliably. So the team built a
+          <strong>custom aerial dataset</strong> and trained a <strong>YOLOv8s</strong> model on
+          it. Component-level testing confirmed high-accuracy detection at the target altitude —
+          the model earned its place on the aircraft the same way every other part does:
+          by test.</p>
+          <h3>Mapping — SLAM orthomosaic</h3>
+          <p>During the multicopter-mode search, SLAM algorithms run on the collected imagery to
+          produce a high-resolution orthomosaic map — stabilized grid flight making both the
+          detections and the map sharper.</p>
+        </div>
+        <div>
+          <h3>Delivery — visual servoing</h3>
+          <p>Once a target is confirmed, <strong>visual servoing</strong> takes over: the
+          control loop continuously analyzes camera frames and adjusts the aircraft's position
+          in real time until it holds the desired spatial relationship with the target — then
+          releases the payload. Simulation testing verified the aircraft aligning itself over
+          targets with this technique before any hardware was risked.</p>
+          <h3>Mission management — custom GCS</h3>
+          <p>A custom <strong>PyQt5 ground control station</strong> gives the crew mission
+          control and a detection console in one place — plan, monitor, verify detections and
+          command the mission without juggling tools. It talks MAVLink to PX4 and receives
+          detections over the IP link.</p>
+        </div>
+      </div>
+      <p class="muted small" style="margin-top:1rem">How all of this was proven — from the
+      Gazebo digital twin to the 45-minute full-mission run — lives on the
+      <a href="journey.html#testing">testing page</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" id="safety" aria-labelledby="safety-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Safety</p>
+        <h2 id="safety-h">Safety systems &amp; failsafes</h2>
+        <p class="lede">An autonomous aircraft earns trust by what it does when things go wrong.</p>
+      </div>
+      <div class="grid cols-2">
+        <ul>
+          <li><strong>Geofence:</strong> a hard airspace boundary in PX4 — crossing it triggers
+          an immediate, automatic response, no human required.</li>
+          <li><strong>RC link loss:</strong> automatic return-to-launch profile ending in a
+          vertical landing at the designated point.</li>
+          <li><strong>GCS link loss:</strong> the mission continues briefly, then degrades to
+          return-to-launch if telemetry does not recover.</li>
+          <li><strong>Battery failsafe:</strong> staged responses at two thresholds — first warn
+          and re-plan, then land.</li>
+        </ul>
+        <ul>
+          <li><strong>Independent kill:</strong> the safety pilot's 2.4 GHz link can cut the
+          mission at any moment, independent of the companion computer.</li>
+          <li><strong>Checklists, always:</strong> no flight without the
+          <a href="journey.html#procedures">preflight checklist and a written test card</a> —
+          including the boring flights. Especially the boring flights.</li>
+          <li><strong>Crewed roles:</strong> every flight has a named pilot in command, GCS
+          operator and spotter. Nobody multitasks safety.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="design-decisions" aria-labelledby="dd-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Design decisions</p>
+        <h2 id="dd-h">The trade studies behind GöğeBakan</h2>
+        <p class="lede">Every major choice, with the options we rejected and why. This log grows
+        as the campaign progresses.</p>
+      </div>
+      <div class="grid cols-2">
+        <article class="card">
+          <p class="card-kicker">Decision 01 · Platform</p>
+          <h3>Tail-sitter over multirotor or quadplane</h3>
+          <p class="small"><strong>Options:</strong> multirotor · conventional fixed-wing ·
+          quadplane hybrid · tail-sitter VTOL.</p>
+          <p class="small"><strong>Choice &amp; rationale:</strong> tail-sitter. The mission
+          demands both precise positioning (search, delivery, VTOL) and fast, efficient cruise
+          (3.2 km legs, transit between zones). A tail-sitter merges the multirotor's precision
+          with the fixed wing's speed and aerodynamic efficiency in a single body — answering
+          every mission constraint at once.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">Decision 02 · Propulsion</p>
+          <h3>One unified propulsion system</h3>
+          <p class="small"><strong>Options:</strong> separate lift + cruise motor sets
+          (quadplane-style) · tilt mechanisms · unified motor set.</p>
+          <p class="small"><strong>Choice &amp; rationale:</strong> unified. Separate lift motors
+          are dead weight in cruise; tilt mechanisms add mass and mechanical failure points. One
+          motor set serving hover, transition and cruise means less structural weight, fewer
+          things that can break, and less maintenance — reliability by subtraction.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">Decision 03 · Mission profile</p>
+          <h3>Dynamic flight profiling (Plan A / Plan B)</h3>
+          <p class="small"><strong>Options:</strong> fly everything in one regime · switch
+          regimes dynamically per mission phase.</p>
+          <p class="small"><strong>Choice &amp; rationale:</strong> dynamic profiling. Cruise legs
+          in fixed-wing mode for energy efficiency; search in multicopter mode because stabilized
+          flight sharpens camera data for detection and SLAM; returns in fixed-wing to beat the
+          45-minute clock; vertical landing for safety. A pre-briefed Plan B variant stays ready
+          for changed field conditions.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">Decision 04 · Perception</p>
+          <h3>Custom dataset + YOLOv8s over pre-trained models</h3>
+          <p class="small"><strong>Options:</strong> COCO-class pre-trained detectors ·
+          fine-tuned model on a custom aerial dataset.</p>
+          <p class="small"><strong>Choice &amp; rationale:</strong> custom. Component testing
+          showed pre-trained models failing on people and tents at 45 m — the objects are simply
+          too small and the viewpoint too unusual. We built our own dataset, trained YOLOv8s on
+          it, and verified high accuracy at the exact operating altitude.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">Decision 05 · Compute architecture</p>
+          <h3>PX4 + ROS 2 companion, strictly separated</h3>
+          <p class="small"><strong>Options:</strong> one computer doing everything · flight
+          controller + AI companion with a clean interface.</p>
+          <p class="small"><strong>Choice &amp; rationale:</strong> separation. Low-level
+          stabilization must never compete with a neural network for compute. PX4 owns attitude
+          and transitions; the ROS 2 companion owns perception and decisions. The split improves
+          computational efficiency and fault tolerance — a perception crash cannot take down the
+          aircraft.</p>
+        </article>
+        <article class="card">
+          <p class="card-kicker">Decision 06 · Validation &amp; tooling</p>
+          <h3>Digital-twin-first, with a custom PyQt5 GCS</h3>
+          <p class="small"><strong>Options:</strong> test on hardware early · validate everything
+          in simulation first; off-the-shelf GCS · custom console.</p>
+          <p class="small"><strong>Choice &amp; rationale:</strong> a Gazebo digital twin of
+          GöğeBakan (in a Baylands world customized with person and tent models) validates every
+          algorithm before hardware is risked. The custom PyQt5 GCS merges mission control and
+          the detection console into one screen — because at competition, tool-juggling costs
+          minutes we don't have.</p>
+        </article>
+      </div>
+      <p class="muted small" style="margin-top:1.4rem">Dated engineering context for each
+      decision lives in the <a href="journey.html#log">build log</a>, our historical record.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand"><img src="assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg" alt="" width="30" height="30"> Muninn UAV</p>
+      <p class="muted small">The aerospace team of the Yazgit Community (Türkiye), flying the
+      GöğeBakan autonomous tail-sitter at RoboNation's SUAS competition.</p>
+    </div>
+    <nav aria-label="Footer">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="vehicle.html">Vehicle</a></li>
+        <li><a href="journey.html">Build Log &amp; Testing</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:muninnuav@gmail.com">muninnuav@gmail.com</a></li>
+        <li class="muted">Konya Technical University — Konya, Türkiye</li>
+        <li><a href="https://www.instagram.com/muninnteam" rel="external">Instagram · @muninnteam</a></li>
+        <li><a href="https://www.linkedin.com/company/yazgi%CC%87t-muni%CC%87nn-i%CC%87ha/" rel="external">LinkedIn · Muninn UAV</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-note container">
+    <p>© <span id="footer-year">2026</span> Muninn UAV. Built by the team — no trackers, no cookies.</p>
+    <p>SUAS 2026 · RoboNation Student Unmanned Aerial Systems competition</p>
+  </div>
+</footer>
+
+<script src="assets/js/search-index.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

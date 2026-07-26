@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620" role="img"
+     aria-label="Avionics block diagram. Onboard: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs and the payload release; an AI companion computer running ROS 2, YOLOv8s and SLAM reads the nadir camera, exchanges data with PX4, and streams detections over a 5 GHz IP link; a 915 MHz telemetry radio links PX4 to the custom PyQt5 ground control station.">
+  <defs>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#a9aeb9"/>
+    </marker>
+  </defs>
+  <rect width="920" height="620" fill="#101114"/>
+
+  <g font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif">
+    <!-- containers -->
+    <rect x="20" y="42" width="880" height="392" rx="12" fill="none" stroke="#2e3138" stroke-dasharray="8 6" stroke-width="1.5"/>
+    <text x="40" y="70" font-size="13" letter-spacing="3" fill="#d7dbe2">ONBOARD — GOGEBAKAN</text>
+    <rect x="20" y="474" width="880" height="120" rx="12" fill="none" stroke="#2e3138" stroke-dasharray="8 6" stroke-width="1.5"/>
+    <text x="40" y="502" font-size="13" letter-spacing="3" fill="#d7dbe2">GROUND STATION</text>
+
+    <!-- boxes -->
+    <g fill="#1a1c22" stroke="#d7dbe2" stroke-width="1.8">
+      <rect x="60"  y="96"  width="185" height="52" rx="8"/>
+      <rect x="60"  y="176" width="185" height="52" rx="8"/>
+      <rect x="350" y="120" width="225" height="72" rx="8" stroke="#ff4d5a" stroke-width="2.2"/>
+      <rect x="680" y="96"  width="185" height="52" rx="8"/>
+      <rect x="680" y="176" width="185" height="52" rx="8"/>
+      <rect x="350" y="256" width="225" height="64" rx="8"/>
+      <rect x="60"  y="262" width="185" height="52" rx="8"/>
+      <rect x="60"  y="352" width="185" height="52" rx="8"/>
+      <rect x="640" y="262" width="225" height="52" rx="8"/>
+      <rect x="640" y="352" width="225" height="52" rx="8"/>
+      <rect x="200" y="514" width="250" height="56" rx="8"/>
+      <rect x="580" y="514" width="210" height="56" rx="8"/>
+    </g>
+
+    <!-- box labels -->
+    <g fill="#f2f3f5" font-size="14" font-weight="600" text-anchor="middle">
+      <text x="152" y="118">GNSS + compass</text>
+      <text x="152" y="198">RC receiver (2.4 GHz)</text>
+      <text x="462" y="150" fill="#ff4d5a">PX4 flight controller</text>
+      <text x="772" y="118">Telemetry radio</text>
+      <text x="772" y="198">5 GHz IP link</text>
+      <text x="462" y="282">AI companion computer</text>
+      <text x="152" y="284">Nadir camera</text>
+      <text x="152" y="374">Payload release</text>
+      <text x="752" y="284">ESCs → unified motors</text>
+      <text x="752" y="374">Battery + power module</text>
+      <text x="325" y="538">Custom GCS (PyQt5)</text>
+      <text x="685" y="538">Long-range antennas</text>
+    </g>
+    <g fill="#a9aeb9" font-size="12" text-anchor="middle">
+      <text x="152" y="136">position &amp; heading</text>
+      <text x="152" y="216">manual override / kill</text>
+      <text x="462" y="172">attitude · modes · transitions</text>
+      <text x="772" y="136">915 MHz · MAVLink</text>
+      <text x="772" y="216">imagery + detections</text>
+      <text x="462" y="304">ROS 2 · YOLOv8s · SLAM</text>
+      <text x="152" y="302">search &amp; mapping</text>
+      <text x="152" y="392">visual-servoing drop</text>
+      <text x="752" y="302">one motor set, both regimes</text>
+      <text x="752" y="392">main pack + current sense</text>
+      <text x="325" y="556">mission + detection console</text>
+      <text x="685" y="556">915 MHz / 5 GHz</text>
+    </g>
+
+    <!-- wires -->
+    <g stroke="#a9aeb9" stroke-width="1.6" fill="none">
+      <line x1="245" y1="122" x2="344" y2="140" marker-end="url(#a3)"/>
+      <line x1="245" y1="202" x2="344" y2="172" marker-end="url(#a3)"/>
+      <line x1="575" y1="140" x2="674" y2="122" marker-start="url(#a3)" marker-end="url(#a3)"/>
+      <line x1="462" y1="192" x2="462" y2="250" marker-start="url(#a3)" marker-end="url(#a3)"/>
+      <line x1="245" y1="288" x2="344" y2="288" marker-end="url(#a3)"/>
+      <path d="M575 288 L634 288" marker-end="url(#a3)"/>
+      <path d="M575 272 L620 272 L620 202 L674 202" marker-start="url(#a3)" marker-end="url(#a3)"/>
+      <path d="M400 192 L400 224 L152 224 L152 346" marker-end="url(#a3)"/>
+      <line x1="752" y1="346" x2="752" y2="320" marker-end="url(#a3)"/>
+    </g>
+    <g fill="#a9aeb9" font-size="11.5">
+      <text x="470" y="226">ROS 2 / MAVLink</text>
+      <text x="272" y="278">camera feed</text>
+      <text x="588" y="264">motor cmds</text>
+      <text x="160" y="240">release command</text>
+      <text x="760" y="338">power</text>
+    </g>
+
+    <!-- RF links -->
+    <g stroke="#d7dbe2" stroke-width="1.6" stroke-dasharray="4 6" fill="none">
+      <path d="M760 148 L700 508"/>
+      <path d="M790 228 L710 508"/>
+    </g>
+    <text x="770" y="452" fill="#d7dbe2" font-size="12" letter-spacing="1">RF links</text>
+    <line x1="450" y1="542" x2="574" y2="542" stroke="#a9aeb9" stroke-width="1.6" marker-start="url(#a3)" marker-end="url(#a3)"/>
+  </g>
+</svg>

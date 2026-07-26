@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Placeholder for a team image: Flight test day">
+  <rect width="800" height="500" fill="#17181d"/>
+  <rect x="6" y="6" width="788" height="488" rx="14" fill="none" stroke="#33363e" stroke-width="2" stroke-dasharray="10 8"/>
+  <g stroke="#ff5661" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="345" y="196" width="110" height="82" rx="12"/>
+    <circle cx="400" cy="237" r="24"/>
+    <path d="M362 196 L376 178 L424 178 L438 196"/>
+  </g>
+  <text x="400" y="330" text-anchor="middle" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="26" font-weight="700" fill="#f2f3f5">Flight test day</text>
+  <text x="400" y="362" text-anchor="middle" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="16" fill="#a9aeb9">Image slot — replace this file with the real image (see website/README.md)</text>
+</svg>
