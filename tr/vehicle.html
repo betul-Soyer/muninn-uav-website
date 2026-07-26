@@ -127,9 +127,8 @@
             <tr><th scope="row">Yardımcı bilgisayar</th><td>Yapay zekâ destekli, ROS 2</td><td>YOLOv8s çıkarımı, SLAM, görev yönetimi</td></tr>
             <tr><th scope="row">Haritalama</th><td>SLAM ortomozaik</td><td>stabil multikopter modu görüntülerinden üretilir</td></tr>
             <tr><th scope="row">Hedef hizalama</th><td>Görsel servo</td><td>doğrulanan hedef üzerinde kamera kılavuzlu konumlanma</td></tr>
-            <tr><th scope="row">Yer istasyonu</th><td>Özel PyQt5 YKİ</td><td>görev kontrolü + tespit konsolu</td></tr>
+            <tr><th scope="row">Yer istasyonu</th><td>QGroundControl</td><td>PX4'ün endüstri standardı yer kontrol istasyonu</td></tr>
             <tr><th scope="row">Veri bağlantıları</th><td>2.4 GHz RC · 915 MHz telemetri · 5 GHz IP</td><td>kumanda, telemetri ve görüntü birbirinden bağımsız</td></tr>
-            <tr><th scope="row">Boyutlar ve kütleler</th><td>Gövde veri sayfası — hazırlanıyor</td><td>nihai gövde dondurulunca yayınlanacak</td></tr>
           </tbody>
         </table>
       </div>
@@ -209,7 +208,7 @@
       </div>
       <figure style="margin-bottom:1.6rem">
         <img src="../assets/img/avionics-diagram.svg" width="920" height="620"
-             alt="Aviyonik blok şeması: GNSS ve RC alıcısı PX4 uçuş kontrolcüsünü besler; PX4, birleşik itki ESC'lerini sürer. ROS 2, YOLOv8s ve SLAM koşan yapay zekâ bilgisayarı aşağı bakan kameranı okur, PX4 ile veri alışverişi yapar ve tespitleri 5 GHz IP bağlantısı üzerinden aktarır. 915 MHz telemetri telsizi PX4'ü özel PyQt5 yer kontrol istasyonuna bağlar.">
+             alt="Aviyonik blok şeması: GNSS ve RC alıcısı PX4 uçuş kontrolcüsünü besler; PX4, birleşik itki ESC'lerini sürer. ROS 2, YOLOv8s ve SLAM koşan yapay zekâ bilgisayarı aşağı bakan kameranı okur, PX4 ile veri alışverişi yapar ve tespitleri 5 GHz IP bağlantısı üzerinden aktarır. 915 MHz telemetri telsizi PX4'ü yer istasyonu bilgisayarındaki QGroundControl'e bağlar.">
         <figcaption>GöğeBakan'ın aviyonik mimarisi. Üç bağımsız telsiz bağlantısı kumandayı,
         telemetriyi ve görüntüyü birbirinden ayırır.</figcaption>
       </figure>
@@ -263,11 +262,13 @@
           uzamsal ilişkiyi kurana dek gerçek zamanlı ayarlar. Simülasyon testleri, uçağın bu
           teknikle hedef üzerine başarıyla hizalandığını hiçbir donanımı riske atmadan
           doğruladı.</p>
-          <h3>Görev yönetimi — özel YKİ</h3>
-          <p>Özel <strong>PyQt5 yer kontrol istasyonu</strong>, ekibe görev kontrolünü ve
-          tespit konsolunu tek ekranda verir — planla, izle, tespitleri doğrula ve görevi
-          yönet; araç değiştirmeden. PX4 ile MAVLink konuşur, tespitleri IP bağlantısından
-          alır.</p>
+          <h3>Görev yönetimi — QGroundControl</h3>
+          <p>Görev planlama, izleme ve failsafe yapılandırması, PX4'ün endüstri standardı yer
+          kontrol istasyonu <strong>QGroundControl</strong> üzerinde koşar. Kendi arayüzümüzü
+          yazmamayı bilinçli olarak seçtik: QGC, PX4 ile yerleşik uyumlu, binlerce operatör
+          tarafından denenmiş ve her emniyet pilotunun zaten bildiği bir araç. Mühendislik
+          zamanı, kimsenin bizim yerimize çözmediği kısımlara aittir. Tespitler ayrı IP
+          bağlantısından iner ve onun yanında incelenir.</p>
         </div>
       </div>
       <p class="muted small" style="margin-top:1rem">Bunların tümünün nasıl kanıtlandığı —
@@ -371,14 +372,16 @@
         </article>
         <article class="card">
           <p class="card-kicker">Karar 06 · Doğrulama ve araçlar</p>
-          <h3>Önce dijital ikiz, yanında özel PyQt5 YKİ</h3>
+          <h3>Önce dijital ikiz, kendi konsolumuz yerine QGroundControl</h3>
           <p class="small"><strong>Seçenekler:</strong> donanımda erken test · önce her şeyi
-          simülasyonda doğrulamak; hazır YKİ · özel konsol.</p>
+          simülasyonda doğrulamak; kendi yer istasyonumuzu yazmak · endüstri standardını
+          kullanmak.</p>
           <p class="small"><strong>Tercih ve gerekçe:</strong> GöğeBakan'ın Gazebo'daki dijital
           ikizi (insan ve çadır modelleriyle özelleştirilmiş Baylands dünyasında) her
-          algoritmayı donanım riske atılmadan doğrular. Özel PyQt5 YKİ, görev kontrolü ile
-          tespit konsolunu tek ekranda birleştirir — çünkü yarışmada araç değiştirmek, sahip
-          olmadığımız dakikalara mal olur.</p>
+          algoritmayı donanım riske atılmadan doğrular. Yerde ise kendi konsolumuz yerine
+          <strong>QGroundControl</strong> uçuruyoruz: PX4 ile yerleşik uyumlu, binlerce
+          operatörce sınanmış bir araç — görev planlayıcıyı yeniden yazmaya harcanmayan her
+          saat, gerçekten bize ait olan otonomiye harcanan bir saattir.</p>
         </article>
       </div>
       <p class="muted small" style="margin-top:1.4rem">Her kararın tarihli mühendislik bağlamı,

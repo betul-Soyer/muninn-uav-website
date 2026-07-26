@@ -30,7 +30,7 @@ window.SEARCH_INDEX = [
   { page: "Vehicle", url: "vehicle.html#overview", title: "GöğeBakan — systems overview",
     text: "GöğeBakan gogebakan HSVTOL quadrotor tail-sitter tailsitter VTOL flying wing carbon fibre patent patented Tesla 1928 unified propulsion architecture four motors 129 min endurance 247 km range 30% efficient systems engineering modular" },
   { page: "Vehicle", url: "vehicle.html#specs", title: "Mission design points & architecture",
-    text: "specifications specs numbers endurance 129 min range 247 km efficiency 30% four motors patented cruise 3.2 km search altitude 45 m mission window 45 minutes detection person tent PX4 companion ROS 2 GCS PyQt5 datalinks table" },
+    text: "specifications specs numbers endurance 129 min range 247 km efficiency 30% four motors patented cruise 3.2 km search altitude 45 m mission window 45 minutes detection person tent PX4 companion ROS 2 QGroundControl QGC ground station datalinks table" },
   { page: "Vehicle", url: "vehicle.html#airframe", title: "Airframe & flight regimes",
     text: "airframe flying wing carbon fibre tail-sitter quadrotor elevons wingtip fins landing gear hover transition pitch-over Pugachev Cobra manoeuvre cruise flight principle structure configuration" },
   { page: "Vehicle", url: "vehicle.html#profile", title: "Dynamic flight profiling",
@@ -38,11 +38,11 @@ window.SEARCH_INDEX = [
   { page: "Vehicle", url: "vehicle.html#avionics", title: "Avionics & datalinks",
     text: "avionics block diagram PX4 flight controller GNSS compass radio telemetry 915 MHz 5 GHz IP link RC receiver companion computer wiring" },
   { page: "Vehicle", url: "vehicle.html#autonomy", title: "Autonomy: detection, mapping, alignment",
-    text: "autonomy software ROS 2 YOLOv8s custom dataset COCO 45 m detection SLAM orthomosaic mapping visual servoing target alignment PyQt5 ground control station computer vision AI" },
+    text: "autonomy software ROS 2 YOLOv8s custom dataset COCO 45 m detection SLAM orthomosaic mapping visual servoing target alignment QGroundControl QGC ground control station computer vision AI" },
   { page: "Vehicle", url: "vehicle.html#safety", title: "Safety systems & failsafes",
     text: "safety failsafe geofence return to launch RTL link loss battery failsafe kill switch checklist crew roles spotter" },
   { page: "Vehicle", url: "vehicle.html#design-decisions", title: "Design decisions / trade studies",
-    text: "design decisions trade study rationale tail-sitter vs quadplane multirotor unified propulsion custom dataset YOLOv8s PX4 ROS 2 separation digital twin PyQt5 GCS why we chose" },
+    text: "design decisions trade study rationale tail-sitter vs quadplane multirotor unified propulsion custom dataset YOLOv8s PX4 ROS 2 separation digital twin QGroundControl QGC off-the-shelf why we chose" },
 
   /* ---- Build Log ---- */
   { page: "Build Log", url: "journey.html#roadmap", title: "The validation ladder to SUAS 2026",

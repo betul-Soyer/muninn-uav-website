@@ -126,9 +126,8 @@
             <tr><th scope="row">Companion computer</th><td>AI-enabled, ROS 2</td><td>YOLOv8s inference, SLAM, mission management</td></tr>
             <tr><th scope="row">Mapping</th><td>SLAM orthomosaic</td><td>built from stabilized multicopter-mode imagery</td></tr>
             <tr><th scope="row">Target alignment</th><td>Visual servoing</td><td>camera-guided positioning over a confirmed target</td></tr>
-            <tr><th scope="row">Ground station</th><td>Custom PyQt5 GCS</td><td>mission control + detection console</td></tr>
+            <tr><th scope="row">Ground station</th><td>QGroundControl</td><td>the industry-standard PX4 ground station</td></tr>
             <tr><th scope="row">Datalinks</th><td>2.4 GHz RC · 915 MHz telemetry · 5 GHz IP</td><td>control, telemetry and imagery kept independent</td></tr>
-            <tr><th scope="row">Dimensions &amp; masses</th><td>Airframe data sheet — in preparation</td><td>wingspan, length and MTOW published with the data sheet</td></tr>
           </tbody>
         </table>
       </div>
@@ -207,7 +206,7 @@
       </div>
       <figure style="margin-bottom:1.6rem">
         <img src="assets/img/avionics-diagram.svg" width="920" height="620"
-             alt="Avionics block diagram: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs. An AI companion computer running ROS 2, YOLOv8s and SLAM reads the nadir camera, exchanges data with PX4, and streams detections over a 5 GHz IP link. A 915 MHz telemetry radio connects PX4 to the custom PyQt5 ground control station.">
+             alt="Avionics block diagram: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs. An AI companion computer running ROS 2, YOLOv8s and SLAM reads the nadir camera, exchanges data with PX4, and streams detections over a 5 GHz IP link. A 915 MHz telemetry radio connects PX4 to QGroundControl on the ground station laptop.">
         <figcaption>GöğeBakan's avionics architecture. Three independent radio links separate
         control, telemetry and imagery.</figcaption>
       </figure>
@@ -261,11 +260,13 @@
           in real time until it holds the desired spatial relationship with the target.
           Simulation testing verified the aircraft aligning itself over targets with this
           technique before any hardware was risked.</p>
-          <h3>Mission management — custom GCS</h3>
-          <p>A custom <strong>PyQt5 ground control station</strong> gives the crew mission
-          control and a detection console in one place — plan, monitor, verify detections and
-          command the mission without juggling tools. It talks MAVLink to PX4 and receives
-          detections over the IP link.</p>
+          <h3>Mission management — QGroundControl</h3>
+          <p>Mission planning, monitoring and failsafe configuration run on
+          <strong>QGroundControl</strong>, the industry-standard ground station for PX4. We
+          deliberately did not write our own: QGC is PX4-native, proven by thousands of
+          operators and already familiar to every safety pilot. Engineering time belongs to the
+          parts of the mission nobody has solved for us. Detections arrive separately over the
+          IP link and are reviewed alongside it.</p>
         </div>
       </div>
       <p class="muted small" style="margin-top:1rem">How all of this was proven — from the
@@ -370,14 +371,15 @@
         </article>
         <article class="card">
           <p class="card-kicker">Decision 06 · Validation &amp; tooling</p>
-          <h3>Digital-twin-first, with a custom PyQt5 GCS</h3>
+          <h3>Digital-twin-first, QGroundControl over a home-made console</h3>
           <p class="small"><strong>Options:</strong> test on hardware early · validate everything
-          in simulation first; off-the-shelf GCS · custom console.</p>
+          in simulation first; build our own ground station · fly the industry standard.</p>
           <p class="small"><strong>Choice &amp; rationale:</strong> a Gazebo digital twin of
           GöğeBakan (in a Baylands world customized with person and tent models) validates every
-          algorithm before hardware is risked. The custom PyQt5 GCS merges mission control and
-          the detection console into one screen — because at competition, tool-juggling costs
-          minutes we don't have.</p>
+          algorithm before hardware is risked. On the ground we fly <strong>QGroundControl</strong>
+          rather than a console of our own: it is PX4-native, battle-tested by thousands of
+          operators, and every hour not spent re-implementing a mission planner is an hour spent
+          on the autonomy that is actually ours.</p>
         </article>
       </div>
       <p class="muted small" style="margin-top:1.4rem">Dated engineering context for each

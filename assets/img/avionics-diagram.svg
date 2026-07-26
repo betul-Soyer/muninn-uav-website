@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620" role="img"
-     aria-label="Avionics block diagram. Onboard: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs; an AI companion computer running ROS 2, YOLOv8s and SLAM reads the nadir camera, exchanges data with PX4, and streams detections over a 5 GHz IP link; a 915 MHz telemetry radio links PX4 to the custom PyQt5 ground control station.">
+     aria-label="Avionics block diagram. Onboard: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs; an AI companion computer running ROS 2, YOLOv8s and SLAM reads the nadir camera, exchanges data with PX4, and streams detections over a 5 GHz IP link; a 915 MHz telemetry radio links PX4 to QGroundControl on the ground station laptop.">
   <defs>
     <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
       <path d="M0 0L10 5L0 10Z" fill="#a9aeb9"/>
@@ -40,7 +40,7 @@
       <text x="152" y="284">Nadir camera</text>
       <text x="752" y="284">ESCs → unified motors</text>
       <text x="752" y="374">Battery + power module</text>
-      <text x="325" y="538">Custom GCS (PyQt5)</text>
+      <text x="325" y="538">QGroundControl</text>
       <text x="685" y="538">Long-range antennas</text>
     </g>
     <g fill="#a9aeb9" font-size="12" text-anchor="middle">
@@ -53,7 +53,7 @@
       <text x="152" y="302">search &amp; mapping</text>
       <text x="752" y="302">one motor set, both regimes</text>
       <text x="752" y="392">main pack + current sense</text>
-      <text x="325" y="556">mission + detection console</text>
+      <text x="325" y="556">mission planning · telemetry</text>
       <text x="685" y="556">915 MHz / 5 GHz</text>
     </g>
 

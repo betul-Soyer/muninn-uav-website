@@ -29,7 +29,7 @@ window.SEARCH_INDEX = [
   { page: "Araç", url: "vehicle.html#overview", title: "GöğeBakan — sistem genel bakışı",
     text: "GöğeBakan gogebakan HSVTOL quadrotor tailsitter VTOL uçan kanat karbon fiber patent patentli Tesla 1928 birleşik itki mimari dört motor 129 dakika uçuş 247 km menzil %30 verimli sistem mühendisliği modüler" },
   { page: "Araç", url: "vehicle.html#specs", title: "Görev tasarım noktaları ve mimari",
-    text: "özellikler spesifikasyon sayılar uçuş süresi 129 dakika menzil 247 km verimlilik %30 dört motor patentli seyir 3.2 km tarama irtifası 45 m görev penceresi 45 dakika tespit insan çadır PX4 ROS 2 YKİ PyQt5 veri bağlantıları tablo" },
+    text: "özellikler spesifikasyon sayılar uçuş süresi 129 dakika menzil 247 km verimlilik %30 dört motor patentli seyir 3.2 km tarama irtifası 45 m görev penceresi 45 dakika tespit insan çadır PX4 ROS 2 QGroundControl QGC yer istasyonu veri bağlantıları tablo" },
   { page: "Araç", url: "vehicle.html#airframe", title: "Gövde ve uçuş rejimleri",
     text: "gövde uçan kanat karbon fiber tailsitter quadrotor elevon kanat ucu fin iniş takımı havada asılı geçiş öne yatış Pugaçev Kobra manevrası seyir uçuş prensibi yapı konfigürasyon" },
   { page: "Araç", url: "vehicle.html#profile", title: "Dinamik uçuş profili",
@@ -37,11 +37,11 @@ window.SEARCH_INDEX = [
   { page: "Araç", url: "vehicle.html#avionics", title: "Aviyonik ve veri bağlantıları",
     text: "aviyonik blok şema PX4 uçuş kontrolcüsü GNSS pusula telsiz telemetri 915 MHz 5 GHz IP RC alıcı yardımcı bilgisayar tesisat" },
   { page: "Araç", url: "vehicle.html#autonomy", title: "Otonomi: tespit, haritalama, hizalama",
-    text: "otonomi yazılım ROS 2 YOLOv8s özel veri seti COCO 45 m tespit SLAM ortomozaik haritalama görsel servo hedef hizalama PyQt5 yer kontrol istasyonu bilgisayarlı görü yapay zekâ" },
+    text: "otonomi yazılım ROS 2 YOLOv8s özel veri seti COCO 45 m tespit SLAM ortomozaik haritalama görsel servo hedef hizalama QGroundControl QGC yer kontrol istasyonu bilgisayarlı görü yapay zekâ" },
   { page: "Araç", url: "vehicle.html#safety", title: "Emniyet sistemleri ve failsafe'ler",
     text: "emniyet failsafe geofence eve dönüş RTL bağlantı kaybı batarya kill checklist ekip gözcü" },
   { page: "Araç", url: "vehicle.html#design-decisions", title: "Tasarım kararları / trade-off'lar",
-    text: "tasarım kararları trade-off gerekçe tailsitter quadplane multikopter birleşik itki özel veri seti YOLOv8s PX4 ROS 2 ayrım dijital ikiz PyQt5 YKİ neden" },
+    text: "tasarım kararları trade-off gerekçe tailsitter quadplane multikopter birleşik itki özel veri seti YOLOv8s PX4 ROS 2 ayrım dijital ikiz QGroundControl QGC hazır yazılım neden" },
 
   /* ---- Gelişim Günlüğü ---- */
   { page: "Gelişim Günlüğü", url: "journey.html#roadmap", title: "SUAS 2026'ya doğrulama merdiveni",

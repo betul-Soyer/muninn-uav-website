@@ -5,7 +5,7 @@ Plain HTML + CSS + vanilla JS — no build step, no frameworks, no trackers.
 Open `index.html` in a browser and it works; host it anywhere that serves files.
 
 Team: **Muninn UAV** (Yazgit Community, Konya Technical University) · Vehicle: **GöğeBakan** — HSVTOL tail-sitter
-(PX4 + ROS 2 · custom YOLOv8s · SLAM · visual servoing · custom PyQt5 GCS).
+(PX4 + ROS 2 · custom YOLOv8s · SLAM · visual servoing · QGroundControl).
 
 ## Pages
 
@@ -62,7 +62,6 @@ backgrounds such as apparel or documents).
 
 | What | Current placeholder value | Where |
 |---|---|---|
-| Physical specs | "Airframe data sheet — in preparation" row | `vehicle.html#specs` — fill wingspan/length/MTOW when frozen |
 | Build-log periods | season-level labels (Winter 2025–26, Spring 2026) | `journey.html#log` — replace with real dates if you want day precision |
 | Sponsor logos | 3 "YOUR LOGO HERE" SVGs next to TÜBİTAK | `assets/img/sponsor-*.svg` |
 | Team photo | none on the site yet | add to `media.html` + `tr/media.html` when you have one |
