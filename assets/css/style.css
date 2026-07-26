@@ -147,6 +147,7 @@ code { background: var(--panel); padding: 0.15em 0.4em; border-radius: 6px; font
 
 .brand {
   display: flex; align-items: center; gap: 0.6rem;
+  white-space: nowrap;
   text-decoration: none; color: var(--text);
   font-weight: 800; font-size: 1.12rem; letter-spacing: 0.02em;
   margin-right: auto;
@@ -177,6 +178,7 @@ code { background: var(--panel); padding: 0.15em 0.4em; border-radius: 6px; font
 }
 .site-nav > ul a {
   display: block;
+  white-space: nowrap;
   padding: 0.45rem 0.7rem;
   border-radius: 8px;
   color: var(--text);
