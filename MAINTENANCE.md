@@ -23,6 +23,9 @@ English); a full Turkish mirror lives in `tr/` with an EN⇄TR toggle in the
 header. When you edit an English page, mirror the change in `tr/` and, if it
 changes sections, in `assets/js/search-index-tr.js`.
 
+Gallery photos open in a keyboard-accessible lightbox (Esc closes, arrows
+navigate) — any `<figure><img>` inside `#photos` is picked up automatically.
+
 Site-wide: sticky nav, **client-side search** (`assets/js/search-index.js` +
 `assets/js/main.js`), skip-link, semantic landmarks, ARIA labels, alt text
 everywhere, WCAG-AA contrast, keyboard operability, `prefers-reduced-motion`
@@ -51,10 +54,9 @@ light backgrounds such as apparel or documents). The drawn SVG fallbacks
 | What | Current placeholder value | Where |
 |---|---|---|
 | Physical specs | "Airframe data sheet — in preparation" row | `vehicle.html#specs` — fill wingspan/MTOW/speeds when frozen |
-| Plan B details | described only as "pre-briefed contingency profile" | `vehicle.html#profile` + decision #3 |
 | Build-log periods | season-level labels (Winter 2025–26, Spring 2026) | `journey.html#log` — replace with real dates if you want day precision |
 | Sponsor logos | 3 "YOUR LOGO HERE" SVGs | `assets/img/sponsor-*.svg` |
-| Photos | 6 SVG image slots (`assets/img/ph-*.svg`) | `media.html` — replace files with real photos |
+| Photos | 5 SVG image slots (`assets/img/ph-*.svg`) | `media.html` — replace files with real photos |
 
 After replacing member names or section titles, update the matching entries in
 `assets/js/search-index.js` so site search stays truthful.

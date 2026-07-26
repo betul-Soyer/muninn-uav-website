@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <title>Araç: GöğeBakan HSVTOL — Muninn UAV</title>
-  <meta name="description" content="Muninn UAV'ın SUAS 2026 için geliştirdiği yüksek hızlı VTOL tailsitter GöğeBakan'ın tam tasarım dokümantasyonu: birleşik itki, PX4 + ROS 2 mimarisi, özel YOLOv8s tespiti, SLAM haritalama, görsel servo ile yük bırakma ve arkalarındaki tasarım kararları.">
+  <meta name="description" content="Muninn UAV'ın SUAS 2026 için geliştirdiği yüksek hızlı VTOL tailsitter GöğeBakan'ın tam tasarım dokümantasyonu: birleşik itki, PX4 + ROS 2 mimarisi, özel YOLOv8s tespiti, SLAM haritalama, görsel servo ile hedef hizalama ve arkalarındaki tasarım kararları.">
   <link rel="icon" type="image/jpeg" href="../assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg">
   <link rel="alternate" hreflang="en" href="../vehicle.html">
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -78,9 +78,9 @@
       </div>
       <figure class="hero-art" style="margin-bottom:2rem">
         <img src="../assets/img/vehicle-hero.svg" width="920" height="540"
-             alt="GöğeBakan'ın üstten teknik çizimi: hücum kenarında iki birleşik itki motoru, firar kenarında elevonlar, iniş takımı görevi de gören kanat ucu finleri ve burun kamerası ile yapay zekâ bilgisayarını taşıyan merkez kapsüle sahip uçan kanat tailsitter.">
+             alt="GöğeBakan'ın üstten teknik çizimi: hücum kenarında iki birleşik itki motoru, firar kenarında elevonlar, iniş takımı görevi de gören kanat ucu finleri ve aşağı bakan kamera ile yapay zekâ bilgisayarını taşıyan merkez kapsüle sahip uçan kanat tailsitter.">
         <figcaption class="small muted">GöğeBakan HSVTOL — üstten görünüş. Kanat ucu finleri
-        iniş takımı görevi görür; kapsül, burun kamerası ile yapay zekâ bilgisayarını taşır.</figcaption>
+        iniş takımı görevi görür; kapsül, aşağı bakan kamera ile yapay zekâ bilgisayarını taşır.</figcaption>
       </figure>
       <div class="grid cols-4">
         <div class="card stat-card"><span class="stat-value">HSVTOL</span><span class="stat-label">tailsitter konfigürasyonu</span></div>
@@ -115,7 +115,7 @@
             <tr><th scope="row">Otopilot</th><td>PX4</td><td>duruş, uçuş modları, otonom geçişler</td></tr>
             <tr><th scope="row">Yardımcı bilgisayar</th><td>Yapay zekâ destekli, ROS 2</td><td>YOLOv8s çıkarımı, SLAM, görev yönetimi</td></tr>
             <tr><th scope="row">Haritalama</th><td>SLAM ortomozaik</td><td>stabil multikopter modu görüntülerinden üretilir</td></tr>
-            <tr><th scope="row">Yük bırakma</th><td>Görsel servo</td><td>bırakmadan önce kamera kılavuzlu hizalama</td></tr>
+            <tr><th scope="row">Hedef hizalama</th><td>Görsel servo</td><td>doğrulanan hedef üzerinde kamera kılavuzlu konumlanma</td></tr>
             <tr><th scope="row">Yer istasyonu</th><td>Özel PyQt5 YKİ</td><td>görev kontrolü + tespit konsolu</td></tr>
             <tr><th scope="row">Veri bağlantıları</th><td>2.4 GHz RC · 915 MHz telemetri · 5 GHz IP</td><td>kumanda, telemetri ve görüntü birbirinden bağımsız</td></tr>
             <tr><th scope="row">Boyutlar ve kütleler</th><td>Gövde veri sayfası — hazırlanıyor</td><td>nihai gövde dondurulunca yayınlanacak</td></tr>
@@ -140,9 +140,8 @@
           havada dur, dikey alçal.</p>
           <p>Ayrı bir kaldırma sistemi ve eğim mekanizması olmadığı için yapı hafif, arıza modu
           listesi kısa kalır. Elevonlar her iki rejimde de kontrol yetkisi sağlar; merkez
-          kapsül faydalı yükü tek noktada toplar: burun kamerası, yapay zekâ bilgisayarı, yük
-          bırakma düzeneği ve batarya — daha hiçbir şey yer kapamadan önce buraya
-          yerleştirildi.</p>
+          kapsül faydalı yükü tek noktada toplar: aşağı bakan kamera, yapay zekâ bilgisayarı ve
+          batarya — daha hiçbir şey yer kapamadan önce buraya yerleştirildi.</p>
           <p class="muted small">Neden quadplane veya multikopter değil de tailsitter?
           <a href="#design-decisions">1 numaralı tasarım kararına</a> bakın.</p>
         </div>
@@ -160,7 +159,7 @@
     <div class="container">
       <div class="section-head">
         <p class="kicker">Görev profili</p>
-        <h2 id="profile-h">Dinamik uçuş profili — Plan A</h2>
+        <h2 id="profile-h">Dinamik uçuş profili</h2>
       </div>
       <div class="grid cols-3">
         <div class="card">
@@ -185,9 +184,6 @@
           daha geçiş yapar ve otonom dikey inişle görevi güvenle bitirir.</p>
         </div>
       </div>
-      <p class="muted small" style="margin-top:1.2rem">Değişen saha koşulları için önceden
-      brifinglenmiş bir <strong>Plan B</strong> profili görev-hazır bekletilir; profil kalkıştan
-      önce seçilir, geçiş mantığı iki planda da aynıdır.</p>
     </div>
   </section>
 
@@ -199,7 +195,7 @@
       </div>
       <figure style="margin-bottom:1.6rem">
         <img src="../assets/img/avionics-diagram.svg" width="920" height="620"
-             alt="Aviyonik blok şeması: GNSS ve RC alıcısı PX4 uçuş kontrolcüsünü besler; PX4, birleşik itki ESC'lerini ve yük bırakma servolarını sürer. ROS 2, YOLOv8s ve SLAM koşan yapay zekâ bilgisayarı burun kamerasını okur, PX4 ile veri alışverişi yapar ve tespitleri 5 GHz IP bağlantısı üzerinden aktarır. 915 MHz telemetri telsizi PX4'ü özel PyQt5 yer kontrol istasyonuna bağlar.">
+             alt="Aviyonik blok şeması: GNSS ve RC alıcısı PX4 uçuş kontrolcüsünü besler; PX4, birleşik itki ESC'lerini sürer. ROS 2, YOLOv8s ve SLAM koşan yapay zekâ bilgisayarı aşağı bakan kameranı okur, PX4 ile veri alışverişi yapar ve tespitleri 5 GHz IP bağlantısı üzerinden aktarır. 915 MHz telemetri telsizi PX4'ü özel PyQt5 yer kontrol istasyonuna bağlar.">
         <figcaption>GöğeBakan'ın aviyonik mimarisi. Üç bağımsız telsiz bağlantısı kumandayı,
         telemetriyi ve görüntüyü birbirinden ayırır.</figcaption>
       </figure>
@@ -230,7 +226,7 @@
     <div class="container">
       <div class="section-head">
         <p class="kicker">Yazılım</p>
-        <h2 id="autonomy-h">Otonomi: tespit, haritalama, bırakma</h2>
+        <h2 id="autonomy-h">Otonomi: tespit, haritalama, hizalama</h2>
       </div>
       <div class="grid cols-2">
         <div>
@@ -247,12 +243,12 @@
           ızgara uçuşu hem tespitleri hem haritayı keskinleştirir.</p>
         </div>
         <div>
-          <h3>Bırakma — görsel servo</h3>
+          <h3>Hizalama — görsel servo</h3>
           <p>Hedef doğrulandığında <strong>görsel servo</strong> devreye girer: kontrol
           döngüsü kamera karelerini sürekli analiz eder ve uçağın konumunu, hedefle istenen
-          uzamsal ilişkiyi kurana dek gerçek zamanlı ayarlar — sonra yükü bırakır. Simülasyon
-          testleri, uçağın bu teknikle hedef üzerine başarıyla hizalandığını hiçbir donanımı
-          riske atmadan doğruladı.</p>
+          uzamsal ilişkiyi kurana dek gerçek zamanlı ayarlar. Simülasyon testleri, uçağın bu
+          teknikle hedef üzerine başarıyla hizalandığını hiçbir donanımı riske atmadan
+          doğruladı.</p>
           <h3>Görev yönetimi — özel YKİ</h3>
           <p>Özel <strong>PyQt5 yer kontrol istasyonu</strong>, ekibe görev kontrolünü ve
           tespit konsolunu tek ekranda verir — planla, izle, tespitleri doğrula ve görevi
@@ -312,7 +308,7 @@
           <p class="small"><strong>Seçenekler:</strong> multikopter · geleneksel sabit kanat ·
           quadplane hibrit · tailsitter VTOL.</p>
           <p class="small"><strong>Tercih ve gerekçe:</strong> tailsitter. Görev hem hassas
-          konumlanma (tarama, bırakma, VTOL) hem de hızlı ve verimli seyir (3.2 km bacaklar,
+          konumlanma (tarama, hedef hizalama, VTOL) hem de hızlı ve verimli seyir (3.2 km bacaklar,
           bölgeler arası intikal) istiyor. Tailsitter, multikopterin hassasiyetiyle sabit
           kanadın hızını ve aerodinamik verimliliğini tek gövdede birleştirerek tüm görev
           kısıtlarına aynı anda yanıt veriyor.</p>
@@ -330,14 +326,13 @@
         </article>
         <article class="card">
           <p class="card-kicker">Karar 03 · Görev profili</p>
-          <h3>Dinamik uçuş profili (Plan A / Plan B)</h3>
+          <h3>Görev fazına göre dinamik uçuş profili</h3>
           <p class="small"><strong>Seçenekler:</strong> her şeyi tek rejimde uçmak · rejimleri
           görev fazına göre dinamik değiştirmek.</p>
           <p class="small"><strong>Tercih ve gerekçe:</strong> dinamik profil. Seyir bacakları
           enerji verimliliği için sabit kanat modunda; tarama, stabil uçuş kamera verisini
           tespit ve SLAM için keskinleştirdiğinden multikopter modunda; dönüşler 45 dakikalık
-          saati yenmek için sabit kanatta; iniş emniyet için dikey. Değişen saha koşulları
-          için önceden brifinglenmiş bir Plan B varyantı hazır bekler.</p>
+          saati yenmek için sabit kanatta; iniş emniyet için dikey.</p>
         </article>
         <article class="card">
           <p class="card-kicker">Karar 04 · Algı</p>

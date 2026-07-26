@@ -5,7 +5,7 @@ window.SEARCH_INDEX = [
   { page: "Ana Sayfa", url: "index.html#mission", title: "Biz kimiz — yaklaşımımız",
     text: "Muninn UAV Yazgit Topluluğu öğrenci takımı Türkiye görev otonom tailsitter GöğeBakan gogebakan mühendislik sadelik güvenilirlik SUAS 2026" },
   { page: "Ana Sayfa", url: "index.html#competition", title: "SUAS 2026 görevi, madde madde",
-    text: "SUAS yarışma RoboNation görevler waypoint seyir 3.2 km tarama tespit insan çadır SLAM haritalama ortomozaik yük bırakma görsel servo Eylül 14-17 el kitabı otonom" },
+    text: "SUAS yarışma RoboNation görevler waypoint seyir 3.2 km tarama tespit insan çadır SLAM haritalama ortomozaik hedef hizalama görsel servo Eylül 14-17 el kitabı otonom" },
   { page: "Ana Sayfa", url: "index.html#latest", title: "Günlükten son haberler",
     text: "haberler güncellemeler blog son kayıtlar kampanya tam görev simülasyon 45 dakika" },
   { page: "Ana Sayfa", url: "index.html#sponsors-strip", title: "Sponsor şeridi",
@@ -32,16 +32,16 @@ window.SEARCH_INDEX = [
     text: "özellikler spesifikasyon sayılar seyir 3.2 km tarama irtifası 45 m görev penceresi 45 dakika tespit insan çadır PX4 ROS 2 YKİ PyQt5 veri bağlantıları tablo" },
   { page: "Araç", url: "vehicle.html#airframe", title: "Gövde ve uçuş rejimleri",
     text: "gövde uçan kanat tailsitter elevon kanat ucu fin iniş takımı havada asılı geçiş öne yatış seyir yapı konfigürasyon" },
-  { page: "Araç", url: "vehicle.html#profile", title: "Dinamik uçuş profili — Plan A",
-    text: "uçuş profili Plan A Plan B sabit kanat seyir multikopter mod çim biçme ızgara tarama dönüş dikey iniş enerji verimliliği" },
+  { page: "Araç", url: "vehicle.html#profile", title: "Dinamik uçuş profili",
+    text: "uçuş profili görev fazları sabit kanat seyir multikopter mod çim biçme ızgara tarama dönüş dikey iniş enerji verimliliği" },
   { page: "Araç", url: "vehicle.html#avionics", title: "Aviyonik ve veri bağlantıları",
     text: "aviyonik blok şema PX4 uçuş kontrolcüsü GNSS pusula telsiz telemetri 915 MHz 5 GHz IP RC alıcı yardımcı bilgisayar tesisat" },
-  { page: "Araç", url: "vehicle.html#autonomy", title: "Otonomi: tespit, haritalama, bırakma",
-    text: "otonomi yazılım ROS 2 YOLOv8s özel veri seti COCO 45 m tespit SLAM ortomozaik haritalama görsel servo yük bırakma PyQt5 yer kontrol istasyonu bilgisayarlı görü yapay zekâ" },
+  { page: "Araç", url: "vehicle.html#autonomy", title: "Otonomi: tespit, haritalama, hizalama",
+    text: "otonomi yazılım ROS 2 YOLOv8s özel veri seti COCO 45 m tespit SLAM ortomozaik haritalama görsel servo hedef hizalama PyQt5 yer kontrol istasyonu bilgisayarlı görü yapay zekâ" },
   { page: "Araç", url: "vehicle.html#safety", title: "Emniyet sistemleri ve failsafe'ler",
     text: "emniyet failsafe geofence eve dönüş RTL bağlantı kaybı batarya kill checklist ekip gözcü" },
   { page: "Araç", url: "vehicle.html#design-decisions", title: "Tasarım kararları / trade-off'lar",
-    text: "tasarım kararları trade-off gerekçe tailsitter quadplane multikopter birleşik itki plan A plan B özel veri seti YOLOv8s PX4 ROS 2 ayrım dijital ikiz PyQt5 YKİ neden" },
+    text: "tasarım kararları trade-off gerekçe tailsitter quadplane multikopter birleşik itki özel veri seti YOLOv8s PX4 ROS 2 ayrım dijital ikiz PyQt5 YKİ neden" },
 
   /* ---- Gelişim Günlüğü ---- */
   { page: "Gelişim Günlüğü", url: "journey.html#roadmap", title: "SUAS 2026'ya doğrulama merdiveni",
@@ -65,9 +65,9 @@ window.SEARCH_INDEX = [
 
   /* ---- Medya ---- */
   { page: "Medya", url: "media.html#photos", title: "Fotoğraf galerisi",
-    text: "fotoğraflar resimler galeri görseller atölye montaj tezgâh Gazebo Baylands dijital ikiz uçuş hattı takım fotoğrafı yük" },
+    text: "fotoğraflar resimler galeri görseller atölye montaj tezgâh Gazebo Baylands dijital ikiz uçuş hattı takım fotoğrafı kamera" },
   { page: "Medya", url: "media.html#videos", title: "Videolar",
-    text: "videolar uçuş testi görüntü Gazebo görev simülasyonu screencast görsel servo bırakma" },
+    text: "videolar uçuş testi görüntü Gazebo görev simülasyonu screencast görsel servo hizalama" },
   { page: "Medya", url: "media.html#usage", title: "Medyamızı kullanmak",
     text: "medya kullanım basın kaynak gösterme izin tam çözünürlük talep" },
 

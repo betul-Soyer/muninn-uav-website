@@ -381,6 +381,75 @@ figcaption { color: var(--muted); font-size: 0.9rem; padding-top: 0.5rem; }
   border-color: transparent transparent transparent var(--accent);
 }
 
+/* ---------- Enlargeable gallery photos + lightbox ---------- */
+.zoomable {
+  display: block; position: relative;
+  width: 100%; padding: 0; margin: 0;
+  border: 0; background: none;
+  cursor: zoom-in;
+  border-radius: var(--radius);
+}
+.zoomable img { transition: opacity 120ms ease; }
+.zoomable:hover img { opacity: 0.86; }
+.zoomable::after {
+  content: "⤢";
+  position: absolute; right: 0.6rem; bottom: 0.6rem;
+  width: 2rem; height: 2rem;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(11, 12, 14, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text); font-size: 1rem; line-height: 1;
+}
+.zoomable:hover::after, .zoomable:focus-visible::after {
+  background: var(--accent-strong); border-color: var(--accent-strong); color: #fff;
+}
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(6, 7, 9, 0.94);
+}
+.lightbox[hidden] { display: none; }
+
+.lb-figure {
+  margin: 0; max-width: 100%;
+  display: flex; flex-direction: column; align-items: center; gap: 0.9rem;
+}
+.lb-img {
+  max-width: min(1200px, 92vw);
+  max-height: 78vh;
+  width: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #101114;
+}
+.lb-caption {
+  color: var(--text); font-size: 0.95rem; text-align: center;
+  max-width: 60ch;
+}
+
+.lb-btn {
+  flex: 0 0 auto;
+  width: 2.75rem; height: 2.75rem;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--panel); color: var(--text);
+  border: 1px solid var(--line); border-radius: 50%;
+  font-size: 1.5rem; line-height: 1; cursor: pointer;
+}
+.lb-btn:hover { background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }
+.lb-close {
+  position: absolute; top: 1rem; right: 1rem;
+  font-size: 1.15rem;
+}
+
+@media (max-width: 600px) {
+  .lightbox { padding: 3.5rem 0.75rem 1rem; }
+  .lb-img { max-height: 62vh; }
+  .lb-btn { width: 2.4rem; height: 2.4rem; }
+}
+
 /* ---------- Sponsors ---------- */
 .logo-row { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
 .logo-row img {

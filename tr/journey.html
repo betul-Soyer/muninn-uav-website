@@ -67,7 +67,7 @@
         <li><span class="m-date">Konsept</span><span>Platform trade-off çalışması → birleşik itkili tailsitter HSVTOL seçildi</span></li>
         <li><span class="m-date">Dijital ikiz</span><span><code>gogebakan</code> modeli Gazebo'da hayat buldu; Baylands dünyası insan ve çadır hedefleriyle özelleştirildi</span></li>
         <li><span class="m-date">Algı</span><span>Özel hava veri seti oluşturuldu; YOLOv8s eğitildi ve 45 m tarama irtifasında doğrulandı</span></li>
-        <li><span class="m-date">Alt sistemler</span><span>Görsel servo ile yük hizalama simülasyonda doğrulandı</span></li>
+        <li><span class="m-date">Alt sistemler</span><span>Görsel servo ile hedef hizalama simülasyonda doğrulandı</span></li>
         <li><span class="m-date">Sistem seviyesi</span><span><strong>45 dakikalık tam görev</strong>, el kitabındaki saha düzenine göre dijital ikizde baştan sona uçuldu</span></li>
         <li><span class="m-date">Donanım</span><span>Gerçek gövdenin entegrasyonu, yer testleri ve kademeli uçuş testleri</span></li>
         <li><span class="m-date">Eyl 2026</span><span><strong>SUAS 2026</strong> — 14–17 Eylül</span></li>
@@ -94,7 +94,7 @@
           <span class="muted small" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase">İlkbahar 2026</span>
           <h3>Tam görev 45 dakikanın içinde — simülasyonda</h3>
           <p>SUAS görevinin tamamı — 3.2 km seyir, multikopter modunda tarama ızgaraları, SLAM
-          haritalama, yük bırakma, otonom iniş — el kitabındaki arazi ve saha verilerinden
+          haritalama, hedef hizalama, otonom iniş — el kitabındaki arazi ve saha verilerinden
           kurulan uçuş planıyla Gazebo dijital ikizinde baştan sona koşturuldu. Sonuç, en
           büyük açık riskimizi kapattı: arama yörüngeleri 45 dakikalık görev penceresine
           sığıyor.</p>
@@ -115,7 +115,7 @@
           <p><code>gogebakan</code> VTOL modeli Gazebo'da uçmaya başladı; Baylands dünyası,
           SUAS arama senaryolarını yansıtmak için insan ve çadır modelleriyle özelleştirildi.
           Bu noktadan sonra her algoritma — tarama desenleri, geçişler, görsel servo ile
-          bırakma — donanıma dokunmadan önce ikizden geçmek zorunda kaldı.</p>
+          hizalama — donanıma dokunmadan önce ikizden geçmek zorunda kaldı.</p>
         </li>
       </ol>
       <div class="callout">
@@ -158,9 +158,9 @@
         </div>
         <div class="card">
           <p class="card-kicker">Aşama 2 · Alt sistem</p>
-          <h3>Görsel servo ile bırakma</h3>
+          <h3>Görsel servo ile hizalama</h3>
           <p class="small">Hedef üzerinde kamera kılavuzlu hizalama simülasyonda doğrulanır:
-          uçak hedefin üzerine tekrar tekrar konumlanır ve bırakma geometrisini korur.</p>
+          uçak hedefin üzerine tekrar tekrar konumlanır ve hizayı korur.</p>
         </div>
         <div class="card">
           <p class="card-kicker">Aşama 3 · Sistem</p>
@@ -196,7 +196,6 @@
             <li>GNSS kilidi ve bilinen yöne karşı pusula kontrolü</li>
             <li>Failsafe kontrolü: RC kill yerde doğrulandı</li>
             <li>Geofence yüklü ve YKİ'de görünür</li>
-            <li>Yük bırakma bir kez çevrildi, sonra kuruldu</li>
             <li>Ekip görevleri teyit: sorumlu pilot, YKİ, gözcü</li>
             <li>Hava limitler içinde (rüzgâr, görüş)</li>
             <li>Üç ekip rolünden sözlü git/gitme kararı</li>
@@ -249,8 +248,7 @@
             <strong>Gazebo görev simülasyonu</strong>
             <span class="small">Ayrıldı — Gazebo görev screencast'i</span>
           </div>
-          <figcaption>Dijital ikiz tam görevi uçarken — tarama ızgaraları, tespitler ve yük
-          bırakma koşusu.</figcaption>
+          <figcaption>Dijital ikiz tam görevi uçarken — tarama ızgaraları ve tespitler.</figcaption>
         </figure>
       </div>
     </div>

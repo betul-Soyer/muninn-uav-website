@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <title>Vehicle: GöğeBakan HSVTOL — Muninn UAV</title>
-  <meta name="description" content="Full design documentation of GöğeBakan, Muninn UAV's high-speed VTOL tail-sitter for SUAS 2026: unified propulsion, PX4 + ROS 2 architecture, custom YOLOv8s detection, SLAM mapping, visual-servoing payload delivery and the design decisions behind them.">
+  <meta name="description" content="Full design documentation of GöğeBakan, Muninn UAV's high-speed VTOL tail-sitter for SUAS 2026: unified propulsion, PX4 + ROS 2 architecture, custom YOLOv8s detection, SLAM mapping, visual-servoing target alignment and the design decisions behind them.">
   <link rel="icon" type="image/jpeg" href="assets/img/WhatsApp%20Image%202026-07-10%20at%2011.17.12.jpeg">
   <link rel="alternate" hreflang="tr" href="tr/vehicle.html">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -116,7 +116,7 @@
             <tr><th scope="row">Autopilot</th><td>PX4</td><td>attitude, flight modes, autonomous transitions</td></tr>
             <tr><th scope="row">Companion computer</th><td>AI-enabled, ROS 2</td><td>YOLOv8s inference, SLAM, mission management</td></tr>
             <tr><th scope="row">Mapping</th><td>SLAM orthomosaic</td><td>built from stabilized multicopter-mode imagery</td></tr>
-            <tr><th scope="row">Payload delivery</th><td>Visual servoing</td><td>camera-guided alignment before release</td></tr>
+            <tr><th scope="row">Target alignment</th><td>Visual servoing</td><td>camera-guided positioning over a confirmed target</td></tr>
             <tr><th scope="row">Ground station</th><td>Custom PyQt5 GCS</td><td>mission control + detection console</td></tr>
             <tr><th scope="row">Datalinks</th><td>2.4 GHz RC · 915 MHz telemetry · 5 GHz IP</td><td>control, telemetry and imagery kept independent</td></tr>
             <tr><th scope="row">Dimensions &amp; masses</th><td>Airframe data sheet — in preparation</td><td>published after the final airframe freeze</td></tr>
@@ -142,8 +142,8 @@
           <p>Because there is no separate lift system and no tilt mechanism, the structure stays
           light and the failure-mode list stays short. Elevons provide control authority in both
           regimes, and the central pod concentrates the payload: nadir camera, AI companion
-          computer, payload release and the battery — placed first, before anything else could
-          claim the space.</p>
+          computer and the battery — placed first, before anything else could claim the
+          space.</p>
           <p class="muted small">Why a tail-sitter and not a quadplane or multirotor? See
           <a href="#design-decisions">design decision #1</a>.</p>
         </div>
@@ -161,7 +161,7 @@
     <div class="container">
       <div class="section-head">
         <p class="kicker">Mission profile</p>
-        <h2 id="profile-h">Dynamic flight profiling — Plan A</h2>
+        <h2 id="profile-h">Dynamic flight profiling</h2>
       </div>
       <div class="grid cols-3">
         <div class="card">
@@ -185,9 +185,6 @@
           and lands vertically, autonomously.</p>
         </div>
       </div>
-      <p class="muted small" style="margin-top:1.2rem">A pre-briefed <strong>Plan B</strong>
-      profile is kept mission-ready for changed field conditions; the team selects the profile
-      before launch, and the transition logic stays identical in both.</p>
     </div>
   </section>
 
@@ -199,7 +196,7 @@
       </div>
       <figure style="margin-bottom:1.6rem">
         <img src="assets/img/avionics-diagram.svg" width="920" height="620"
-             alt="Avionics block diagram: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs and the payload release. An AI companion computer running ROS 2, YOLOv8s and SLAM reads the nadir camera, exchanges data with PX4, and streams detections over a 5 GHz IP link. A 915 MHz telemetry radio connects PX4 to the custom PyQt5 ground control station.">
+             alt="Avionics block diagram: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs. An AI companion computer running ROS 2, YOLOv8s and SLAM reads the nadir camera, exchanges data with PX4, and streams detections over a 5 GHz IP link. A 915 MHz telemetry radio connects PX4 to the custom PyQt5 ground control station.">
         <figcaption>GöğeBakan's avionics architecture. Three independent radio links separate
         control, telemetry and imagery.</figcaption>
       </figure>
@@ -230,7 +227,7 @@
     <div class="container">
       <div class="section-head">
         <p class="kicker">Software</p>
-        <h2 id="autonomy-h">Autonomy: detection, mapping, delivery</h2>
+        <h2 id="autonomy-h">Autonomy: detection, mapping, alignment</h2>
       </div>
       <div class="grid cols-2">
         <div>
@@ -247,12 +244,12 @@
           detections and the map sharper.</p>
         </div>
         <div>
-          <h3>Delivery — visual servoing</h3>
+          <h3>Alignment — visual servoing</h3>
           <p>Once a target is confirmed, <strong>visual servoing</strong> takes over: the
           control loop continuously analyzes camera frames and adjusts the aircraft's position
-          in real time until it holds the desired spatial relationship with the target — then
-          releases the payload. Simulation testing verified the aircraft aligning itself over
-          targets with this technique before any hardware was risked.</p>
+          in real time until it holds the desired spatial relationship with the target.
+          Simulation testing verified the aircraft aligning itself over targets with this
+          technique before any hardware was risked.</p>
           <h3>Mission management — custom GCS</h3>
           <p>A custom <strong>PyQt5 ground control station</strong> gives the crew mission
           control and a detection console in one place — plan, monitor, verify detections and
@@ -312,7 +309,7 @@
           <p class="small"><strong>Options:</strong> multirotor · conventional fixed-wing ·
           quadplane hybrid · tail-sitter VTOL.</p>
           <p class="small"><strong>Choice &amp; rationale:</strong> tail-sitter. The mission
-          demands both precise positioning (search, delivery, VTOL) and fast, efficient cruise
+          demands both precise positioning (search, target alignment, VTOL) and fast, efficient cruise
           (3.2 km legs, transit between zones). A tail-sitter merges the multirotor's precision
           with the fixed wing's speed and aerodynamic efficiency in a single body — answering
           every mission constraint at once.</p>
@@ -329,14 +326,13 @@
         </article>
         <article class="card">
           <p class="card-kicker">Decision 03 · Mission profile</p>
-          <h3>Dynamic flight profiling (Plan A / Plan B)</h3>
+          <h3>Dynamic flight profiling by mission phase</h3>
           <p class="small"><strong>Options:</strong> fly everything in one regime · switch
           regimes dynamically per mission phase.</p>
           <p class="small"><strong>Choice &amp; rationale:</strong> dynamic profiling. Cruise legs
           in fixed-wing mode for energy efficiency; search in multicopter mode because stabilized
           flight sharpens camera data for detection and SLAM; returns in fixed-wing to beat the
-          45-minute clock; vertical landing for safety. A pre-briefed Plan B variant stays ready
-          for changed field conditions.</p>
+          45-minute clock; vertical landing for safety.</p>
         </article>
         <article class="card">
           <p class="card-kicker">Decision 04 · Perception</p>

@@ -17,6 +17,119 @@
     });
   }
 
+  /* ----- Lightbox: click a gallery photo to enlarge it ----- */
+  (function () {
+    var tr = document.documentElement.lang === "tr";
+    var L = tr
+      ? { zoom: "Büyüt", close: "Kapat", prev: "Önceki görsel", next: "Sonraki görsel",
+          dialog: "Görsel önizleme", counter: "/" }
+      : { zoom: "Enlarge", close: "Close", prev: "Previous image", next: "Next image",
+          dialog: "Image viewer", counter: "/" };
+
+    var items = [];
+    var triggers = [];
+
+    Array.prototype.forEach.call(document.querySelectorAll("#photos figure"), function (fig) {
+      var img = fig.querySelector("img");
+      if (!img) return;
+      var cap = fig.querySelector("figcaption");
+      var caption = cap ? cap.textContent.replace(/\s+/g, " ").trim() : img.alt;
+      var index = items.length;
+      items.push({ src: img.getAttribute("src"), alt: img.alt, caption: caption });
+
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "zoomable";
+      btn.setAttribute("aria-label", L.zoom + (caption ? ": " + caption : ""));
+      img.parentNode.insertBefore(btn, img);
+      btn.appendChild(img);
+      btn.addEventListener("click", function () { open(index, btn); });
+      triggers.push(btn);
+    });
+
+    if (!items.length) return;
+
+    var box = document.createElement("div");
+    box.className = "lightbox";
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
+    box.setAttribute("aria-label", L.dialog);
+    box.hidden = true;
+    box.innerHTML =
+      '<button type="button" class="lb-btn lb-close"></button>' +
+      '<button type="button" class="lb-btn lb-prev"></button>' +
+      '<figure class="lb-figure"><img class="lb-img" alt=""></figure>' +
+      '<button type="button" class="lb-btn lb-next"></button>';
+
+    var closeBtn = box.querySelector(".lb-close");
+    var prevBtn = box.querySelector(".lb-prev");
+    var nextBtn = box.querySelector(".lb-next");
+    var lbImg = box.querySelector(".lb-img");
+    var lbFig = box.querySelector(".lb-figure");
+
+    closeBtn.setAttribute("aria-label", L.close); closeBtn.textContent = "✕";
+    prevBtn.setAttribute("aria-label", L.prev);   prevBtn.textContent = "‹";
+    nextBtn.setAttribute("aria-label", L.next);   nextBtn.textContent = "›";
+
+    var cap = document.createElement("figcaption");
+    cap.className = "lb-caption";
+    lbFig.appendChild(cap);
+    document.body.appendChild(box);
+
+    var current = 0;
+    var opener = null;
+    var single = items.length < 2;
+    if (single) { prevBtn.hidden = true; nextBtn.hidden = true; }
+
+    function show(i) {
+      current = (i + items.length) % items.length;
+      var it = items[current];
+      lbImg.src = it.src;
+      lbImg.alt = it.alt;
+      cap.textContent = single
+        ? it.caption
+        : it.caption + "  (" + (current + 1) + " " + L.counter + " " + items.length + ")";
+    }
+
+    function open(i, trigger) {
+      opener = trigger;
+      show(i);
+      box.hidden = false;
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+
+    function close() {
+      box.hidden = true;
+      document.body.style.overflow = "";
+      if (opener) opener.focus();
+    }
+
+    closeBtn.addEventListener("click", close);
+    prevBtn.addEventListener("click", function () { show(current - 1); });
+    nextBtn.addEventListener("click", function () { show(current + 1); });
+    box.addEventListener("click", function (e) {
+      if (e.target === box || e.target === lbFig) close();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (box.hidden) return;
+      if (e.key === "Escape") { close(); e.preventDefault(); }
+      else if (e.key === "ArrowLeft" && !single) { show(current - 1); e.preventDefault(); }
+      else if (e.key === "ArrowRight" && !single) { show(current + 1); e.preventDefault(); }
+      else if (e.key === "Tab") {
+        /* keep focus inside the dialog */
+        var focusable = [closeBtn].concat(single ? [] : [prevBtn, nextBtn]);
+        var at = focusable.indexOf(document.activeElement);
+        var next = e.shiftKey ? at - 1 : at + 1;
+        if (at === -1 || next < 0 || next >= focusable.length) {
+          focusable[e.shiftKey ? focusable.length - 1 : 0].focus();
+          e.preventDefault();
+        }
+      }
+    });
+  })();
+
   /* ----- Site search (index lives in search-index.js) ----- */
   var input = document.getElementById("site-search-input");
   var list = document.getElementById("search-results");

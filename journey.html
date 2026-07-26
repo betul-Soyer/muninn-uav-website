@@ -68,7 +68,7 @@
         <li><span class="m-date">Concept</span><span>Platform trade study → tail-sitter HSVTOL with unified propulsion selected</span></li>
         <li><span class="m-date">Digital twin</span><span>The <code>gogebakan</code> model comes alive in Gazebo; Baylands world customized with person &amp; tent targets</span></li>
         <li><span class="m-date">Perception</span><span>Custom aerial dataset built; YOLOv8s trained and validated at 45 m search altitude</span></li>
-        <li><span class="m-date">Sub-systems</span><span>Visual-servoing payload alignment verified in simulation</span></li>
+        <li><span class="m-date">Sub-systems</span><span>Visual-servoing target alignment verified in simulation</span></li>
         <li><span class="m-date">System level</span><span><strong>Full 45-minute mission</strong> flown end-to-end in the digital twin, per the rulebook's field layout</span></li>
         <li><span class="m-date">Hardware</span><span>Integration, ground testing and incremental flight testing of the real airframe</span></li>
         <li><span class="m-date">Sep 2026</span><span><strong>SUAS 2026</strong> — 14–17 September</span></li>
@@ -95,7 +95,7 @@
           <span class="muted small" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Spring 2026</span>
           <h3>Full mission inside 45 minutes — in simulation</h3>
           <p>The complete SUAS mission — 3.2 km cruise, multicopter-mode search grids, SLAM
-          mapping, payload delivery, autonomous landing — ran end-to-end in the Gazebo digital
+          mapping, target alignment, autonomous landing — ran end-to-end in the Gazebo digital
           twin, using a flight plan built from the rulebook's terrain and field data. The result
           settled our biggest open risk: the search trajectories fit the 45-minute mission
           window.</p>
@@ -115,7 +115,7 @@
           <p>The <code>gogebakan</code> VTOL model started flying in Gazebo, and the Baylands
           world was customized with person and tent models to mirror SUAS search scenarios.
           From this point on, every algorithm — search patterns, transitions, visual-servoing
-          delivery — had to pass the twin before touching hardware.</p>
+          alignment — had to pass the twin before touching hardware.</p>
         </li>
       </ol>
       <div class="callout">
@@ -158,10 +158,9 @@
         </div>
         <div class="card">
           <p class="card-kicker">Stage 2 · Sub-system</p>
-          <h3>Visual-servoing delivery</h3>
+          <h3>Visual-servoing alignment</h3>
           <p class="small">Camera-guided alignment over targets is verified in simulation: the
-          aircraft repeatedly positions itself over the target and holds the release
-          geometry.</p>
+          aircraft repeatedly positions itself over the target and holds the alignment.</p>
         </div>
         <div class="card">
           <p class="card-kicker">Stage 3 · System</p>
@@ -198,7 +197,6 @@
             <li>GNSS lock &amp; compass sanity vs. known heading</li>
             <li>Failsafe check: RC kill verified on the ground</li>
             <li>Geofence loaded and displayed at the GCS</li>
-            <li>Payload release cycled once, then armed</li>
             <li>Crew roles confirmed: PIC, GCS, spotter</li>
             <li>Weather within limits (wind, visibility)</li>
             <li>Verbal go/no-go from all three crew roles</li>
@@ -256,8 +254,7 @@
                  aria-label="Screen recording of the full SUAS mission running in the Gazebo digital twin">
             <source src="assets/media/sim-screencast.mp4" type="video/mp4">
           </video> -->
-          <figcaption>The digital twin flying the full mission — search grids, detections and
-          the payload run.</figcaption>
+          <figcaption>The digital twin flying the full mission — search grids and detections.</figcaption>
         </figure>
       </div>
     </div>
