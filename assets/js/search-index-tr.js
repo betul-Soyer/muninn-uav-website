@@ -61,13 +61,11 @@ window.SEARCH_INDEX = [
   { page: "Gelişim Günlüğü", url: "journey.html#procedures", title: "Prosedürler ve checklistler",
     text: "prosedürler uçuş öncesi checklist test kartı iptal kriteri batarya kuralları şarj emniyet git gitme" },
   { page: "Gelişim Günlüğü", url: "journey.html#videos", title: "Test görüntüleri",
-    text: "videolar görüntü uçuş testi gerçek Gazebo simülasyon screencast izle" },
+    text: "videolar görüntü uçuş testi gerçek gövde 11 Temmuz 2026 izle" },
 
   /* ---- Medya ---- */
   { page: "Medya", url: "media.html#photos", title: "Fotoğraf galerisi",
     text: "fotoğraflar resimler galeri görseller render gövde karbon fiber apron tepeden quadrotor çim saha sergi uçuş prensibi Gazebo Baylands dijital ikiz" },
-  { page: "Medya", url: "media.html#videos", title: "Videolar",
-    text: "videolar uçuş testi görüntü Gazebo görev simülasyonu screencast görsel servo hizalama" },
   { page: "Medya", url: "media.html#usage", title: "Medyamızı kullanmak",
     text: "medya kullanım basın kaynak gösterme izin tam çözünürlük talep" },
 

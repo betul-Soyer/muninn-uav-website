@@ -62,13 +62,11 @@ window.SEARCH_INDEX = [
   { page: "Build Log", url: "journey.html#procedures", title: "Procedures & checklists",
     text: "procedures preflight checklist flight test card abort criteria battery handling SOP charging safety paperwork go no-go" },
   { page: "Build Log", url: "journey.html#videos", title: "Test footage",
-    text: "videos footage flight test real Gazebo simulation screencast watch" },
+    text: "videos footage flight test real airframe 11 July 2026 watch" },
 
   /* ---- Media ---- */
   { page: "Media", url: "media.html#photos", title: "Photo gallery",
     text: "photos pictures gallery images render airframe carbon fibre apron top-down quadrotor grass field exhibition flight principle Gazebo Baylands digital twin" },
-  { page: "Media", url: "media.html#videos", title: "Videos",
-    text: "videos flight test footage Gazebo mission simulation screencast visual servoing alignment embed" },
   { page: "Media", url: "media.html#usage", title: "Using our media",
     text: "media usage press credit license reuse full resolution request" },
 

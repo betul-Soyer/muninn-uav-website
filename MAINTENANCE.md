@@ -14,8 +14,8 @@ Team: **Muninn UAV** (Yazgit Community, Konya Technical University) · Vehicle: 
 | `index.html` | Hero (flight-video slot), mission intro, SUAS tasks, stats, latest news, sponsor strip | first impression, prioritization of key content |
 | `team.html` | Yazgit story, subteams, member roster, advisor, contact, recruiting | team name, members, contact information |
 | `vehicle.html` | Systems overview, mission design points, flight regimes, Plan A profiling, avionics, autonomy, safety, **design decision log** | vehicle documentation, design decisions |
-| `journey.html` | Validation ladder, dated **build log (blog)**, component→system test program, procedures, video slots | historical record, procedures, instructional media |
-| `media.html` | Photo gallery + video slots | vehicle photos/videos, supporting media |
+| `journey.html` | Validation ladder, dated **build log (blog)**, component→system test program, procedures, flight-test video | historical record, procedures, instructional media |
+| `media.html` | Photo gallery (lightbox) | vehicle photos, supporting media |
 | `sponsors.html` | Sponsor logos, tiers, in-kind support, CTA | list of sponsors with logos |
 
 Languages: **English is the primary, judge-facing site** (SUAS 2.4 requires
@@ -47,8 +47,9 @@ support, responsive/mobile layout, works in Chrome/Firefox/Safari/Edge.
 | `assets/img/unnamed.jpg` | official TÜBİTAK logo — sponsor sections |
 | `assets/img/Untitled.jpeg`, `image.png`, `…16.52.01 (2).jpeg` | source brochure pages / spare render, kept for reuse |
 
-⏳ Still missing: the Gazebo mission **screencast video** (a reserved slot waits in the
-journey/media video sections).
+The site deliberately carries **one** video — the flight-test clip — shown in the
+homepage hero and in the build log. The media page is photos only; there are no
+"coming soon" video slots anywhere.
 
 Palette: red / black / grey / white (team colors) — tokens at the top of
 `assets/css/style.css`.
