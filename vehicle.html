@@ -48,19 +48,20 @@
   <section class="page-hero">
     <div class="container">
       <p class="kicker">The aircraft</p>
-      <h1>GöğeBakan — a tail-sitter for SUAS 2026</h1>
-      <p class="lede">GöğeBakan ("the one who gazes at the sky") is a next-generation
-      <strong>High-Speed VTOL (HSVTOL) tail-sitter</strong>: it takes off nose-up like a
-      rotorcraft, pitches over, and cruises wing-borne like an airplane — with a single unified
-      propulsion system doing both jobs. This page is its living design documentation.</p>
+      <h1>GöğeBakan</h1>
+      <p class="designation">HSVTOL quadrotor tail-sitter · four motors, one propulsion system<br>
+      Carbon-fibre flying wing · patented architecture</p>
+      <p class="lede">GöğeBakan ("the one who gazes at the sky") takes off nose-up like a
+      rotorcraft, pitches over and cruises wing-borne like an aeroplane. This page is its design
+      documentation and is updated as the campaign progresses.</p>
     </div>
   </section>
 
   <section class="section" id="overview" aria-labelledby="overview-h">
     <div class="container">
       <div class="section-head">
-        <p class="kicker">Overview</p>
-        <h2 id="overview-h">Systems engineering, not parts assembly</h2>
+        <p class="kicker">Architecture</p>
+        <h2 id="overview-h">Design overview</h2>
       </div>
       <div class="grid cols-2" style="margin-bottom:2rem">
         <p>Tail-sitters were patented by Nikola Tesla back in 1928: on paper they answered
@@ -101,8 +102,8 @@
   <section class="section" id="specs" aria-labelledby="specs-h">
     <div class="container">
       <div class="section-head">
-        <p class="kicker">Numbers</p>
-        <h2 id="specs-h">Mission design points &amp; architecture</h2>
+        <p class="kicker">Data</p>
+        <h2 id="specs-h">Specifications</h2>
       </div>
       <div class="table-wrap">
         <table>
@@ -263,10 +264,9 @@
           <h3>Mission management — QGroundControl</h3>
           <p>Mission planning, monitoring and failsafe configuration run on
           <strong>QGroundControl</strong>, the industry-standard ground station for PX4. We
-          deliberately did not write our own: QGC is PX4-native, proven by thousands of
-          operators and already familiar to every safety pilot. Engineering time belongs to the
-          parts of the mission nobody has solved for us. Detections arrive separately over the
-          IP link and are reviewed alongside it.</p>
+          chose it over writing our own console: QGC is PX4-native, widely used and already
+          familiar to the safety pilot. Detections arrive separately over the IP link and are
+          reviewed alongside it.</p>
         </div>
       </div>
       <p class="muted small" style="margin-top:1rem">How all of this was proven — from the
@@ -280,7 +280,7 @@
       <div class="section-head">
         <p class="kicker">Safety</p>
         <h2 id="safety-h">Safety systems &amp; failsafes</h2>
-        <p class="lede">An autonomous aircraft earns trust by what it does when things go wrong.</p>
+        <p class="lede">What the aircraft does when a link, a battery or a boundary fails.</p>
       </div>
       <div class="grid cols-2">
         <ul>
@@ -296,11 +296,11 @@
         <ul>
           <li><strong>Independent kill:</strong> the safety pilot's 2.4 GHz link can cut the
           mission at any moment, independent of the companion computer.</li>
-          <li><strong>Checklists, always:</strong> no flight without the
-          <a href="journey.html#procedures">preflight checklist and a written test card</a> —
-          including the boring flights. Especially the boring flights.</li>
+          <li><strong>Checklists:</strong> no flight without the
+          <a href="journey.html#procedures">preflight checklist and a written test card</a>,
+          routine sorties included.</li>
           <li><strong>Crewed roles:</strong> every flight has a named pilot in command, GCS
-          operator and spotter. Nobody multitasks safety.</li>
+          operator and spotter, and none of them holds a second role.</li>
         </ul>
       </div>
     </div>
@@ -309,10 +309,10 @@
   <section class="section" id="design-decisions" aria-labelledby="dd-h">
     <div class="container">
       <div class="section-head">
-        <p class="kicker">Design decisions</p>
-        <h2 id="dd-h">The trade studies behind GöğeBakan</h2>
-        <p class="lede">Every major choice, with the options we rejected and why. This log grows
-        as the campaign progresses.</p>
+        <p class="kicker">Trade studies</p>
+        <h2 id="dd-h">Design decisions</h2>
+        <p class="lede">Each major choice, the options considered and the reasoning. The log
+        grows as the campaign progresses.</p>
       </div>
       <div class="grid cols-2">
         <article class="card">
@@ -335,8 +335,7 @@
           motors are dead weight in cruise; tilt mechanisms add mass and mechanical failure
           points. One set of four motors serving hover, transition and cruise means less
           structural weight, fewer things that can break, less maintenance and about 30% better
-          efficiency than comparable hybrids — reliability by subtraction. The architecture is
-          patented.</p>
+          efficiency than comparable hybrid platforms. The architecture is patented.</p>
         </article>
         <article class="card">
           <p class="card-kicker">Decision 03 · Mission profile</p>
@@ -377,9 +376,8 @@
           <p class="small"><strong>Choice &amp; rationale:</strong> a Gazebo digital twin of
           GöğeBakan (in a Baylands world customized with person and tent models) validates every
           algorithm before hardware is risked. On the ground we fly <strong>QGroundControl</strong>
-          rather than a console of our own: it is PX4-native, battle-tested by thousands of
-          operators, and every hour not spent re-implementing a mission planner is an hour spent
-          on the autonomy that is actually ours.</p>
+          rather than a console of our own: it is PX4-native, widely deployed and maintained
+          by the PX4 project, which leaves our software effort on the autonomy stack.</p>
         </article>
       </div>
       <p class="muted small" style="margin-top:1.4rem">Dated engineering context for each

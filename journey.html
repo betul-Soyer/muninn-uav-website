@@ -58,8 +58,8 @@
   <section class="section" id="roadmap" aria-labelledby="roadmap-h">
     <div class="container">
       <div class="section-head">
-        <p class="kicker">Campaign plan</p>
-        <h2 id="roadmap-h">The validation ladder to SUAS 2026</h2>
+        <p class="kicker">Programme</p>
+        <h2 id="roadmap-h">Validation plan</h2>
         <p class="lede">The system is proven progressively — numerical analysis, simulation,
         hardware integration, ground testing, incremental flight testing — before full mission
         deployment.</p>
@@ -85,20 +85,19 @@
       <ol class="timeline" reversed>
         <li id="log-website">
           <time datetime="2026-07">July 2026</time>
-          <h3>The campaign goes public</h3>
-          <p>This website goes live with the full engineering story: the tail-sitter
-          architecture, the <a href="vehicle.html#design-decisions">design decision log</a>, the
-          test program and the mission profile. It is itself a scored SUAS deliverable — and our
-          public, permanent record of the campaign.</p>
+          <h3>Team website online</h3>
+          <p>The website goes live with the tail-sitter architecture, the
+          <a href="vehicle.html#design-decisions">design decision log</a>, the test programme and
+          the mission profile. It is a scored SUAS deliverable and the public record of the
+          campaign.</p>
         </li>
         <li id="log-mission-sim">
           <span class="muted small" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Spring 2026</span>
           <h3>Full mission inside 45 minutes — in simulation</h3>
           <p>The complete SUAS mission — 3.2 km cruise, multicopter-mode search grids, SLAM
-          mapping, target alignment, autonomous landing — ran end-to-end in the Gazebo digital
-          twin, using a flight plan built from the rulebook's terrain and field data. The result
-          settled our biggest open risk: the search trajectories fit the 45-minute mission
-          window.</p>
+          mapping, target alignment and autonomous landing — ran end-to-end in the Gazebo digital
+          twin, on a flight plan built from the rulebook's terrain and field data. It closed the
+          largest open risk: the search trajectories fit inside the 45-minute window.</p>
         </li>
         <li id="log-dataset">
           <span class="muted small" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Winter 2025–26</span>
@@ -106,12 +105,12 @@
           <p>Component testing delivered a hard lesson: COCO-class pre-trained detectors could
           not reliably find people and tents from the mission's 45 m search altitude. The team
           built a custom aerial dataset and trained <strong>YOLOv8s</strong> on it. Re-tests at
-          the target altitude showed high-accuracy detection — the perception stack was reborn,
-          and <a href="vehicle.html#design-decisions">decision #4</a> was written.</p>
+          the target altitude showed high-accuracy detection, and
+          <a href="vehicle.html#design-decisions">decision #4</a> was written.</p>
         </li>
         <li id="log-twin">
           <span class="muted small" style="display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Winter 2025–26</span>
-          <h3>GöğeBakan's digital twin comes alive</h3>
+          <h3>Digital twin running in Gazebo</h3>
           <p>The <code>gogebakan</code> VTOL model started flying in Gazebo, and the Baylands
           world was customized with person and tent models to mirror SUAS search scenarios.
           From this point on, every algorithm — search patterns, transitions, visual-servoing
@@ -119,10 +118,9 @@
         </li>
       </ol>
       <div class="callout">
-        <p><strong>Following along?</strong> Every entry lands here first, and the media that
-        goes with it ends up in the <a href="media.html">gallery</a>. Sponsors get the same
-        story with engineering detail in periodic reports — <a href="sponsors.html">join
-        them</a>.</p>
+        <p>New entries land here first; the media that goes with them is added to the
+        <a href="media.html">gallery</a>. Sponsors receive the same material with engineering
+        detail in periodic reports.</p>
       </div>
     </div>
   </section>
@@ -130,10 +128,10 @@
   <section class="section" id="testing" aria-labelledby="testing-h">
     <div class="container">
       <div class="section-head">
-        <p class="kicker">Test program</p>
-        <h2 id="testing-h">How we test: component → sub-system → system</h2>
-        <p class="lede">Nothing faces a harder test before it passes an easier one. Each stage
-        has written pass criteria; failing a stage sends the design back, not forward.</p>
+        <p class="kicker">Method</p>
+        <h2 id="testing-h">Test programme</h2>
+        <p class="lede">Component, sub-system and system stages in order. Each stage has
+        written pass criteria; a stage that fails sends the design back rather than forward.</p>
       </div>
       <div class="grid cols-3">
         <div class="card">
@@ -182,10 +180,9 @@
   <section class="section" id="procedures" aria-labelledby="procedures-h">
     <div class="container">
       <div class="section-head">
-        <p class="kicker">Procedures</p>
-        <h2 id="procedures-h">The paperwork that keeps aircraft whole</h2>
-        <p class="lede">Excerpts from the procedures we fly by. Boring on purpose — excitement
-        belongs in the mission, not in operations.</p>
+        <p class="kicker">Operations</p>
+        <h2 id="procedures-h">Procedures</h2>
+        <p class="lede">Excerpts from the documents every flight is run against.</p>
       </div>
       <div class="grid cols-3">
         <div class="card">

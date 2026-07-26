@@ -51,8 +51,22 @@ The site deliberately carries **one** video — the flight-test clip — shown i
 homepage hero and in the build log. The media page is photos only; there are no
 "coming soon" video slots anywhere.
 
-Palette: red / black / grey / white (team colors) — tokens at the top of
-`assets/css/style.css`.
+## Design system
+
+Direction: **flight-test documentation**, not a product landing page — aircraft
+data plates and test cards. Condensed uppercase signage, monospaced numerals,
+hairline rules, generous negative space, and one hard red used like a warning
+stripe rather than as decoration.
+
+- **Type** — IBM Plex, self-hosted in `assets/fonts/` (no CDN, no tracking,
+  Turkish glyphs covered via the `latin-ext` subsets):
+  Plex Sans Condensed 700 for headings, Plex Sans 400/600 for running text,
+  Plex Mono 400/500 for labels, dates and data.
+- **Palette** — team colours (red / black / grey / white) with cool-biased
+  neutrals; tokens live at the top of `assets/css/style.css`.
+- **Single dark theme by choice** — the identity is white-on-black with a red
+  mark and every vehicle render is shot on black.
+- Numbers use `tabular-nums`; spec tables are hairline-ruled with mono values.
 
 Team logos: `assets/img/WhatsApp Image 2026-07-10 at 11.17.12.jpeg` (white-on-black;
 header, footer, favicon) and `…11.16.16.jpeg` (black-on-light; kept for light

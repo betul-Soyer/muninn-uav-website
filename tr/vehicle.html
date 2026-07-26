@@ -48,19 +48,20 @@
   <section class="page-hero">
     <div class="container">
       <p class="kicker">Uçak</p>
-      <h1>GöğeBakan — SUAS 2026 için bir tailsitter</h1>
-      <p class="lede">GöğeBakan, yeni nesil bir <strong>Yüksek Hızlı VTOL (HSVTOL)
-      tailsitter</strong>: bir döner kanat gibi burnu yukarı kalkar, öne yatar ve bir uçak gibi
-      kanat üstünde seyreder — iki işi de tek bir birleşik itki sistemi yapar. Bu sayfa onun
-      yaşayan tasarım dokümantasyonudur.</p>
+      <h1>GöğeBakan</h1>
+      <p class="designation">HSVTOL quadrotor tailsitter · dört motor, tek itki sistemi<br>
+      Karbon fiber uçan kanat · patentli mimari</p>
+      <p class="lede">GöğeBakan ("göğe bakan"), bir döner kanat gibi burnu yukarı kalkar, öne
+      yatar ve bir uçak gibi kanat üstünde seyreder. Bu sayfa onun tasarım dokümantasyonudur ve
+      kampanya ilerledikçe güncellenir.</p>
     </div>
   </section>
 
   <section class="section" id="overview" aria-labelledby="overview-h">
     <div class="container">
       <div class="section-head">
-        <p class="kicker">Genel bakış</p>
-        <h2 id="overview-h">Parça montajı değil, sistem mühendisliği</h2>
+        <p class="kicker">Mimari</p>
+        <h2 id="overview-h">Tasarıma genel bakış</h2>
       </div>
       <div class="grid cols-2" style="margin-bottom:2rem">
         <p>Tailsitter araçlar 1928'de Nikola Tesla tarafından patentlendi: kâğıt üzerinde
@@ -102,8 +103,8 @@
   <section class="section" id="specs" aria-labelledby="specs-h">
     <div class="container">
       <div class="section-head">
-        <p class="kicker">Sayılar</p>
-        <h2 id="specs-h">Görev tasarım noktaları ve mimari</h2>
+        <p class="kicker">Veri</p>
+        <h2 id="specs-h">Teknik özellikler</h2>
       </div>
       <div class="table-wrap">
         <table>
@@ -264,11 +265,10 @@
           doğruladı.</p>
           <h3>Görev yönetimi — QGroundControl</h3>
           <p>Görev planlama, izleme ve failsafe yapılandırması, PX4'ün endüstri standardı yer
-          kontrol istasyonu <strong>QGroundControl</strong> üzerinde koşar. Kendi arayüzümüzü
-          yazmamayı bilinçli olarak seçtik: QGC, PX4 ile yerleşik uyumlu, binlerce operatör
-          tarafından denenmiş ve her emniyet pilotunun zaten bildiği bir araç. Mühendislik
-          zamanı, kimsenin bizim yerimize çözmediği kısımlara aittir. Tespitler ayrı IP
-          bağlantısından iner ve onun yanında incelenir.</p>
+          kontrol istasyonu <strong>QGroundControl</strong> üzerinde koşar. Kendi konsolumuzu
+          yazmak yerine bunu seçtik: QGC, PX4 ile yerleşik uyumlu, yaygın kullanılan ve emniyet
+          pilotunun zaten bildiği bir araç. Tespitler ayrı IP bağlantısından iner ve onun
+          yanında incelenir.</p>
         </div>
       </div>
       <p class="muted small" style="margin-top:1rem">Bunların tümünün nasıl kanıtlandığı —
@@ -282,7 +282,7 @@
       <div class="section-head">
         <p class="kicker">Emniyet</p>
         <h2 id="safety-h">Emniyet sistemleri ve failsafe'ler</h2>
-        <p class="lede">Otonom bir uçak güveni, işler ters gittiğinde yaptıklarıyla kazanır.</p>
+        <p class="lede">Bir bağlantı, batarya veya sınır ihlali durumunda uçağın ne yaptığı.</p>
       </div>
       <div class="grid cols-2">
         <ul>
@@ -298,11 +298,11 @@
         <ul>
           <li><strong>Bağımsız kill:</strong> emniyet pilotunun 2.4 GHz bağlantısı, yardımcı
           bilgisayardan bağımsız olarak görevi her an kesebilir.</li>
-          <li><strong>Checklist, her zaman:</strong>
+          <li><strong>Checklist:</strong>
           <a href="journey.html#procedures">uçuş öncesi checklist ve yazılı test kartı</a>
-          olmadan uçuş yok — sıradan uçuşlar dahil. Özellikle sıradan uçuşlar.</li>
+          olmadan uçuş yok; rutin uçuşlar dahil.</li>
           <li><strong>Görevli ekip:</strong> her uçuşta ismi belli bir sorumlu pilot, YKİ
-          operatörü ve gözcü vardır. Kimse emniyeti yanında başka işle yürütmez.</li>
+          operatörü ve gözcü vardır; hiçbiri ikinci bir görev üstlenmez.</li>
         </ul>
       </div>
     </div>
@@ -311,10 +311,10 @@
   <section class="section" id="design-decisions" aria-labelledby="dd-h">
     <div class="container">
       <div class="section-head">
-        <p class="kicker">Tasarım kararları</p>
-        <h2 id="dd-h">GöğeBakan'ın arkasındaki trade-off çalışmaları</h2>
-        <p class="lede">Her büyük tercih; reddettiğimiz seçenekler ve nedenleriyle birlikte.
-        Bu günlük sezon ilerledikçe büyür.</p>
+        <p class="kicker">Trade-off çalışmaları</p>
+        <h2 id="dd-h">Tasarım kararları</h2>
+        <p class="lede">Her büyük tercih, değerlendirilen seçenekler ve gerekçesi. Günlük
+        sezon ilerledikçe büyür.</p>
       </div>
       <div class="grid cols-2">
         <article class="card">
@@ -336,9 +336,8 @@
           <p class="small"><strong>Tercih ve gerekçe:</strong> birleşik. Ayrı kaldırma
           motorları seyirde ölü ağırlıktır; eğim mekanizmaları kütle ve mekanik arıza noktası
           ekler. Havada asılı kalmaya, geçişe ve seyre aynı dört motorun hizmet etmesi; daha az
-          yapısal ağırlık, kırılabilecek daha az parça, daha az bakım ve benzer hibritlere göre
-          yaklaşık %30 daha iyi verim demek — çıkararak kazanılan güvenilirlik. Mimari
-          patentlidir.</p>
+          yapısal ağırlık, kırılabilecek daha az parça, daha az bakım ve benzer hibrit
+          platformlara göre yaklaşık %30 daha iyi verim demek. Mimari patentlidir.</p>
         </article>
         <article class="card">
           <p class="card-kicker">Karar 03 · Görev profili</p>
@@ -380,8 +379,8 @@
           ikizi (insan ve çadır modelleriyle özelleştirilmiş Baylands dünyasında) her
           algoritmayı donanım riske atılmadan doğrular. Yerde ise kendi konsolumuz yerine
           <strong>QGroundControl</strong> uçuruyoruz: PX4 ile yerleşik uyumlu, binlerce
-          operatörce sınanmış bir araç — görev planlayıcıyı yeniden yazmaya harcanmayan her
-          saat, gerçekten bize ait olan otonomiye harcanan bir saattir.</p>
+          operatörce kullanılan ve PX4 projesi tarafından sürdürülen bir araç; bu da yazılım
+          emeğimizi otonomi yığınında tutuyor.</p>
         </article>
       </div>
       <p class="muted small" style="margin-top:1.4rem">Her kararın tarihli mühendislik bağlamı,
