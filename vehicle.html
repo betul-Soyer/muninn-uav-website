@@ -152,7 +152,8 @@
           <p>Because there is no separate lift system and no tilt mechanism, the structure
           stays light and the failure-mode list stays short — the reason the architecture earned
           a patent. Elevons provide control authority in both regimes, and the central pod
-          concentrates the payload: nadir camera, AI companion computer and the battery —
+          concentrates the payload: the downward-facing camera, the AI companion computer and
+          the battery —
           placed first, before anything else could claim the space.</p>
           <p class="muted small">Why a tail-sitter and not a quadplane or multirotor? See
           <a href="#design-decisions">design decision #1</a>.</p>
@@ -207,7 +208,7 @@
       </div>
       <figure style="margin-bottom:1.6rem">
         <img src="assets/img/avionics-diagram.svg" width="920" height="620"
-             alt="Avionics block diagram: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs. An AI companion computer running ROS 2, YOLOv8s and SLAM reads the nadir camera, exchanges data with PX4, and streams detections over a 5 GHz IP link. A 915 MHz telemetry radio connects PX4 to QGroundControl on the ground station laptop.">
+             alt="Avionics block diagram: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs. An AI companion computer running ROS 2, YOLOv8s and SLAM reads the downward-facing camera, exchanges data with PX4, and streams detections over a 5 GHz IP link. A 915 MHz telemetry radio connects PX4 to QGroundControl on the ground station laptop.">
         <figcaption>GöğeBakan's avionics architecture. Three independent radio links separate
         control, telemetry and imagery.</figcaption>
       </figure>

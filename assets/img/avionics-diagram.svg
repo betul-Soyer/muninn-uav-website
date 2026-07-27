@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620" role="img"
-     aria-label="Avionics block diagram. Onboard: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs; an AI companion computer running ROS 2, YOLOv8s and SLAM reads the nadir camera, exchanges data with PX4, and streams detections over a 5 GHz IP link; a 915 MHz telemetry radio links PX4 to QGroundControl on the ground station laptop.">
+     aria-label="Avionics block diagram. Onboard: GNSS and the RC receiver feed the PX4 flight controller, which drives the unified propulsion ESCs; an AI companion computer running ROS 2, YOLOv8s and SLAM reads the downward-facing camera, exchanges data with PX4, and streams detections over a 5 GHz IP link; a 915 MHz telemetry radio links PX4 to QGroundControl on the ground station laptop.">
   <defs>
     <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
       <path d="M0 0L10 5L0 10Z" fill="#a9aeb9"/>
@@ -37,7 +37,7 @@
       <text x="772" y="118">Telemetry radio</text>
       <text x="772" y="198">5 GHz IP link</text>
       <text x="462" y="282">AI companion computer</text>
-      <text x="152" y="284">Nadir camera</text>
+      <text x="152" y="284">Downward camera</text>
       <text x="752" y="284">ESCs → unified motors</text>
       <text x="752" y="374">Battery + power module</text>
       <text x="325" y="538">QGroundControl</text>
@@ -75,12 +75,12 @@
       <text x="760" y="338">power</text>
     </g>
 
-    <!-- RF links -->
+    <!-- RF links: both radios join one bundle down the right margin, clear of the power boxes -->
     <g stroke="#d7dbe2" stroke-width="1.6" stroke-dasharray="4 6" fill="none">
-      <path d="M760 148 L700 508"/>
-      <path d="M790 228 L710 508"/>
+      <path d="M865 202 L882 202"/>
+      <path d="M865 122 L882 122 L882 452 L706 452 L706 508"/>
     </g>
-    <text x="770" y="452" fill="#d7dbe2" font-size="12" letter-spacing="1">RF links</text>
+    <text x="596" y="457" fill="#d7dbe2" font-size="12" letter-spacing="1">RF links</text>
     <line x1="450" y1="542" x2="574" y2="542" stroke="#a9aeb9" stroke-width="1.6" marker-start="url(#a3)" marker-end="url(#a3)"/>
   </g>
 </svg>
