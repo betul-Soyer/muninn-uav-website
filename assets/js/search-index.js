@@ -15,10 +15,8 @@ window.SEARCH_INDEX = [
   /* ---- Team ---- */
   { page: "Team", url: "team.html#about", title: "The Yazgit Community's aerospace team",
     text: "about story Yazgit Community raven Munin memory origins who we are history" },
-  { page: "Team", url: "team.html#structure", title: "Subteams & structure",
-    text: "subteams avionics software AI mechanical organisation structure" },
   { page: "Team", url: "team.html#members", title: "Members — SUAS 2026 roster",
-    text: "members roster people captain Mustafa Akgün Mert Hüseyin Çağlayan Enes Kara Beyza Akbaş Yusuf Karagülle Betül Soyer Sena Altınordu Battal Berkay Aktaş avionics software AI mechanical" },
+    text: "members roster people captain subteams organisation structure Mustafa Akgün Mert Hüseyin Çağlayan Enes Kara Beyza Akbaş Yusuf Karagülle Betül Soyer Sena Altınordu Battal Berkay Aktaş avionics software AI mechanical" },
   { page: "Team", url: "team.html#advisor", title: "Faculty advisor",
     text: "academic advisor faculty mentor guidance Prof Dr Murat Ceylan Konya Technical University mentors welcome" },
   { page: "Team", url: "team.html#contact", title: "Contact",
