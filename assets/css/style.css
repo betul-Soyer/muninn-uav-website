@@ -414,12 +414,12 @@ code {
 /* Roster entries */
 #members .grid, #advisor .grid { grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); }
 .member-card {
-  display: grid; grid-template-columns: 68px minmax(0, 1fr);
+  display: grid; grid-template-columns: 84px minmax(0, 1fr);
   gap: 1rem; align-items: start;
   padding: 1.1rem 1.2rem;
 }
 .member-avatar {
-  width: 68px; height: 68px;
+  width: 84px; height: 84px;
   object-fit: cover; object-position: center top;
   border: 1px solid var(--rule);
   background: var(--raised);
