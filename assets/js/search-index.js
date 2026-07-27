@@ -18,7 +18,7 @@ window.SEARCH_INDEX = [
   { page: "Team", url: "team.html#members", title: "Members — SUAS 2026 roster",
     text: "members roster people captain subteams organisation structure Mustafa Akgün Mert Hüseyin Çağlayan Enes Kara Beyza Akbaş Yusuf Karagülle Betül Soyer Sena Altınordu Battal Berkay Aktaş avionics software AI mechanical" },
   { page: "Team", url: "team.html#advisor", title: "Faculty advisor",
-    text: "academic advisor faculty mentor guidance Prof Dr Murat Ceylan Konya Technical University mentors welcome" },
+    text: "academic advisor faculty mentor guidance Prof Dr Murat Ceylan Konya Technical University founder Yazgit Community" },
   { page: "Team", url: "team.html#contact", title: "Contact",
     text: "contact email muninnuav@gmail.com Konya Technical University Konya Türkiye Instagram muninnteam LinkedIn reach us address" },
   { page: "Team", url: "team.html#join", title: "Join the team",

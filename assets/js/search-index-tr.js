@@ -17,7 +17,7 @@ window.SEARCH_INDEX = [
   { page: "Takım", url: "team.html#members", title: "Üyeler — SUAS 2026 kadrosu",
     text: "üyeler kadro kaptan alt takımlar organizasyon yapı örgütlenme Mustafa Akgün Mert Hüseyin Çağlayan Enes Kara Beyza Akbaş Yusuf Karagülle Betül Soyer Sena Altınordu Battal Berkay Aktaş aviyonik yazılım AI mekanik" },
   { page: "Takım", url: "team.html#advisor", title: "Danışman hoca",
-    text: "akademik danışman hoca mentor rehberlik Prof Dr Murat Ceylan Konya Teknik Üniversitesi" },
+    text: "akademik danışman hoca mentor rehberlik Prof Dr Murat Ceylan Konya Teknik Üniversitesi Yazgit Topluluğu kurucusu" },
   { page: "Takım", url: "team.html#contact", title: "İletişim",
     text: "iletişim e-posta muninnuav@gmail.com Konya Teknik Üniversitesi Türkiye Instagram muninnteam LinkedIn adres ulaşım" },
   { page: "Takım", url: "team.html#join", title: "Takıma katıl",
