@@ -70,7 +70,7 @@ window.SEARCH_INDEX = [
 
   /* ---- Sponsors ---- */
   { page: "Sponsors", url: "sponsors.html#current", title: "Our sponsors — SUAS 2026",
-    text: "sponsors current logos TÜBİTAK founding partners support" },
+    text: "sponsors current logos TÜBİTAK Girişimci İşadamları Vakfı Konya GİV Kapsül Teknoloji Platformu founding partners support" },
   { page: "Sponsors", url: "sponsors.html#inkind", title: "In-kind support",
     text: "in-kind materials carbon composites CNC machining 3D printing electronics batteries flight field travel logistics expertise donation" },
   { page: "Sponsors", url: "sponsors.html#contact-cta", title: "Become a sponsor",
