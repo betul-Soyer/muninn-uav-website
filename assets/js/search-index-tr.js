@@ -15,7 +15,7 @@ window.SEARCH_INDEX = [
   { page: "Takım", url: "team.html#about", title: "Yazgit Topluluğu'nun havacılık takımı",
     text: "hakkında hikâye Yazgit Topluluğu kuzgun Muninn hafıza kimiz tarih Konya" },
   { page: "Takım", url: "team.html#members", title: "Üyeler — SUAS 2026 kadrosu",
-    text: "üyeler kadro kaptan alt takımlar organizasyon yapı örgütlenme Mustafa Akgün Mert Hüseyin Çağlayan Enes Kara Beyza Akbaş Yusuf Karagülle Betül Soyer Sena Altınordu Battal Berkay Aktaş aviyonik yazılım AI mekanik" },
+    text: "üyeler kadro kaptan pilot alt takımlar organizasyon yapı örgütlenme Mustafa Akgün Mert Hüseyin Çağlayan Enes Kara Beyza Akbaş Yusuf Karagülle Betül Soyer Sena Altınordu Battal Berkay Aktaş aviyonik yazılım AI mekanik" },
   { page: "Takım", url: "team.html#advisor", title: "Danışman hoca",
     text: "akademik danışman hoca mentor rehberlik Prof Dr Murat Ceylan Konya Teknik Üniversitesi Yazgit Topluluğu kurucusu" },
   { page: "Takım", url: "team.html#contact", title: "İletişim",

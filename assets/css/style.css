@@ -333,7 +333,11 @@ code {
 
 /* ---------- Hero ---------- */
 .hero { padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem); }
-.hero h1 { margin-bottom: 0.28em; }
+.hero .container { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hero h1 { margin-bottom: 0.28em; font-size: clamp(3.4rem, 9vw, 6.8rem); }
+.hero .kicker { font-size: 0.88rem; }
+.hero .designation { max-width: 74ch; font-size: 0.92rem; }
+.hero .btn { font-size: 0.92rem; padding: 1rem 1.85rem; }
 
 /* Aircraft designation line — reads like the data plate on the airframe */
 .designation {
@@ -348,7 +352,7 @@ code {
   max-width: 48ch;
 }
 .designation b { color: var(--strong); font-weight: 500; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+.hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
 
 .hero-art { margin: 0; }
 .hero-art video, .hero-art img {
