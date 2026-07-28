@@ -540,8 +540,6 @@ figcaption {
 .lb-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
 .lb-close { position: absolute; top: 1rem; right: 1rem; font-size: 1.05rem; }
 
-.video-embed { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; border: 1px solid var(--rule-soft); }
-
 /* ---------- Sponsor logos ---------- */
 /* Sponsor wall: identical light plates, logos contained, never stretched */
 .logo-row { display: grid; gap: 1px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); background: var(--rule); border: 1px solid var(--rule); }

@@ -58,8 +58,6 @@ window.SEARCH_INDEX = [
     text: "test programı aşamalar bileşen alt sistem sistem tezgâh güç dijital ikiz Gazebo görsel servo tam görev saat donanım uçuş testi geçme kriteri" },
   { page: "Gelişim Günlüğü", url: "journey.html#procedures", title: "Prosedürler ve checklistler",
     text: "prosedürler uçuş öncesi checklist test kartı iptal kriteri batarya kuralları şarj emniyet git gitme" },
-  { page: "Gelişim Günlüğü", url: "journey.html#videos", title: "Test görüntüleri",
-    text: "videolar görüntü uçuş testi gerçek gövde 11 Temmuz 2026 izle" },
 
   /* ---- Medya ---- */
   { page: "Medya", url: "media.html#photos", title: "Fotoğraf galerisi",

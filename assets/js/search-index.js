@@ -59,8 +59,6 @@ window.SEARCH_INDEX = [
     text: "testing test program stages component sub-system system bench power digital twin Gazebo visual servoing full mission clock hardware flight testing pass criteria" },
   { page: "Build Log", url: "journey.html#procedures", title: "Procedures & checklists",
     text: "procedures preflight checklist flight test card abort criteria battery handling SOP charging safety paperwork go no-go" },
-  { page: "Build Log", url: "journey.html#videos", title: "Test footage",
-    text: "videos footage flight test real airframe 11 July 2026 watch" },
 
   /* ---- Media ---- */
   { page: "Media", url: "media.html#photos", title: "Photo gallery",
